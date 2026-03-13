@@ -1,0 +1,437 @@
+\documentclass{article}
+
+%% AMS packages
+\usepackage{amsfonts,amsmath,amstext,amsbsy,amssymb}
+\usepackage{amsopn,amsthm,amscd,amsxtra}
+
+\usepackage{dsfont}
+
+%% Graphics
+\usepackage{graphicx}
+
+%% Figures
+% \usepackage{epsfig} \input{xy} \xyoption{all}
+
+ \usepackage{url}
+
+
+%% LATeX packages
+\usepackage{latexsym,mathrsfs}
+
+
+
+\usepackage{thmtools}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+
+%% Special arrows
+\usepackage{mathabx} \newcommand{\carr}{\righttoleftarrow}
+\newcommand{\wto}{\rightharpoonup}
+
+%% Hyperlinks setup
+\usepackage{hyperref}
+\RequirePackage[dvipsnames]{xcolor} % [dvipsnames]
+\definecolor{halfgray}{gray}{0.55}
+% chapter numbers will be semi transparent .5 .55 .6 .0
+\definecolor{webgreen}{rgb}{0,0.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0} \hypersetup{%
+  colorlinks=true, linktocpage=true, pdfstartpage=3,
+  pdfstartview=FitV,%
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true,
+  pdfpagemode=UseOutlines,%
+  plainpages=false, bookmarksnumbered, bookmarksopen=true,
+  bookmarksopenlevel=1,%
+  hypertexnames=true,
+  pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+  urlcolor=webbrown, linkcolor=RoyalBlue,
+  citecolor=webgreen, %pagecolor=RoyalBlue,%
+  % uncomment the following line if you want to have black links
+  % (e.g., for printing)
+  % urlcolor=Black, linkcolor=Black,
+  % citecolor=Black, %pagecolor=Black,%
+  pdftitle={},%
+  pdfauthor={},%
+  pdfsubject={2000 Mathematical Subject Classification: Primary:},%
+  pdfkeywords={},%
+  pdfcreator={pdfLaTeX},%
+  pdfproducer={LaTeX with hyperref}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Portuguese
+% \usepackage[brazilian]{babel}
+\usepackage{ae}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bracket-like operations
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\abs}[1]{\left\lvert{#1}\right\rvert}
+\newcommand{\norm}[1]{\left\|{#1}\right\|}
+\newcommand{\gen}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\scprod}[2]{\left\langle{#1},{#2}\right\rangle}
+
+% Typefaces
+\newcommand{\bb}{\mathbb} \newcommand{\mbf}{\mathbf}
+\newcommand{\mc}{\mathcal} \newcommand{\ms}{\mathscr}
+\newcommand{\ds}{\mathds}
+
+% Usual spaces
+\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\T}{\mathbb{T}}\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}\newcommand{\A}{\mathbb{A}}
+
+%% Abbreviations
+\newcommand{\cf}{c.f.\ } \newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ } \newcommand{\etal}{\textit{et al\ }}
+
+
+%% Diff-like operators
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Diff}[2]{\mathrm{Diff}_{#1}^{#2}}
+\newcommand{\Homeo}[1]{\mathrm{Homeo}_{#1}}
+\newcommand{\Dis}[1]{\mathcal{D}^\prime_{#1}}
+
+
+%% Measures and differentials
+\newcommand{\Leb}{\mathrm{Leb}} \newcommand{\dd}{\:\mathrm{d}}
+
+%% Some operators
+\DeclareMathOperator{\M}{\mathfrak{M}} \DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\Per}{Per} \DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\SL}{SL} \DeclareMathOperator{\GL}{GL}
+\newcommand{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\rank}{rank} \DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\cl}{cl} \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\diam}{diam}
+
+\newcommand{\cc}{\mathrm{cc}} % connected components
+
+\newcommand{\pr}[1]{\mathrm{pr}_{#1}} % projections
+
+
+%% For marginal notes
+\newcommand{\marginal}[1]{\marginpar{{\scriptsize {#1}}}}
+
+%% Topological dynamics on tori
+\newcommand{\Symp}[1]{\mathrm{Symp}_{#1} (\mathbb{T}^2)}
+\newcommand{\Ham}{\mathrm{Ham} (\mathbb{T}^2)}
+\newcommand{\Thomeo}{\widetilde{\mathrm{Homeo}_0}}
+\newcommand{\Tsymp}{\widetilde{\mathrm{Symp}_0} (\mathbb{T}^2)}
+\newcommand{\Tham}{\widetilde{\mathrm{Ham}} (\mathbb{T}^2)}
+\newcommand{\wh}{\widehat}
+
+
+%% Especial notation for this article
+
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\Bs}{\mathcal{S}}
+\newcommand{\eps}{\varepsilon}
+\DeclareMathOperator{\MS}{MS}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\Rec}{\mathrm{Rec}}
+\newcommand{\CR}{\mathscr{R{}}}
+\newcommand{\RP}{\mathbb{RP}}
+\DeclareMathOperator{\osc}{osc}
+
+
+%%% Settings of original template
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+\colorlet{LightYellow}{Yellow!15}
+\colorlet{LightBlue}{Blue!15}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightOrange}
+
+\declaretheoremstyle[name=Corollary,]{corsty}
+\declaretheorem[style=corsty,numberlike=theorem]{corollary}
+\tcolorboxenvironment{corollary}{colback=LightOrange}
+
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightYellow}
+
+\declaretheoremstyle[name=Lemma,]{lemsty}
+\declaretheorem[style=lemsty,numberlike=theorem]{lemma}
+\tcolorboxenvironment{lemma}{colback=LightGreen}
+
+\declaretheoremstyle[name=Definition,]{defsty}
+\declaretheorem[style=defsty,numberwithin=section]{definition}
+\tcolorboxenvironment{definition}{colback=LightBlue}
+
+
+\declaretheoremstyle[name=Problem,]{probsty}
+\declaretheorem[style=probsty,numberwithin=section]{problem}
+\tcolorboxenvironment{problem}{colback=LightGray}
+
+\declaretheoremstyle[name=Example,]{examsty}
+\declaretheorem[style=exasty,numberwithin=section]{example}
+\tcolorboxenvironment{example}{colback=LightBlue}
+
+
+\declaretheoremstyle[name=Exercise,]{exesty}
+\declaretheorem[style=exesty,numberlike=problem]{exercise}
+\tcolorboxenvironment{exercise}{colback=LightGray}
+
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+
+ %% Fancy indexing in enumerations
+\usepackage{enumerate}
+
+%% Figures
+% \usepackage{epsfig} \input{xy} \xyoption{all}
+
+\usepackage{url}
+
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{Doutorado em Matemática - IMPA}
+        \\ [2.0cm]
+        \HRule{1.5pt} \\
+        \LARGE \textbf{\uppercase{Lecture notes on Dynamics I}
+        \HRule{2.0pt} \\ [0.6cm] \LARGE{} \vspace*{10\baselineskip}}}
+\date{}
+\author{Alejandro Kocsard \\
+        IMPA\\
+        \today}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+
+
+\section{Introduction}\label{sec:introduction}
+
+In this course we shall deal with \emph{autonomous deterministic dynamical systems.} They can be used to represent or modelize any phenomenon that changes along the time in such a way that the current state of the system completely determines the future evolution and the law that drives this evolution does not change along the time. Mathematically, an \textbf{autonomous deterministic dynamical system} (a \textbf{dynamical system}, for short) is given by a set $M$, usually called the \textbf{phase space,} which represents the set of possible states of the system, a subsemigroup $\T\subset\R$ that represents the \textbf{time set,} and \emph{``a law''} $\Phi\colon\T\times M\to M$ that determines the evolution of the system in such a way that given the current state of our system $x_{0}\in M$, at time $t\in\T$ the corresponding state will be $x_{t}=\Phi(x_{0},t)$. The autonomy of the system is reflected in the so called \textbf{flow} (or \textbf{semi-flow}) condition function $\Phi$ satisfies:
+\begin{equation}\label{eq:flow-condition}
+  \Phi(t+s,x)=\Phi\big(t,\Phi(s,x)\big) = \Phi\big(t,\Phi(s,x)\big), \quad\forall t,s\in\T,\ \forall x\in M.
+\end{equation}
+
+We will consider two different kinds of dynamical systems: \textbf{discrete time} and \textbf{continuous time} ones, \ie~where $\T=\N_{0}$ and $\T=\R_{\geq 0}$, respectively. Moreover, we will also consider \textbf{invertible systems} where the current state does not just determine the future but the past as well. When dealing with invertible discrete dynamical systems, the time set will be $\T=\Z$, and in the case of invertible continuous time ones, we will have $\T=\R$.
+
+The main goal of Dynamical Systems consists in describing the \textbf{orbits of the systems,} \ie~the sets
+\begin{displaymath}
+  \Or_{\Phi}(x):=\left\{\Phi(t,x) : t\in\T\right\}, \quad\forall x\in M.
+\end{displaymath}
+
+
+\begin{exercise}[Discrete time generator]
+  Given a discrete time dynamical system $\Phi\colon\T\times M\to M$, show that $\Phi$ satisfies the flow condition~\eqref{eq:flow-condition} if and only if there is $f\colon M\carr$ such that
+  \begin{displaymath}
+    \Phi(n,x)=f^{n}(x), \quad\forall x\in M,\ \forall n\in\N_{0},
+  \end{displaymath}
+  where the iteration of $f$ is inductively defined by $f^{0}:=id_{M}$ and $f^{n+1}=f\circ f^{n}$, for every $n\geq 0$. Show that $\Phi$ is invertible if and only if $f$ is bijective and, in such a case, one can define $f^{-n}:={\big(f^{-1}\big)}^{n}$, for all $n\geq 0$.
+\end{exercise}
+
+On the other hand, one can find \emph{infinitesimal generators} for continuous time smooth dynamical systems:
+
+\begin{exercise}[Continuous time generator]
+  Let $M$ be a differentiable closed manifold (\ie~compact and boundaryless) and $\Phi\colon\R\times M\to M$ a continuous time dynamical system (that satisfies the flow condition~\ref{eq:flow-condition}). If  we assume $\Phi$ is a $C^{2}$ map and we define $X(p):=\partial_{t}\Phi(t,p)\big|_{t=0}\in T_{p}M$, for every $p\in M$, then the function $\Phi(\cdot,x_{0})\colon\R\to M$ is the unique solution of the \emph{initial value problem}
+  \begin{displaymath}
+    \dot x(t)=X\big(x(t)\big), \quad x(0)=x_{0},
+  \end{displaymath}
+  for every $x_{0}\in M$. In other words, the vector field $X$ is the infinitesimal generator of the flow $\Phi$.
+\end{exercise}
+
+As previously mentioned, the primary objective of Dynamical Systems is to understand the orbits of various systems, particularly their asymptotic behavior as time goes to infinity. From a historical perspective, there are three pivotal moments in the development of this mathematical theory. The first can be attributed to Isaac Newton, who laid the groundwork for Calculus and employed its principles to solve differential equations. During this era, the approach to studying a specific continuous-time dynamical system involved solving the corresponding differential equation, followed by an analysis of the obtained solutions.
+
+The so-called \emph{``restricted two-body problem''} is a remarkable question that was answered at that time:
+
+\begin{problem}
+  The \emph{``restricted two-body problem''} refers to a simplified model used to analyze the motion of two celestial bodies under the influence of their mutual gravitational attraction, where one body is significantly more massive than the other. In this framework, the more massive body is assumed to be stationary, while the second body is treated as a point mass that moves in the gravitational field created by the first one. This approach allows for the derivation of equations of motion for the second body without needing to account for its gravitational effects on the primary, simplifying the analysis. This model is particularly useful in celestial mechanics, where it can be applied to scenarios such as a satellite orbiting a planet or a comet passing by a star.
+
+  More precisely, the \emph{restricted two-body problem} consider in describing the orbit of massive point $p$, whose location in the space at time $t\in\R$ is given by $x(t)\in\R^{3}$, moving in a central field force in $\R^{3}$ that is generated by a massive point of mass $M>0$ which is fixed at the origin. According to Newton's laws, the trajectory $x(t)\in\R^{3}$ is the solution of the following initial value problem:
+  \begin{equation}
+    \label{eq:restricted-2-body-problem}
+    \left\{
+      \begin{aligned}
+        \ddot{x}(t) &= -\frac{GM}{\norm{x}^{3}}x(t),\\
+        x(0)&=x_{0},\\
+        \dot{x}(0)&=v_{0},
+      \end{aligned}
+    \right.
+  \end{equation}
+  where $G>0$ is the universal constant of gravitation,  $x_{0}\in\R^{3}$ and $v_{0}\in\R^{3}$ are the initial position and velocity, respectively.
+
+  Using classical \emph{quadrature techniques} one can show that the solutions $x(t)$ of~\eqref{eq:restricted-2-body-problem} are either straight lines through the origin (when $x_{0}$ and $v_{0}$ are collinear vectors in $\R^{3}$), or quadratic curves (\ie~ellipses, parabolas or hyperbolas).
+\end{problem}
+
+The second pivotal moment in the development of Dynamical Systems can be attributed to Henri Poincaré. At the end of XIXth century it was already pretty clear that there were many ordinary differential equations that could not be solved with quadrature methods. A very simple and well-known example is the following one:
+
+\begin{example}
+  There is no \emph{elementary (smooth) function} $f\colon\R\to\R$ such that
+  \begin{displaymath}
+    f'(x)=e^{-x^{2}}, \quad\forall x\in\R.
+  \end{displaymath}
+\end{example}
+
+Another example, which was fundamental in development of so called \emph{qualitative theory of differential equations} is the \emph{$3$-body problem:}
+
+\begin{problem}[$n$-body problem]\label{prob:n-body-problem}
+  The \emph{$n$-body problem} refers to the challenge of predicting the individual motions of a group of $n$ celestial objects that interact with each other through gravitational forces. The complexity arises from the fact that each body exerts a gravitational force on every other body, leading to a system of coupled differential equations. If $x_{i}(t)\in\R^{3}$ represents the position of the $i$-th object at time $t\in\R$ and $m_{i}>0$ denotes its mass, then Newton's second law determines that these quantities are related by the following system of ordinary differential equations
+  \begin{equation}
+    \label{eq:n-body-problem}
+    \left\{
+      \begin{aligned}
+        \ddot x_{i}(t) &= \sum_{j\neq i} G\frac{m_{j}}{\norm{x_{i}(t)-x_{j}(t)}^{3}}\big(x_{i}(t)-x_{j}(t)\big), \\
+        x_{i}(0)&=x_{i,0}, \\
+        \dot x_{i}(0)&=v_{i,0},
+      \end{aligned}
+    \right.
+  \end{equation}
+  for $1\leq i\leq n$, and where $x_{i,0},v_{i,0}\in\R^{3}$ denotes the position and the velocity of the $i$-th object at time $t=0$, respectively.
+
+  It is pretty remarkable that, in general, the system of ODEs given by~\eqref{eq:n-body-problem} cannot be solved by ``quadrature methods'' when $n\geq 3$. In fact, their solutions are not elementary functions in general.
+\end{problem}
+
+The $n$-body problem, as outlined in Problem~\ref{prob:n-body-problem}, served as a primary motivation for Henri Poincaré in developing the Geometric Theory of Differential Equations. Poincaré posited that if explicit solutions to a given differential equation cannot be readily obtained, one should at least strive to describe some interesting geometric properties of those solutions.
+
+Indeed, many questions regarding the solutions of differential equations are more qualitative than quantitative, or more geometric than analytic. For instance, a fundamental qualitative inquiry concerning the system of ordinary differential equations in~\eqref{eq:n-body-problem} is whether every solution is periodic. In some cases, even when solutions can be expressed using elementary functions, addressing certain qualitative questions based solely on the explicit formulas can prove to be quite challenging.
+
+The third pivotal moment in the evolution of Dynamical Systems can be attributed to the schools of Steve Smale in the US and Aleksandr Andronov in the USSR. At this juncture, it became evident that the geometric properties of orbits, trajectories, or solutions to ODEs could change dramatically with variations in system parameters. For example, in Problem~\ref{prob:n-body-problem}, there are $3n$ parameters—comprising the $n$ masses, $n$ initial positions, and $n$ initial velocities. In certain instances, even minor changes to these parameters can lead to completely different geometric properties for the respective solutions. Thus, it becomes crucial to identify geometric properties of orbits that are robust or persistent under small perturbations of system parameters.
+
+These three historical stages in the development of dynamical systems are cleverly (and provocatively) summarized by Étienne Ghys in his laudation for Artur Avila’s Fields Medal: In Newton's time, you were given an ODE and tasked with finding its solutions. In Poincaré's era, you were given an ODE and asked to elucidate interesting geometric properties of its solutions. In Smale's time, you were given no ODE at all and challenged to say something interesting!
+
+
+
+\section{Some examples of Dynamical Systems results}\label{sec:some-exampl-dynamical-sys-res}
+
+A very first example of a result in Dynamical Systems might be the following classical
+
+\begin{theorem}[Banach fixed point theorem]\label{thm:Banach-fixed-point-thm}
+  Let $(M,d)$ be a complete metric space and $f\colon M\carr$ be \textbf{uniform contraction,} \ie~$f$ is a Lipschitz function and
+  \begin{displaymath}
+    \lambda=\Lip(f):=\sup_{x\neq y}\frac{d\big(f(x),f(y)\big)}{d(x,y)}< 1.
+  \end{displaymath}
+
+  Then there exists a unique point $p\in M$ such that $f(p)=p$ and it holds
+  \begin{displaymath}
+    \lim_{n\to+\infty} f^{n}(x)=p, \quad\forall x\in M.
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  Given any $x\in M$, one can show by induction on $n$ that
+  \begin{displaymath}
+    d\big(f^{n}(x),f^{n+1}(x)\big)\leq \lambda^{n}d(x,f(x)), \quad\forall n\in\N_{0}.
+  \end{displaymath}
+  So, for every $m,n\in\N$ it holds
+  \begin{displaymath}
+    \begin{split}
+      d\big(f^{m}(x),f^{m+n}(x)\big)&\leq \sum_{i=0}^{n-1} d\big(f^{m+i}(x),f^{m+i+1}(x)\big) \\
+      &\leq \sum_{i=0}^{n-1}\lambda^{m+i}d\big(x,f(x)\big) \leq \frac{\lambda^{m}}{1-\lambda} d\big(x,f(x)\big).
+    \end{split}
+  \end{displaymath}
+  Hence, the sequence ${\big(f^{n}(x)\big)}_{n\geq 0}$ is Cauchy, and since $M$ is complete, it converges to a point $p\in M$. By continuity of $f$, $p$ is a fixed point of $f$. On the other hand, since $f$ is a contraction, it has at most one fixed point.
+\end{proof}
+
+\begin{exercise}[Perturbations of contractions]
+  Let $f\colon\R^{d}\carr$ be a uniform contraction and $r>0$ be arbitrary. We define the following balls
+  \begin{displaymath}
+    B_{r}^{0}(f):=\left\{g\in C^{0}(\R^{d},\R^{d}) : \norm{f-g}_{C^{0}}:=\sup_{x\in\R^{d}}\norm{f(x)-g(x)}<r\right\},
+  \end{displaymath}
+  and
+  \begin{displaymath}
+    B_{r}^{L}(f):=\left\{g\in C^{0}(\R^{d},\R^{d}) : \norm{f-g}_{L}:=\norm{f-g}_{C^{0}} + \Lip(f-g)<r\right\}.
+  \end{displaymath}
+
+  Show that given any $r>0$, there is a $g\in B_{r}^{0}(f)$ which is not a contraction and such that $\Fix(g):=\{x\in\R^{d} : g(x)=x\}$ is an infinite set.
+
+  On the other hand, show that given the uniform contraction $f$, there exists $r_{0}>0$ such that every $g\in B_{r_{0}}^{L}(f)$ is a uniform contraction, and hence it exhibits a unique fixed point $p_{g}\in\R^{d}$. Finally, prove that given any $\eps>0$, there exists $\delta\in(0,r_{0})$ such that
+  \begin{displaymath}
+    \norm{p_{f}-p_{g}}<\eps, \quad\forall g\in B_{\delta}^{L}(f).
+  \end{displaymath}
+\end{exercise}
+
+Another important example is the following one:
+
+\begin{example}[Gradient flows]\label{exam:gradient-flows}
+  Let $M$ be the unit sphere $\bb{S}^{2}:=\{v\in\R^{3} : \norm{v}=1\}$ and consider the function $L\colon\bb{S}^{2}\to\R$ given by
+  \begin{displaymath}
+    L(x,y,z):=-z, \quad\forall (x,y,z)\in\bb{S}^{2},
+  \end{displaymath}
+  and the flow $\Phi\colon\R\times\bb{S}^{2}\to\bb{S}^{2}$ generated by the vector field $X(v):=-\nabla L(v)$, for every $v\in\bb{S}^{2}$ and where $\nabla$ denotes the gradient operator on $\bb{S}^{2}$.
+
+  One can easily show that $(0,0,-1)$ and $(0,0,1)$ are the only singularities of $X$ (\ie~the critical points of $L$), or equivalently, the fixed points of $\Phi$, and it holds
+  \begin{displaymath}
+    \Phi^{t}(v)\to (0,0,-1), \quad\text{and}\quad \Phi^{-t}(v)\to (0,0,1),
+  \end{displaymath}
+  as $t\to+\infty$, for every $v\in\bb{S}^{2}\setminus\{(0,0,\pm 1)\}$.
+
+  Generalizing this example, one can consider an arbitrary compact differentiable manifold $M$ endowed with a Riemannian structure $\langle\cdot,\cdot\rangle$ and a smooth function $L\colon M\to\R$. Then we can define the gradient of $L$ as the only vector field $\nabla L$ such that
+  \begin{displaymath}
+    YL = dL(Y) =\langle\nabla L, Y\rangle,
+  \end{displaymath}
+  for every vector field $Y$ on $M$.
+
+  So, if we consider the flow $\Phi\colon\R\times M\to M$ induced by the vector field $X:=-\nabla L$, one can easily check that
+  \begin{displaymath}
+    \partial_{t} (L\circ\Phi^{t})(p)\big|_{t=0}=-\norm{\nabla L(p)}^{2} = -\langle\nabla L(p),\nabla L(p)\rangle,\quad\forall p\in M.
+  \end{displaymath}
+
+  That means, given any point $p\in M$ the map $\R\ni t\mapsto L\circ\Phi^{t}(p)\in\R$ is not increasing, and it is strictly decreasing if and only if $p$ is a regular point for $L$ is a regular point of $L$, \ie~$dL_{p}\colon T_{p}M\to\R$ is not identically zero.
+
+  Moreover, if $L$ has a finite number of critical points (\ie~points where the derivative $dL$ vanishes), then one can show that for every $p\in M$, there exist critical points of $L$ $\alpha_{p},\omega_{p}\in M$ such that
+  \begin{displaymath}
+    \Phi^{-t}(p)\to\alpha_{p}, \quad\text\quad \Phi^{t}(p)\to\omega_{p},
+  \end{displaymath}
+  as $t\to+\infty$.
+\end{example}
+
+
+\bibliographystyle{amsalpha}
+\bibliography{references}
+
+\end{document}
