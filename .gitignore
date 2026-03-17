@@ -5,6 +5,8 @@ tmp/
 *.aux
 *.blg
 *.out
-*.syctex.gz
+*.synctex.gz
+*.toc
+*.bbl
 .auctex-auto/
 _region_.tex
