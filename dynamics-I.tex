@@ -93,7 +93,7 @@
 \newcommand{\D}{\mathbb{D}}\newcommand{\A}{\mathbb{A}}
 
 %% Abbreviations
-\newcommand{\cf}{c.f.\ } \newcommand{\ie}{i.e.\ }
+\newcommand{\cf}{c.f.\ } \newcommand{\ie}{i.e.{}}
 \newcommand{\eg}{e.g.\ } \newcommand{\etal}{\textit{et al\ }}
 
 
@@ -429,6 +429,94 @@ Another important example is the following one:
   \end{displaymath}
   as $t\to+\infty$.
 \end{example}
+
+
+\section{The Fundamental Theorem of Dynamical Systems}\label{sec:fundamental-thm-dyn-sys}
+
+Motivated by Example~\ref{exam:gradient-flows}, we would like to find functions decreasing along the orbits of arbitrary topological dynamical systems.
+
+\begin{definition}[Lyapunov function]
+  Given a continuous dynamical systems $f\colon M\carr$ on a metric space $M$, a \emph{Lyapunov function} for $f$ is a continuous function $L\colon M\to\R$ such that
+  \begin{displaymath}
+    L\big(f(x)\big)\leq L(x), \quad\forall x\in M.
+  \end{displaymath}
+\end{definition}
+
+Of course, according to this definition every constant function is a Lyapunov one for every topological dynamical system, which does not seem to be very interesting. So, we are going to look for the ``best possible'' Lyapunov function.
+
+\subsection{Different forms of recurrence}\label{sec:forms-of-recurrence}
+
+It would be desirable to find a Lyapunov function such that $L\big(f(x)\big)<L(x)$ for every $x\in M$. However this is clearly impossible when $f$ has, for instance, a \textbf{fixed point,} \ie~a point $p\in M$ such that $f(p)=p$. The set of fixed points of $f$ will be denoted by $\Fix(f)$.
+
+More generally, we write $p\in\Per(f)$ and say that $p$ is a \textbf{periodic point} when there is $n\geq 1$ such that $f^{n}(p)=p$. We define $\Per(f):=\bigcup_{n\geq 1}\Fix(f^{n})$.
+
+Another form of recurrence that represents an obstruction for the existence of a Lyapunov functions satisfying the strict inequality for every $p\in M$ is the following: we say that a point $p\in M$ is \textbf{positively recurrent} for $f$ when there exists strictly increasing sequence of natural numbers $n_{j}\uparrow+\infty$ such that $f^{n_{j}}(p)\to p$, as $n_{j}\to+\infty$. The set of positively recurrent points of $f$ shall be denoted by $\Rec^+(f)$. When $f\colon M\carr$ is bijective, one says that $p\in M$ is \textbf{negatively recurrent} for $f$ when it is positively recurrent for $f^{-1}$. The set of negatively recurrent points will be denoted by $\Rec^-(f)$.
+
+Given a point $p\in M$, we define its \textbf{$\omega$-limit set} by
+\begin{displaymath}
+  \omega_{f}(p):=\left\{x\in M : \exists n_{j}\uparrow\infty,\ f^{n_{j}}(p)\to x,\ \text{as } n_{j}\to+\infty\right\}.
+\end{displaymath}
+When $f$ is invertible, we also define the \textbf{$\alpha$-limit set} of $p\in M$ by $\alpha_{f}(p):=\omega_{f^{-1}}(p)$, and the so called \textbf{limit set} of $f$ by
+\begin{displaymath}
+  L(f):=\bigcup_{p\in M} \alpha_{f}(p)\cup \omega_{f}(p).
+\end{displaymath}
+
+We say that a point $p\in M$ is \textbf{non-wandering} when for every neighborhood $U$ of $p$, there exists $n\geq 1$ such that $U\cap f^{-n}(U)\neq\emptyset$. The set of non-wandering points for $f$ is usually denoted by $\Omega(f)$.
+
+We say that a subset $K\subset M$ is \textbf{$f$-invariant} when $f(K)=K$, and it is said to be \textbf{totally $f$-invariant} when $f(K)=K=f^{-1}(K)$. Observe that if $f\colon M\carr$ is bijective, then $K\subset M$ is totally $f$-invariant if and only if it is $f$-invariant.
+
+\begin{exercise}
+  Let $M$ denote a compact metric space and $f\colon M\carr$ be a homeomorphism. Show that
+  \begin{displaymath}
+    \Fix(f)\subset\Per(f)\subset\Rec^+(f)\subset L(f)\subset\Omega(f),
+  \end{displaymath}
+  and all these sets are $f$-invariant.
+
+  \begin{enumerate}
+    \item Show that $\Fix(f)$ and $\Omega(f)$ are compact.
+    \item Show that $\Rec^+(f)\cap\Rec^-(f)\neq\emptyset$. (Hint: show that there exists a non-empty compact subset $K\subset M$ which is \textbf{minimal} for $f$, \ie~$K$ is $f$-invariant and it does not contain any proper compact $f$-invariant subset).
+    \item Show that if $L\colon M\to\R$ is a Lyapunov function for $f$ and $p\in\Omega(f)$, then it holds $L\big(f(p)\big)=L(p)$.
+  \end{enumerate}
+\end{exercise}
+
+Finally we introduce the notion of \emph{chain recurrence.} Given a homeomorphism $f\colon M\carr$ on the compact metric space $(M,d)$ and an arbitrary $\eps>0$, a sequence ${(x_{n})}_{n\in\Z}$ of points of $M$ is said to be an \textbf{$\eps$-chain} or \textbf{$\eps$-pseudo-orbit} when
+\begin{displaymath}
+  d\big(f(x_{i}),x_{i+1}\big)<\eps,\quad\forall n\in\Z.
+\end{displaymath}
+
+A point $p\in M$ is said to be \textbf{chain recurrent} when for every $\eps>0$ there exists a periodic $\eps$-chain ${(x_{n})}_{n\in\Z}$ with $p=x_{0}$. The set of chain recurrent points is denoted by $\CR(f)$.
+
+
+\begin{exercise}
+  Show that $\CR(f)$ is a compact $f$-invariant set and $\Omega(f)=\Omega(f^{-1})\subset\CR(f)=\CR(f^{-1})$. On the other hand, show that if $L\colon M\to\R$ is a Lyapunov function for $f$ and $p\in\CR(f)$, then $L\big(f(p)\big)=L(p)$.
+\end{exercise}
+
+Given any $p\in M$ and any $\eps>0$, we define the \textbf{$\eps$-chainable set from $p$} as the set
+\begin{displaymath}
+  \CR_{f}(p,\eps):=\left\{x\in M : \exists {(x_{n})}_{n\in\Z}\ \eps\text{-chain, } \exists k\in\N, x_{0}=p,\ x_{k}=x\right\},
+\end{displaymath}
+and the \textbf{chainable set from $p$} by
+\begin{displaymath}
+  \CR_{f}(p):=\bigcap_{\eps>0}\CR_{f}(p,\eps).
+\end{displaymath}
+So, we have $p\in\CR(f)$ if and only if $p\in\CR_{f}(p)$. Then we have the following
+
+\begin{exercise}[Chain-recurrence classes]
+  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$. Given two points $x,y\in\CR(f)$, we say that they are \textbf{chain equivalent} when $y\in\CR_{f}(x)$ and $x\in\CR_{f}(y)$. Show this determines an equivalence relation on $\CR(f)$. The equivalence classes of this relation are called \textbf{chain-recurrence classes} and prove that every chain-recurrent class is compact and $f$-invariant.
+\end{exercise}
+
+Now we can formulate the so called ``Fundamental Theorem of Dynamical Systems'' due to Conley~\cite{ConleyIsolInvSets}:
+
+\begin{theorem}[Existence of complete Lyapunov functions]\label{thm:fund-thm-dyn-sys}
+  Given a homeomorphism $f\colon M\carr$ on the compact metric space $(M,d)$, there exists a \emph{complete Lyapunov function} for $f$, \ie~a continuous function $L\colon M\to\R$ such that the following conditions hold:
+  \begin{enumerate}
+    \item $L\big(f(x)\big)\leq L(x)$, for every $x\in M$,
+    \item $L\big(f(x)\big)=L(x)$ if and only if $x\in\CR(f)$,
+    \item $L(x)=L(y)$, with $x,y\in\CR(f)$ if and only if $\CR_{f}(x)=\CR_{f}(y)$,
+    \item $L\big(\CR(f)\big)$ is a compact totally disconnected set, \ie~it does not contain any open interval.
+  \end{enumerate}
+\end{theorem}
+
 
 
 \bibliographystyle{amsalpha}
