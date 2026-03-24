@@ -454,8 +454,13 @@ Another form of recurrence that represents an obstruction for the existence of a
 
 Given a point $p\in M$, we define its \textbf{$\omega$-limit set} by
 \begin{displaymath}
-  \omega_{f}(p):=\left\{x\in M : \exists n_{j}\uparrow\infty,\ f^{n_{j}}(p)\to x,\ \text{as } n_{j}\to+\infty\right\}.
+  \omega_{f}(p):=\left\{x\in M : \exists n_{j}\uparrow\infty,\ f^{n_{j}}(p)\to x,\ \text{as } n_{j}\to+\infty\right\},
 \end{displaymath}
+and the \textbf{positive limit set} of $f$ by
+\begin{displaymath}
+  L^+(f):=\bigcup_{p\in M} \omega_{f}(p).
+\end{displaymath}
+
 When $f$ is invertible, we also define the \textbf{$\alpha$-limit set} of $p\in M$ by $\alpha_{f}(p):=\omega_{f^{-1}}(p)$, and the so called \textbf{limit set} of $f$ by
 \begin{displaymath}
   L(f):=\bigcup_{p\in M} \alpha_{f}(p)\cup \omega_{f}(p).
@@ -488,7 +493,7 @@ A point $p\in M$ is said to be \textbf{chain recurrent} when for every $\eps>0$ 
 
 
 \begin{exercise}
-  Show that $\CR(f)$ is a compact $f$-invariant set and $\Omega(f)=\Omega(f^{-1})\subset\CR(f)=\CR(f^{-1})$. On the other hand, show that if $L\colon M\to\R$ is a Lyapunov function for $f$ and $p\in\CR(f)$, then $L\big(f(p)\big)=L(p)$.
+  Show that $\CR(f)$ is a compact $f$-invariant set and $\Omega(f)=\Omega(f^{-1})\subset\CR(f)=\CR(f^{-1})$.
 \end{exercise}
 
 Given any $p\in M$ and any $\eps>0$, we define the \textbf{$\eps$-chainable set from $p$} as the set
@@ -499,20 +504,75 @@ and the \textbf{chainable set from $p$} by
 \begin{displaymath}
   \CR_{f}(p):=\bigcap_{\eps>0}\CR_{f}(p,\eps).
 \end{displaymath}
-So, we have $p\in\CR(f)$ if and only if $p\in\CR_{f}(p)$. Then we have the following
+So, we have $p\in\CR(f)$ if and only if $p\in\CR_{f}(p)$.
 
-\begin{exercise}[Chain-recurrence classes]
-  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$. Given two points $x,y\in\CR(f)$, we say that they are \textbf{chain equivalent} when $y\in\CR_{f}(x)$ and $x\in\CR_{f}(y)$. Show this determines an equivalence relation on $\CR(f)$. The equivalence classes of this relation are called \textbf{chain-recurrence classes} and prove that every chain-recurrent class is compact and $f$-invariant.
+There is a fundamental and elementary notion that will play a crucial role in the understanding of the orbit structure of a given dynamical system, which is the concept of \emph{trapping region.} We say that a subset $U\subset M$ is a \textbf{trapping region} for $f$ when it is open and $f\big(\overline{U}\big)\subset U$.
+
+Observe that if $U\subset M$ is a trapping region for $f$ if and only if the set $M\setminus\overline{U}$ is a trapping region for $f^{-1}$.
+
+Given a trapping region $U$ for $f$, we can define the \textbf{dual pair of attractor/repellor} associated to $U$ as the pair of compact $f$-invariant sets
+\begin{displaymath}
+  A_{U}^+:=\bigcap_{n\geq 0} f^{n}\big(\overline{U}\big), \quad\text{and}\quad A_{U}^-:=\bigcap_{n\geq 0} f^{-n}\big(M\setminus U\big).
+\end{displaymath}
+
+\begin{exercise}
+  Show that $A_U^+$ and $A_U^-$ are compact, $f$-invariant and contained in $U$ and $M\setminus\overline{U}$, respectively. Moreover, they are non-empty if and only if $U$ and $M\setminus\overline{U}$ are non-empty.
 \end{exercise}
 
-Now we can formulate the so called ``Fundamental Theorem of Dynamical Systems'' due to Conley~\cite{ConleyIsolInvSets}:
+We have the following fundamental result relating chain recurrence and trapping regions:
+\begin{proposition}
+  \label{prop:chain-recurrence-trapping-regions}
+  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$. Then, given any point $p\in M$ and any $\eps>0$, the $\eps$-chainable set from $p$ is a trapping region for $f$.
+\end{proposition}
+
+\begin{proof}
+  Let us start showing that $\CR_f(p,\eps)$ is open. To do that, let us inductively defined
+  \begin{displaymath}
+    U_1:=B_\eps(p)=\{y\in M : d(x,y)<\eps\},
+  \end{displaymath}
+  and
+  \begin{displaymath}
+    U_n:=\bigcup_{x\in U_{n-1}} B_\eps\big(f(x)\big), \quad\forall n\geq 2.
+  \end{displaymath}
+
+  One can easily check that $U_n$ is open for every $n\geq 1$ and $\CR_f(p,\eps)=\bigcup_{n\geq 1} U_n$. So, $\CR_f(p,\eps)$ is open.
+
+  By the very same definition, it is clear that $f\big(\CR_f(p,\eps))\subset \CR_f(p,\eps)$. Now, let $y$ be an arbitrary point of $\overline{\CR_f(p,\eps)}$. Since $M$ is compact and $f$ is continuous, there is $\delta>0$ such that $d\big(f(x_1),f(x_2)\big)<\eps$, whenever $d(x_1,x_2)<\delta$. Then, there is $x\in\CR_f(p,\eps)\cap B_\delta(y)$. So there is a finite segment of $\eps$-pseudo orbit $x_0=p, x_1,\ldots,x_n=x$. Since $x\in B_\delta(y)$, we conclude $x_0=p, x_1,\ldots,x_n=x, x_{n+1}:=f(y)$ is a finite segment of $\eps$-pseudo orbit, too. Hence, $f(y)\in\CR_f(p,\eps)$, and we conclude that $f\big(\overline{\CR_f(p,\eps)}\big)\subset \CR_f(p,\eps)$.
+\end{proof}
+
+\begin{exercise}
+  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$ and $U\subset M$ be a trapping region for $f$. Show that
+  \begin{displaymath}
+    \CR(f)\subset A_U^+\sqcup A_U^-,
+  \end{displaymath}
+  where $\sqcup$ denotes the disjoint union and $A_U^+,A_U^-$ is the dual pair of attractor/repellor associated to $U$.
+\end{exercise}
+
+Now we can define the notion of \textbf{chain recurrence classes.} If $f\colon M\carr$ is a homeomorphism on the compact metric space $(M,d)$ and $x,y\in\CR(f)$, we say that they are \textbf{chain equivalent} when $y\in\CR_{f}(x)$ and $x\in\CR_{f}(y)$, \ie~$x,y\in\CR_f(x,\eps)\cap\CR_f(y,\eps)$, for every $\eps>0$.
+
+Then we have the following
+
+\begin{exercise}[Chain-recurrence classes]
+  If $f$ and $M$ are as above, let us show that \emph{chain equivalence} determines an equivalence relation on $\CR(f)$. Their equivalence classes are called \textbf{chain-recurrence classes.} Show that every chain-recurrent class is compact and $f$-invariant.
+
+  Moreover, two points $x,y\in\CR(f)$ are chain equivalent if and only if either $x,y\in A_U^+$, or $x,y\in A_U^-$, for every trapping region $U$ for $f$.
+\end{exercise}
+
+\begin{exercise}
+  If $f$ and $M$ are as above, show that the following set is at mots countable:
+  \begin{displaymath}
+    \left\{(A_U^+,A_U^-) : U\subset M \text{ is a trapping region for  } f\right\}.
+  \end{displaymath}
+\end{exercise}
+
+Using all previous exercises and results, one can easily prove the so-called ``Fundamental Theorem of Dynamical Systems'' due to Conley~\cite{ConleyIsolInvSets}:
 
 \begin{theorem}[Existence of complete Lyapunov functions]\label{thm:fund-thm-dyn-sys}
   Given a homeomorphism $f\colon M\carr$ on the compact metric space $(M,d)$, there exists a \emph{complete Lyapunov function} for $f$, \ie~a continuous function $L\colon M\to\R$ such that the following conditions hold:
   \begin{enumerate}
     \item $L\big(f(x)\big)\leq L(x)$, for every $x\in M$,
     \item $L\big(f(x)\big)=L(x)$ if and only if $x\in\CR(f)$,
-    \item $L(x)=L(y)$, with $x,y\in\CR(f)$ if and only if $\CR_{f}(x)=\CR_{f}(y)$,
+    \item $L(x)=L(y)$, with $x,y\in\CR(f)$ if and only if $x$ and $y$ are chain equivalent, and,
     \item $L\big(\CR(f)\big)$ is a compact totally disconnected set, \ie~it does not contain any open interval.
   \end{enumerate}
 \end{theorem}
