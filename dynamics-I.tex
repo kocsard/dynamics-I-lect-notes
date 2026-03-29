@@ -16,8 +16,7 @@
 
 
 %% LATeX packages
-\usepackage{latexsym,mathrsfs}
-
+\usepackage{latexsym,mathrsfs,stmaryrd}
 
 
 \usepackage{thmtools}
@@ -64,6 +63,11 @@
   pdfcreator={pdfLaTeX},%
   pdfproducer={LaTeX with hyperref}%
 }
+
+
+\newcommand{\db}[1]{\llbracket #1\rrbracket}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -351,7 +355,7 @@ These three historical stages in the development of dynamical systems are clever
 A very first example of a result in Dynamical Systems might be the following classical
 
 \begin{theorem}[Banach fixed point theorem]\label{thm:Banach-fixed-point-thm}
-  Let $(M,d)$ be a complete metric space and $f\colon M\carr$ be \textbf{uniform contraction,} \ie~$f$ is a Lipschitz function and
+  Let $(M,d)$ be a complete metric space and $f\colon M\carr$ be \textbf{uniform contraction,} \ie~$f$ is a Lipschitz function and its \textbf{Lipschitz constant}
   \begin{displaymath}
     \lambda=\Lip(f):=\sup_{x\neq y}\frac{d\big(f(x),f(y)\big)}{d(x,y)}< 1.
   \end{displaymath}
@@ -508,7 +512,7 @@ So, we have $p\in\CR(f)$ if and only if $p\in\CR_{f}(p)$.
 
 There is a fundamental and elementary notion that will play a crucial role in the understanding of the orbit structure of a given dynamical system, which is the concept of \emph{trapping region.} We say that a subset $U\subset M$ is a \textbf{trapping region} for $f$ when it is open and $f\big(\overline{U}\big)\subset U$.
 
-Observe that if $U\subset M$ is a trapping region for $f$ if and only if the set $M\setminus\overline{U}$ is a trapping region for $f^{-1}$.
+Observe that if $U\subset M$ is a trapping region for $f$, then the set $M\setminus\overline{U}$ is a trapping region for $f^{-1}$; and reciprocally, if $M\setminus\overline{U}$ is a trapping for $f^{-1}$, then $\mathrm{int}(\overline{U})$ is a trapping region for $f$.
 
 Given a trapping region $U$ for $f$, we can define the \textbf{dual pair of attractor/repellor} associated to $U$ as the pair of compact $f$-invariant sets
 \begin{displaymath}
@@ -577,6 +581,163 @@ Using all previous exercises and results, one can easily prove the so-called ``F
   \end{enumerate}
 \end{theorem}
 
+
+\section{Dynamics on the real line}
+\label{sec:real-line}
+
+\subsection{Affine maps of $\R$}
+\label{sec:affine-maps-R}
+
+For each $a,b\in\R$, we can define the affine map $f_{a,b}\colon\R\carr$ by $f_{a,b}(x):=ax+b$, for every $x\in\R$. We are going to describe the orbit structure of $f_{a,b}$ for every choice of $a,b\in\R$.
+
+If $a=1$ and $b=0$, then $f_{1,0}=id_\R$. If $a=1$ and $b>0$, then $f_{1,b}^n(x)\to+\infty$, as $n\to+\infty$, for every $x\in\R$. If $a=1$ and $b<0$, then $f_{1,b}^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R$.
+
+If $a\neq 1$ and $b\in\R$ is arbitrary, then $p_{a,b}=-\frac{b}{a-1}$ is the unique fixed point of $f_{a,b}$. Moreover, if $|a|<1$, then $f_{a,b}^n(x)\to p_{a,b}$, as $n\to+\infty$, for every $x\in\R$. If $|a|>1$, then $f_{a,b}^n(x)\to+\infty$ or $f_{a,b}^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus\{p_{a,b}\}$.
+
+Finally, if $a=-1$ and $b\in\R$ is arbitrary, then we have $f_{-1,b}^2=id_\R$, and $\Fix(f_{-1,b})=\{p_{-1,b}\}$ and $\Per(f_{-1,b})=\R$.
+
+\subsection{The quadratic family}
+\label{sec:quadratic-family}
+
+The dynamics of quadratic polynomials in $\R$ is much more interesting than the one of affine maps. Now, for each triple of real numbers $a,b,c\in\R$, with $a\neq 0$, we can define the quadratic map $f_{a,b,c}\colon\R\carr$ by $f_{a,b,c}(x):=ax^{2}+bx+c$, for every $x\in\R$.
+
+First observe that $\Fix(f_{a,b,c})=\emptyset$ if and only if $(b-1)^2-4ac<0$. In such a case, when $a>0$, it holds $f_{a,b,c}^n(x)\to+\infty$, as $n\to+\infty$, for every $x\in\R$. When $a<0$, it holds $f_{a,b,c}^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R$.
+
+So, from now on we are going to assume that $(b-1)^2-4ac\geq 0$ (with $a\neq 0$), and hence $\Fix(f_{a,b,c})\neq\emptyset$.
+
+We are going to introduce a fundamental concept in Dynamical Systems, which corresponds to the notion of isomorphism in the category of topological dynamical systems:
+
+\begin{definition}[Conjugacy]
+  Given two metric spaces $M,N$ and two continuous maps $f\colon M\carr$ and $g\colon N\carr$, we say that $f$ and $g$ are \textbf{topologically conjugate} when there exists a homeomorphism $h\colon M\to N$ such that
+  \begin{displaymath}
+    h\circ f = g\circ h.
+  \end{displaymath}
+
+  When $M$ and $N$ are differentiable manifolds and $f\colon M\carr$ and $g\colon N\carr$ are $C^r$ maps, with $r\in\N\cup\{\infty\}$, we say that $f$ and $g$ are \textbf{$C^s$-conjugate} when there exists a $C^s$-diffeomorphism $h\colon M\to N$, with $s\in\N\cup\{\infty\}$ and $s\leq r$.
+\end{definition}
+
+To simplify the study of the dynamics of quadratic maps, we are going to show that every quadratic map with fixed points is affinely conjugate to a quadratic map of the form $Q_\mu(x):=\mu x(1-x)$, for some $\mu>0$.
+
+In order to do that, first suppose that $a>0$. If we consider the affine map $h\colon \R\ni x\mapsto -x$, we easily see that $h\circ f_{a,b,c}=f_{-a,b,-c}\circ h$. So, from now on we can assume that $a<0$.
+
+Then, the vertex of the parabola defined by $f_{a,b,c}$ is at the point $v=-\frac{b}{2a}$ and since we are assuming that $a<0$ and $(b-1)^2-4ac\geq 0$, we know that $f_{a,b,c}$ has a fixed point $p\in\R$ with $p<v$. So, there is an affine map $h\colon\R\ni x\mapsto \alpha x + \beta$ such that $h(0)=p$ and $h(1/2)=v$.
+
+\begin{problem}
+  If $f_{a,b,c}$, $v$, $p$ and $h$ are as above, show that there is $\mu>0$ such that $h\circ f_{a,b,c}=Q_\mu\circ h$.
+\end{problem}
+
+So, from now on we shall concentrate on the dynamics of the family of quadratic maps $\{Q_\mu : \mu>0\}$, which is called the \textbf{quadratic family.} For each $\mu>0$, observe that
+\begin{displaymath}
+  p_\mu:=\frac{\mu-1}{\mu},
+\end{displaymath}
+is a fixed point of $Q_\mu$, and hence $\Fix(Q_\mu)=\{0,p_\mu\}$.
+
+We have the following result describing the dynamics in the neighborhood of the fixed points:
+
+\begin{proposition}\label{prop:hyperbolic-fixed-points-dim-one}
+  Let $I\subset\R$ be an open interval and $f\colon I\carr$ be a $C^1$ map. If $p\in I$ is a fixed point of $f$ and $\abs{f'(p)}\neq 1$, then the following dichotomy holds:
+  \begin{itemize}
+    \item If $\abs{f'(p)}<1$, then there is $\delta>0$ such that $f^n(x)\to p$, as $n\to+\infty$, for every $x\in (p-\delta,p+\delta)\subset I$;
+    \item if $\abs{f'(p)}>1$, then there is $\delta>0$ such that for every $x\in I$ with $0<\abs{x-p}<\delta$, there is $n\in\N$ such that $\abs{f^n(x)-p}\geq\delta$.
+  \end{itemize}
+\end{proposition}
+
+\begin{proof}
+  In the first case, since $\abs{f'(p)}<1$ and $I$ is open, there is $\delta>0$ and $\lambda\in(0,1)$ such that $\abs{f'(x)}<\lambda$, for every $x\in (p-\delta,p+\delta)\subset I$. By the mean value theorem, given any $x\in(p-\delta,p+\delta)$, it holds
+  \begin{displaymath}
+    \abs{f(x)-p}\leq\lambda\abs{x-p}<\lambda\delta<\delta.
+  \end{displaymath}
+  So, $f$ restricted to $(p-\delta,p+\delta)$ is a uniform contraction, and by the Banach fixed point theorem, $f^n(x)\to p$, as $n\to+\infty$, for every $x\in(p-\delta,p+\delta)$.
+
+  Now, let us assume that $\abs{f'(p)}>1$. There is $\delta>0$ and $\lambda>1$ such that $\abs{f'(x)}>\lambda$, for every $x\in(p-\delta,p+\delta)$. By the mean value theorem, given any $x\in(p-\delta,p+\delta)$, if $f^i(x)\in(p-\delta,p+\delta)$, for every $i\in\{0,1,\ldots,m\}$, then it holds
+  \begin{displaymath}
+    \delta>\abs{f^m(x)-p}\geq\lambda^n\abs{x-p}.
+  \end{displaymath}
+  So,  $m\leq \log(\delta/\abs{x-p})/\log\lambda$ and the proof is completed.
+\end{proof}
+
+\begin{definition}
+  A fixed point $p$ of a $C^1$ map $f\colon I\carr$ is said to be \textbf{hyperbolic} when $\abs{f'(p)}\neq 1$. If $\abs{f'(p)}<1$, then $p$ is called an \textbf{attractor}, and if $\abs{f'(p)}>1$, then $p$ is called a \textbf{repeller}.
+\end{definition}
+
+Returning to the quadratic family, we have that $Q_\mu'(x)=-2\mu x + \mu$, and thus, $Q_\mu'(0)=\mu$ and $Q_\mu'(p_\mu)=2-\mu$.
+
+So, if $\mu\in (0,1)$, $p_\mu<0$, $p_\mu$ is a repeller and $0$ is an attractor. In such a case, one can easily check that $Q_\mu^n(x)\to 0$, as $n\to+\infty$, for every $x\in (p_\mu,q_\mu)$, where $q_\mu$ is the unique point of $(p_\mu,+\infty)$ such that $Q_\mu(q_\mu)=p_\mu$; and $Q_\mu^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus[p_\mu,q_\mu]$.
+
+If $\mu=1$, then $p_\mu=0$ and $0$ turns to be a non-hyperbolic fixed point. In such a case, one can easily check that $Q_1^n(x)\to 0$, as $n\to+\infty$, for every $x\in(0,1)$, and $Q_1^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus[0,1]$.
+
+\begin{exercise}
+  Show that if $\mu\in(1,3)$, then $p_\mu\in(0,1)$ is a hyperbolic attractor, while $0$ is a repeller, $Q_\mu^n(x)\to p_\mu$, as $n\to+\infty$, for every $x\in(0,1)$; and $Q_\mu^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus[0,1]$.
+\end{exercise}
+
+If $\mu=3$, the fixed point $p_\mu$ turns to be a non-hyperbolic attractor, and one can easily check that $Q_3^n(x)\to p_3$, as $n\to+\infty$, for every $x\in(0,1)$; and $Q_3^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus[0,1]$.
+
+If $\mu\in(3,4)$, then both fixed points of $Q_\mu$ are repeller, the interval $[0,1]$ is a totally invariant set for $Q_\mu$ and the dynamics of $Q_\mu$ on $[0,1]$ is much more complicated (see for instance~\cite{DevaneyIntroChaoticDynSys} for more details on this topic).
+
+And now, we shall concentrate on the case $\mu>4$, paying special attention to the case $\mu>\sqrt{5}+2$. When $\mu>4$, the interval $[0,1]$ is not invariant for $Q_\mu$ anymore. In fact, $Q_\mu(1/2)=\mu/4>1$ and hence there are two points $r_\mu, s_\mu$, with  $0<r_\mu<1/2<s_\mu<1$ such that $Q_\mu(r_\mu)=Q_\mu(s_\mu)=1$. Since $Q_\mu^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in\R\setminus[0,1]$, we conclude that $Q_\mu^n(x)\to-\infty$, as $n\to+\infty$, for every $x\in (r_\mu,s_\mu)$. This implies that
+\begin{displaymath}
+  [0,1]\supsetneq Q_\mu^{-1}([0,1])\supsetneq Q_\mu^{-2}([0,1])\supsetneq\cdots\supsetneq Q_\mu^{-n}([0,1])\supsetneq\cdots,
+\end{displaymath}
+and hence
+\begin{equation}
+  \label{eq:Lambda-mu-invariant-set-Q-mu}
+  \Lambda_\mu:=\bigcap_{n\in\N} Q_\mu^{-1}\big([0,1]\big),
+\end{equation}
+is a compact, non-empty totally invariant set for $Q_\mu$, which does not coincide with the interval $[0,1]$.
+
+In fact, $\Lambda_\mu\subset I_\mu^1\sqcup I_\mu^2$, where $I_\mu^1:=[0,r_\mu]$ and $I_\mu^2:=[s_\mu,1]$. So, if we write $\db{k}:=\{1,2,\ldots,k\}$, for any $k\in\N$, we can define the so-called \textbf{itinerary map}  by $h\colon\Lambda_\mu\to\db{2}^{\N_0}$ where
+\begin{displaymath}
+  {h(x)}_n:=\begin{cases}
+    1, &\text{if } Q_\mu^n(x)\in I_\mu^1,\\
+    2, &\text{if } Q_\mu^n(x)\in I_\mu^2,
+  \end{cases}\quad\forall n\in\N_0.
+\end{displaymath}
+
+In general, given any $k\in\N$ with $k\geq 2$, if we endowed the space $\db{k}^{\N_0}$ with the product topology, then by Thychonov theorem we get that $\db{k}^{\N_0}$ is compact. Moreover, its topology is metrizable and compatible with the topology induced by the metric $d\colon\db{k}^{\N_0}\to [0,1]$ given by
+\begin{displaymath}
+  d\big((i_n),(j_n)\big):=2^{-\min\{n\in\N_0 : i_n\neq j_n\}},\quad\forall (i_n),(j_n)\in\db{k}^{\N_0},
+\end{displaymath}
+where we are assuming that $\min\emptyset=+\infty$ and hence $d\big((i_n),(j_n)\big)=0$, if $i_n=j_n$, for every $n\in\N_0$.
+
+We need the following
+
+\begin{definition}[Cantor spaces]
+  A metrizable topological space $K$ is said to be a \textbf{Cantor space} when it is compact, \textbf{perfect} (\ie~there is no isolated point) and \textbf{totally disconnected} (\ie~if $C\subset K$ is connected and non-empty, then it is a singleton).
+\end{definition}
+
+\begin{exercise}
+  Show that $\db{k}^{\N_0}$ is a Cantor space, for every $k\in\N$ with $k\geq 2$.
+\end{exercise}
+
+With this topology, it is easy to check that the itinerary map $h\colon\Lambda_\mu\to\db{2}^{\N_0}$ that we defined above is, indeed, continuous. Moreover, since $\mu>\sqrt{5}+2$, there is $\lambda >1$ such that $\abs{Q_\mu'(x)}>\lambda$, for every $x\in I_\mu^1\cup I_\mu^2$. So, given any two distinct points $x,y\in\Lambda_\mu$, there is $n\in\N_0$ such that $Q_\mu^n(x)$ and $Q_\mu^n(y)$ belong to different intervals of the form $I_\mu^1$ or $I_\mu^2$. Hence, we conclude that the itinerary map $h\colon\Lambda_\mu\to\db{2}^{\N_0}$ is injective.
+
+Moreover, the map $Q_\mu\big|_{I_\mu^i}\colon I_\mu^i\to [0,1]$ is a diffeomorphisms for $i=1,2$. So, they admit well defined inverse maps that we will denote by $g_i\colon [0,1]\to I_\mu^i$, for $i=1,2$, which are contraction with Lipschitz constants smaller or equal than $\lambda^{-1}$.  Then, given any sequence $(i_n)\in\db{2}^{\N_0}$, we can define the point $x\in\Lambda_\mu$ by the following intersection:
+\begin{displaymath}
+  \{x\}:=\bigcap_{n\in\N_0} g_{i_0}\circ g_{i_1}\circ\cdots\circ g_{i_n}([0,1]).
+\end{displaymath}
+
+One can easily check that $h(x)=(i_n)$, and hence the itinerary map $h\colon\Lambda_\mu\to\db{2}^{\N_0}$ is continuous, injective and surjective, and thus it is a homeomorphism.
+
+On the other hand, for any $k\in\N_0$ larger than $1$, we can define the \textbf{shift map} $\sigma\colon\db{k}^{\N_0}\carr$ by
+\begin{displaymath}
+  \sigma\big((i_n)\big):=(j_n),\ \text{with } j_n:=i_{n+1}, \quad\forall (i_n)\in\db{k}^{\N_0},\ \forall n\in\N_0.
+\end{displaymath}
+
+The main elementary properties of the shift map are given by the following
+\begin{exercise}
+  If $k\in\N$ with $k\geq 2$, and $\sigma\colon\db{k}^{\N_0}\carr$ denotes the shift map, then shw that the following properties hold:
+  \begin{enumerate}
+    \item $\sigma$ is continuous and surjective;
+    \item the set $\Per(\sigma)$ is dense in $\db{k}^{\N_0}$;
+    \item $\sigma$ is \textbf{topologically transitive,} \ie~there is a point $x\in\db{k}^{\N_0}$ such that $\{\sigma^n(x) : n\in\N_0\}$ is dense in $\db{k}^{\N_0}$;
+    \item for every $x\in\db{k}^{\N_0}$, the set
+          \begin{displaymath}
+            \left\{y\in\db{k}^{\N_0} : \exists n\in\N,\ \sigma^n(y)=x\right\}
+          \end{displaymath}
+          is dense in $\db{k}^{\N_0}$;
+    \item for every $U\subset\db{k}^{\N_0}$ open and non-empty, there is $n\in\N$ such that $\sigma^n(U)=\db{k}^{\N_0}$:
+  \end{enumerate}
+  \end{exercise}
 
 
 \bibliographystyle{amsalpha}
