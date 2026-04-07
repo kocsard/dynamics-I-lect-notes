@@ -740,6 +740,177 @@ The main elementary properties of the shift map are given by the following
   \end{exercise}
 
 
+
+\section{Dynamics of circle maps}
+\label{sec:dynamics-circle-maps}
+
+Our preferred model for the circle is the quotient space $\T:=\R/\Z$. The natural quotient map $\pi\colon\R\to\T$ given by $\pi(x):=[x]=x+\Z$, for every $x\in\R$, can be used to endow $\T$ with the quotient topology, which is, by the definition, the finest topology on $\T$ such that $\pi$ is continuous. This topology is metrizable and compatible with the metric $d\colon\T\times\T\to[0,1/2]$ given by
+\begin{displaymath}
+  d([x],[y]):=\min\{\abs{\tilde{x}-\tilde{y}} : \tilde x\in[x],\ \tilde y\in[y]\}\quad\forall x,y\in\R.
+\end{displaymath}
+
+One can easily check that $\pi\colon\R\to\T$ is a covering map, \ie~for every $[x]\in\T$ there is an open neighborhood $U$ of $[x]$ such that $\pi^{-1}(U)$ is a disjoint union of open intervals of $\R$, each of them homeomorphic to $U$ via $\pi$, and since $\R$ is simply connected, this covering map is the universal covering of $\T$. So, we have the following
+
+\begin{proposition}
+  \label{prop:lifting-property-circle}
+  Given any continuous map $f\colon\T\carr$, any $x_0\in\T$, any $\tilde x_0\in\R$ with $\pi(\tilde x_0)=x_0$, and any $\tilde y_0\in\R$ such that $\pi(\tilde y_0)=f(x_0)$, there exists a unique continuous map $\tilde f\colon\R\carr$ such that $\pi\circ \tilde f=f\circ\pi$ and $\tilde f(\tilde x_0)=\tilde y_0$. Moreover, if $f$ is a homeomorphism, then $\tilde f$ is a homeomorphism, too.
+\end{proposition}
+
+As an easy consequence of the lifting property, we have that if $\tilde f_1,\tilde f_2\colon\R\carr$ are two lifts of the same continuous map $f\colon\T\carr$, then there is $n\in\Z$ such that $\tilde f_1(x)=\tilde f_2(x)+n$, for every $x\in\R$.
+
+On the other hand, we have the following
+
+\begin{proposition}
+  \label{prop:degree-circle-maps}
+  If $f\colon\T\carr$ is a continuous, then there is an integer $d\in\Z$, called the \textbf{degree of $f$}, such that given any lift $\tilde f\colon\R\carr$ of $f$, it holds $\tilde f(x+1)=\tilde f(x)+d$, for every $x\in\R$. Moreover, the map
+  \begin{displaymath}
+    \Delta_{\tilde f}(\tilde x):=\tilde f(\tilde x)-d\tilde x, \quad\forall \tilde x\in\R,
+  \end{displaymath}
+  is continuous and $\Z$-periodic, \ie~$\Delta_{\tilde f}(\tilde x+n)=\Delta_{\tilde f}(\tilde x)$, for every $\tilde x\in\R$ and every $n\in\Z$.
+\end{proposition}
+
+\begin{proof}
+  Given any $\tilde x\in\R$, since $\pi\big(\tilde f(\tilde x+1)\big)=f\big(\pi(\tilde x+1)\big)=f\big(\pi(\tilde x)\big)=\pi\big(\tilde f(\tilde x)\big)$, we conclude that there is $d\in\Z$ such that $\tilde f(\tilde x+1)=\tilde f(\tilde x)+d$. Since $\tilde f$ is a continuous map, we conclude that the integer $d$ does not depend on the choice of $\tilde x\in\R$. Moreover, by our remark above about different lifts of the same map, we conclude that $d$ does not depend on the choice of the lift $\tilde f$ either, and the first part of the proposition is proved.
+
+  On the other hand, to prove that the map $\Delta_{\tilde f}$ is $\Z$-periodic, it is enough to check that
+  \begin{displaymath}
+    \Delta_{\tilde f}(\tilde x+1)=\tilde f(\tilde x+1)-d(\tilde x+1)=\tilde f(\tilde x)+d-d\tilde x-d=\Delta_{\tilde f}(\tilde x),
+  \end{displaymath}
+  for every $\tilde x\in\R$.
+\end{proof}
+
+\begin{exercise}
+  Given two continuous maps $f,g\colon\T\carr$, we write $d_f$ and $d_g$ for the degrees of $f$ and $g$, respectively, and $d_{f\circ g}$ for the degree of $f\circ g$. Show that
+  \begin{displaymath}
+    d_{f\circ g}=d_f\cdot d_g.
+  \end{displaymath}
+\end{exercise}
+
+Since the degree of the identity map $id_\T$ is clearly $1$, by the previous exercise we conclude that if $f\colon\T\carr$ is a homeomorphism, then its degree is either $1$ or $-1$.
+
+
+
+\subsection{Dynamics of circle homeomorphisms}
+\label{sec:dynam-circle-homeos}
+
+By the last remark of the previous section, we know that the group of homeomorphisms of the circle $\T$, that shall be denoted by $\Homeo(\T)$, can be decomposed as the disjoint union of two subsets
+\begin{displaymath}
+  \Homeo{}(\T)=\Homeo{+}(\T)\sqcup\Homeo{-}(\T),
+\end{displaymath}
+where we are writing $\Homeo{+}(\T):=\{f\in\Homeo{}(\T) : \text{the degree of } f \text{ is } 1\}$ and $\Homeo{-}(\T):=\{f\in\Homeo{}(\T) : \text{the degree of } f \text{ is } -1\}$.
+
+The elements of $\Homeo{+}(\T)$ shall be called \textbf{orientation-preserving} homeomorphisms, while the elements of $\Homeo{-}(\T)$ shall be called \textbf{orientation-reversing} homeomorphisms. One can easily check that any lift of an element of $\Homeo{+}(\T)$ is a strictly increasing homeomorphism of $\R$, while any lift of an element of $\Homeo{-}(\T)$ is a strictly decreasing homeomorphism of $\R$.
+
+\begin{exercise}[Dynamics of orientation-reversing circle homeomorphisms]
+   Given any $f\in\Homeo{-}(\T)$, show that $\Fix(f)$ contains exactly two points and $\Per(f)=\Fix(f^2)$, where $f^2\in\Homeo{+}(\T)$ is an orientation-preserving circle homeomorphism.
+\end{exercise}
+
+So, let us start the study of orientation-preserving circle homeomorphisms. We have the following
+
+\begin{exercise}
+  A homeomorphism $\tilde f\in\Homeo{}(\R)$ is a lift of an element of $\Homeo{+}(\T)$ if and only if $\tilde f$ is continuous, strictly increasing and $\tilde f(x+1)=\tilde f(x)+1$, for every $x\in\R$. In such a case, $\tilde f$ commutes with every integer translation, \ie~$\tilde f\circ T_m=T_m\circ\tilde f$, for every $m\in\Z$, where $T_m:\R\ni x\mapsto x+m\in\R$, and the function
+  \begin{displaymath}
+    \Delta_{\tilde f}(x):=\tilde f(x)-x, \quad\forall x\in\R,
+  \end{displaymath}
+  is continuous and $\Z$-periodic, \ie~$\Delta_{\tilde f}(x+n)=\Delta_{\tilde f}(x)$, for every $x\in\R$ and every $n\in\Z$. In such a case, we can consider the function $\Delta_{\tilde f}$ can be considered as an element of $C^0(\T,\R)$, and is usually called the \textbf{displacement function} of $\tilde f$.
+\end{exercise}
+
+From now on, we shall write
+\begin{displaymath}
+  \Thomeo_+(\T):=\left\{\tilde f\in\Homeo{}(\R) : \tilde f \text{ is a lift of an } f\in\Homeo{+}(\T) \right\}.
+\end{displaymath}
+
+\begin{exercise}
+  \label{ex:displacement-function-compositio}
+  Show that $\Thomeo_+(\T)$ is a subgroup of $\Homeo{}(\R)$. On the other hand, show that given $\tilde f,\tilde g\in\Thomeo_+(\T)$, it holds
+  \begin{displaymath}
+    \Delta_{\tilde f\circ\tilde g}=\Delta_{\tilde f}\circ g + \Delta_{\tilde g}.
+  \end{displaymath}
+  Use this fact to show that
+  \begin{displaymath}
+    \Delta_{\tilde f^n}=\sum_{i=0}^{n-1} \Delta_{\tilde f}\circ f^i, \quad\forall n\in\N.
+  \end{displaymath}
+\end{exercise}
+
+We have the following elementary but fundamental result about the \textbf{displacement function} of a lift of an orientation-preserving circle homeomorphism:
+
+\begin{proposition}
+  \label{prop:displacement-function-iterates}
+  It holds
+  \begin{displaymath}
+    \osc\Delta_{\tilde f}\leq 1, \quad\forall \tilde f\in\Thomeo_+(\T),
+  \end{displaymath}
+  where the \textbf{oscillation of a function}  $\varphi\in C^0(\T,\R)$ is given by $\osc\varphi:=\max_{x\in\T} \varphi(x)-\min_{y\in\T}\varphi(y)$.
+\end{proposition}
+
+\begin{proof}
+  Let us suppose that there is $\tilde f\in\Thomeo_+(\T)$ such that $\osc\Delta_{\tilde f}>1$. Then, sine $\Delta_{\tilde f}$ is $\Z$-periodic, there are $x_m,x_M\in\R$ with $0<x_M-x_m<1$ and such that $\Delta_{\tilde f}(x_m)=\min_\T\Delta_{\tilde f}$ and $\Delta_{\tilde f}(x_M)=\max_\T\Delta_{\tilde f}$. Then, we have  that
+  \begin{displaymath}
+    \tilde f(x_M)-\tilde f(x_m) = \Delta_{\tilde f}(x_M) - \Delta_{\tilde f}(x_m) + x_M - x_m > 1,
+  \end{displaymath}
+  and hence, by continuity of $\tilde f$, there are two points $x_1,x_2\in(x_m,x_M)$ such that $\tilde f(x_1)=\tilde f(x_2)+1$, and this implies that $f\big(\pi(x_1)\big)=\pi\big(\tilde f(x_1)\big)=\pi\big(\tilde f(x_2)+1\big)=\pi\big(\tilde f(x_2)\big)=f\big(\pi(x_2)\big)$. On the other hand, since $\abs{x_2-x_1}<x_M-x_m<1$, we have $\pi(x_1)\neq\pi(x_2)$, which contradicts the fact that $f$ is injective.
+\end{proof}
+
+Proposition~\ref{prop:displacement-function-iterates} lets us define the most important dynamical invariant of orientation-preserving circle homeomorphisms:
+
+\begin{theorem}
+  \label{thm:rotation-number-def}
+  Given any $\tilde f\in\Thomeo_+(\T)$, there is a number $\rho(\tilde f)\in\R$ such that
+  \begin{equation}
+    \label{eq:rotation-number-def}
+    \rho(\tilde f)=\lim_{n\to+\infty}\frac{\tilde f^n(x)-x}{n}=\lim_{n\to+\infty} \frac{\Delta_{\tilde f^n}(x)}{n}, \quad\forall x\in\R,
+  \end{equation}
+  where the limit is uniform in $x\in\R$. On the other hand, for every $m,n\in\Z$, it holds
+  \begin{displaymath}
+    \rho(\tilde f^n\circ T_m)=\rho(\tilde f^n)+m=n\rho(\tilde f)+m,
+  \end{displaymath}
+  where $T_m\in\Thomeo_+(\T)$ denotes the translation given by $T_m(x)=x+m$, for every $x\in\R$.
+\end{theorem}
+
+In order to prove Theorem~\ref{thm:rotation-number-def}, we need the so called \textbf{subadditive lemma}:
+
+\begin{lemma}\label{lem:quasi-morphisms}
+  Let ${(a_{n})}_{n\in\N}$ be a sequence of real numbers such that there is a real constant $C>0$ satisfying
+  \begin{displaymath}
+    \abs{a_{m+n}-a_{m}-a_{n}}\leq C, \quad\forall m,n\in\N.
+  \end{displaymath}
+  Then, the following limit exists
+  \begin{displaymath}
+    \rho:=\lim_{n\to+\infty}\frac{a_{n}}{n},
+  \end{displaymath}
+  and it holds $\abs{a_{n}-n\rho}\leq C$, for every $n\in\N$.
+\end{lemma}
+
+\begin{exercise}
+  Prove Lemma~\ref{lem:quasi-morphisms}.
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rotation-number-def}]
+  Let us start proving that the limit~\eqref{eq:rotation-number-def} exists for $x=0$. In fact, this is an easy consequence of Proposition~\ref{prop:displacement-function-iterates} and Lemma~\ref{lem:quasi-morphisms}. Indeed, by Proposition~\ref{prop:displacement-function-iterates}, we have that
+  \begin{displaymath}
+    \begin{split}
+      \abs{\Delta_{\tilde f^{m+n}}(0)-\Delta_{\tilde f^m}(0)-\Delta_{\tilde f^n}(0)}&= \abs{\tilde f^{m+n}(0)-\tilde f^m(0)-\tilde f^n(0)} \\
+      &= \abs{\Delta_{\tilde f^n}\big(\tilde f^m(0)\big) - \Delta_{\tilde f^n}(0)}\leq\osc\Delta_{\tilde f^n} \leq 1, \\
+      \end{split}
+    \end{displaymath}
+    for every $m,n\in\N$. So, by Lemma~\ref{lem:quasi-morphisms}, there is $\rho(\tilde f)\in\R$ such that $\lim_{n\to+\infty} \frac{\Delta_{\tilde f^n}(0)}{n}=\rho(\tilde f)$.
+
+    Invoking again Proposition~\ref{prop:displacement-function-iterates}, we have that
+    \begin{displaymath}
+      \abs{\frac{\Delta_{\tilde f^n}(x)}{n}-\frac{\Delta_{\tilde f^n}(0)}{n}}\leq\frac{\osc\Delta_{\tilde f^n}}{n}\leq\frac{1}{n},
+    \end{displaymath}
+    and hence, the limit is uniform in $x\in\R$.
+
+    Finally, given any $m,n\in\Z$, by Exercise~\ref{ex:displacement-function-compositio}, we have that
+    \begin{displaymath}
+      \begin{split}
+        \rho(\tilde f^n\circ T_m) &= \lim_{k\to+\infty} \frac{(\tilde f^n\circ T_m)^k(x) -x}{k} = \lim_{k\to+\infty}
+                                    \frac{\tilde f^{nk}(x)-x + mk}{k} \\
+                                  &= m+ \lim_{k\to+\infty} n\frac{\tilde f^{nk}(x)-x}{nk} = n\rho(\tilde f) + m.
+      \end{split}
+    \end{displaymath}
+\end{proof}
+
 \bibliographystyle{amsalpha}
 \bibliography{references}
 
