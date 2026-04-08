@@ -911,6 +911,70 @@ In order to prove Theorem~\ref{thm:rotation-number-def}, we need the so called \
     \end{displaymath}
 \end{proof}
 
+We will need the following elementary but fundamental property of the rotation number:
+
+\begin{proposition}
+  \label{prop:existence-point-exact-displacement-rotation-number}
+  If $\tilde f\in\Thomeo_+(\T)$ and $\rho(\tilde f)$ denotes the rotation number of $\tilde f$, then for each $n\in\N$ there exists $x_n\in\R$ such that
+  \begin{displaymath}
+    \tilde f^n(x_n)=x_n+n\rho(\tilde f).
+  \end{displaymath}
+\end{proposition}
+
+\begin{proof}
+  Let us fix $n\in\N$. Suppose there is no $x\in\R$ such that $\tilde f^n(x)=x+n\rho(\tilde f)$. Then, let us assume that $\tilde f^n(x)>x+n\rho(\tilde f)$. Since $\Delta_{\tilde f^n}=\tilde f^n-id_{\R}$ is $\Z$-periodic, there exists $\eps>0$ such that $\tilde f^n(x)\geq x+n\rho(\tilde f)+\eps$, for every $x\in\R$. So, by Proposition~\ref{prop:displacement-function-iterates} we have that
+  \begin{displaymath}
+    \begin{split}
+      \rho(\tilde f)&=\lim_{k\to+\infty} \frac{\tilde f^{nk}(x)-x}{nk} =\lim_{k\to+\infty} \frac{\sum_{i=0}^{k-1} \Delta_{\tilde f^n}\big(\tilde f^{ni}(x)\big)}{nk} \\
+                    &\geq \lim_{k\to+\infty} \frac{nk\rho(\tilde f)+k\eps}{nk}=\rho(\tilde f)+\frac{\eps}{n},
+    \end{split}
+  \end{displaymath}
+  which is a contradiction.
+\end{proof}
+
+We have two important consequences Theorem~\ref{thm:rotation-number-def} and Proposition~\ref{prop:existence-point-exact-displacement-rotation-number}:
+
+\begin{corollary}[Existence of periodic points]
+  \label{cor:rational-rotation-number-periodic-point}
+  If $f\in\Homeo{+}(\T)$ and $\Per(f)\neq\emptyset$, then $\rho(\tilde f)\in\Q$, for every lift $\tilde f$ of $f$. Conversely, if $\rho(\tilde f)=p/q\in\Q$, with $p\in\Z$ and $q\in\N$ coprime, then there is $\tilde x\in\R$ such that $\tilde f^q(\tilde x)=\tilde x+p$, and every periodic point for $f$ has prime period $q$.
+\end{corollary}
+
+\begin{proof}
+  If $x\in\T$ is a periodic point for $f$ with prime period $q\in\N$, then for every $\tilde x\in\pi^{-1}(x)$, there is $p\in\Z$ such that $\tilde f^q(\tilde x)=\tilde x+p$. By Proposition~\ref{prop:displacement-function-iterates} we know that $\tilde f$ commutes with every integer translation, and hence, the number $p$ does not depend on the choice of $\tilde x\in\pi^{-1}(x)$. So, if we compute the rotation number of $\tilde f$ using the point $\tilde x$, we get that $\rho(\tilde f)=\lim_{n\to+\infty} \frac{\tilde f^{nq}(\tilde x)-\tilde x}{nq}=\lim_{n\to+\infty} \frac{np}{nq}=p/q$.
+
+  Conversely, if $\rho(\tilde f)=p/q\in\Q$, with $p\in\Z$ and $q\in\N$ coprime, then by Proposition~\ref{prop:existence-point-exact-displacement-rotation-number} there is $\tilde x\in\R$ such that $\tilde f^q(\tilde x)=\tilde x+p$. So, the point $x:=\pi(\tilde x)$ is a periodic point for $f$, where $q$ is a multiple of the prime period of $x$. By the previous argument, if the prime period of $x$ were strictly smaller than $q$, the rotation number of $\tilde f$ would be a rational number with denominator strictly smaller than $q$, which contradicts the fact that $p/q$ is written in irreducible form.
+\end{proof}
+
+As an immediate consequence of Proposition~\ref{prop:displacement-function-iterates}, Theorem~\ref{thm:rotation-number-def} and Proposition~\ref{prop:existence-point-exact-displacement-rotation-number}, we have the following fundamental result
+
+\begin{corollary}
+  \label{cor:bounded-rotational-deviations-and-continuity-rotation-number}
+  Given any $\tilde f\in\Thomeo_+(\T)$, it holds
+  \begin{displaymath}
+    \abs{\tilde f^n(x)-x-n\rho(\tilde f)}\leq 1, \quad\forall x\in\R,\ \forall n\in\Z.
+  \end{displaymath}
+
+  As a consequence of this estimates, we get that the rotation number function $\rho\colon\Thomeo_+(\T)\to\R$ is continuous, when $\Thomeo_+(\T)$ is endowed with the uniform convergence topology.
+\end{corollary}
+
+\begin{proof}
+  First observe that for every $n\in\N$, there exists $x_n\in\R$ such that $\Delta_{\tilde f^n}(x_n)=n\rho(\tilde f)$. On the other hand, by Proposition~\ref{prop:displacement-function-iterates}, we have that $\osc\Delta_{\tilde f^n}\leq 1$, for every $n$. So, we conclude $\abs{\tilde f^n(x)-x-n\rho(\tilde f)}=\abs{\Delta_{\tilde f^n}(x)-\Delta_{\tilde f^n}(x_n)}\leq\osc\Delta_{\tilde f^n}\leq 1$, for every $n\in\N$. The case, $n<0$ easily follows by applying the previous estimates to the homeomorphism $\tilde f^{-1}$.
+
+  In order to prove that the rotation number function is continuous, let us fix $\tilde f\in\Thomeo_+(\T)$ and $\eps>0$. Let $n$ be a positive integer such that $3/n<\eps$. Then, let us choose a real number $\delta>0$ such that
+  \begin{displaymath}
+    \abs{\tilde f^j(x)-\tilde g^j(x)}<1, \quad\forall x\in\R,\ \forall j\in\{1,2,\ldots,n\},
+  \end{displaymath}
+  for every $\tilde g\in\Thomeo_+(\T)$ such that $\abs{\tilde g(x)-\tilde f(x)}<\delta$, for every $x\in\R$. For such a $\tilde g$, we have that
+  \begin{displaymath}
+    \begin{split}
+      \abs{\rho(\tilde f)-\rho(\tilde g)}&\leq \abs{\rho(\tilde f)-\frac{\tilde f^n(x)-x}{n}} + \abs{\frac{\tilde f^n(x)-x}{n}-\frac{\tilde g^n(x)-x}{n}} + \abs{\frac{\tilde g^n(x)-x}{n}-\rho(\tilde g)} \\
+                                         &\leq \frac{1}{n} + \frac{1}{n}\abs{\tilde f^n(x)-\tilde g^n(x)} + \frac{1}{n} < \frac{3}{n} < \eps,
+    \end{split}
+  \end{displaymath}
+  and the continuity of the rotation number function is proved.
+\end{proof}
+
+
 \bibliographystyle{amsalpha}
 \bibliography{references}
 
