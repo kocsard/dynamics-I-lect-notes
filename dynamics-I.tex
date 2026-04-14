@@ -657,6 +657,7 @@ We have the following result describing the dynamics in the neighborhood of the 
 \end{proof}
 
 \begin{definition}
+  \label{def:hyperbolic-fixed-point}
   A fixed point $p$ of a $C^1$ map $f\colon I\carr$ is said to be \textbf{hyperbolic} when $\abs{f'(p)}\neq 1$. If $\abs{f'(p)}<1$, then $p$ is called an \textbf{attractor}, and if $\abs{f'(p)}>1$, then $p$ is called a \textbf{repeller}.
 \end{definition}
 
@@ -745,9 +746,10 @@ The main elementary properties of the shift map are given by the following
 \label{sec:dynamics-circle-maps}
 
 Our preferred model for the circle is the quotient space $\T:=\R/\Z$. The natural quotient map $\pi\colon\R\to\T$ given by $\pi(x):=[x]=x+\Z$, for every $x\in\R$, can be used to endow $\T$ with the quotient topology, which is, by the definition, the finest topology on $\T$ such that $\pi$ is continuous. This topology is metrizable and compatible with the metric $d\colon\T\times\T\to[0,1/2]$ given by
-\begin{displaymath}
+\begin{equation}
+  \label{eq:distance-circle}
   d([x],[y]):=\min\{\abs{\tilde{x}-\tilde{y}} : \tilde x\in[x],\ \tilde y\in[y]\}\quad\forall x,y\in\R.
-\end{displaymath}
+\end{equation}
 
 One can easily check that $\pi\colon\R\to\T$ is a covering map, \ie~for every $[x]\in\T$ there is an open neighborhood $U$ of $[x]$ such that $\pi^{-1}(U)$ is a disjoint union of open intervals of $\R$, each of them homeomorphic to $U$ via $\pi$, and since $\R$ is simply connected, this covering map is the universal covering of $\T$. So, we have the following
 
@@ -973,6 +975,53 @@ As an immediate consequence of Proposition~\ref{prop:displacement-function-itera
   \end{displaymath}
   and the continuity of the rotation number function is proved.
 \end{proof}
+
+
+\subsection{$C^r$-generic theory of $\Diff{}r(\T)$}
+\label{sec:Cr-generic-theory-circle}
+
+In this section we start the study of the so-called $C^r$-generic theory of circle diffeomorphisms, where $r\in\N_0\cup\{\infty\}$ denotes a fixed regularity. We will denote by $\Diff{}r(\T)$ the group of $C^r$-diffeomorphisms of the circle $\T$, and $\Diff+r(\T)$ and $\Diff-r(\T)$ for the connected components of orientation-preserving and orientation-reversing circle diffeomorphisms, respectively.
+
+We endow $\Diff+r(\T)$ with the $C^r$-topology, which is the topology induced by the $C^r$-metric that is inductively defined as follows: for $r=0$, we consider the distance $d_{C^0}\colon\Homeo{}(\T)\times\Homeo{}(\T)\to[0,1/2]$ given by
+\begin{displaymath}
+  d_{C^0}(f,g):=\max_{x\in\T} d\big(f(x),g(x)\big)+d\big(f^{-1}(x),g^{-1}(x)\big), \quad\forall f,g\in\Homeo{}(\T),
+\end{displaymath}
+where $d\colon\T\times\T\to[0,1/2]$ is distance function given by~\eqref{eq:distance-circle}. For $r\geq 1$, we endow $\Diff+r(\T)$ with the $C^r$-metric $d_{C^r}\colon\Diff+r(\T)\times\Diff+r(\T)\to[0,+\infty)$ given by
+\begin{displaymath}
+  d_{C^r}(f,g):=d_{C^{r-1}}(f,g)+\max_{x\in\T} \abs{\Delta_{\tilde f}^{(r)}(x)-\Delta_{\tilde g}^{(r)}(x)}, \quad\forall f,g\in\Diff+r(\T),
+\end{displaymath}
+where $\phi^{(r)}$ denotes the $r$-th derivative of a function $\phi\in C^r(\T,\R)$, and $\tilde f,\tilde g\in\Thomeo_+(\T)$ are any lifts of $f$ and $g$, respectively. One can analogously define the $C^r$-metric on $\Diff-r(\T)$.
+
+We need the following definition that extends the previous one of periodic fixed points (Definition~\ref{def:hyperbolic-fixed-point}):
+\begin{definition}
+  Let $f\in\Diff{}1(\T)$ and $p\in\T$ be a periodic point for $f$ with prime period $n\in\N$. We say that $p$ is a \textbf{simple periodic point} for $f$ if $Df^n(p)\neq 1$. Moreover, we say that $p$ is \textbf{hyperbolic} if $\abs{Df^n(p)}\neq 1$. A hyperbolic periodic point is said to be \textbf{attracting} if $\abs{Df^n(p)}<1$, and \textbf{repelling} if $\abs{Df^n(p)}>1$.
+\end{definition}
+
+We can now define a fundamental family of circle diffeomorphisms:
+\begin{definition}[Morse-Smale circle diffeomorphisms]
+  A diffeomorphism $f\in\Diff{}1(\T)$ is said to be a \textbf{Morse-Smale} when $\Per(f)\neq\emptyset$ and every periodic point for $f$ is hyperbolic.
+\end{definition}
+
+We can now state the main result of this section, which is the following
+
+\begin{theorem}[Morse-Smale circle diffeomorphisms]
+  \label{thm:Morse-Smale-circle-diffeomorphisms}
+  Given any $r\in\N\cup\{\infty\}$, if we write $MS^r$ for the set of orientation-preserving Morse-Smale circle diffeomorphisms, then $MS^r$ is $C^1$-open (\ie~it is an open set when $\Diff{+}r(\T)$ is endowed with the $C^1$-distance) and $C^r$-dense in $\Diff{+}r(\T)$.
+  The set of Morse-Smale circle diffeomorphisms is open and dense in $\Diff{}1(\T)$.
+\end{theorem}
+
+We shall need several partial results in order to prove Theorem~\ref{thm:Morse-Smale-circle-diffeomorphisms}. We start with the following one, which states the existence of the so-called \textbf{continuation of simple periodic points}:
+
+\begin{exercise}
+  Let $f\in\Diff{}1(\T)$ and $p\in\T$ be a simple periodic point for $f$ with prime period $n\in\N$. Show that there is an open neighborhood $\mc{U}$ of $f$ in $\Diff{}1(\T)$, a real number $\eps>0$, and a continuous map $\mc{U}\ni g\mapsto p_g\in B_\eps(p)\subset\T$ such that $p_f=p$ and $p_g$ is the only periodic point for $g$ in the ball $B_\eps(p)$ and it has with prime period $n$, for every $g\in\mc{U}$. Moreover, if $p$ is hyperbolic, then $p_g$ is hyperbolic with the same type as $p$, for every $g\in\mc{U}$.
+\end{exercise}
+
+Next, we need to show that any orientation-preserving $C^r$-diffeomorphism with irrational rotation number can be $C^r$-approximated by diffeomorphisms with rational rotation number:
+
+\begin{theorem}[$C^\infty$-closing lemma on the circle]
+  \label{thm:closing-lemma-circle}
+  Let $f\in\Homeo+(\T)$ be an arbitrary orientation-preserving circle homeomorphism, and $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. For each $t\in\R$, consider the homeomorphism $f_t\in\Homeo+(\T)$ given by $\tilde f_t(x):=\tilde f(x)+t$, for every $x\in\R$. Then, the function $\R\ni t\mapsto \rho(\tilde f_t)$ is continuous and if $\rho(\tilde f)\in\R\setminus\Q$, then for every $\eps>0$ there is $t_-\in (-\eps,0)$ and $t_+\in (0,\eps)$ such that $\rho(\tilde f_{t_-})<\rho(\tilde f)<\rho(\tilde f_{t_+})$ and $\rho(\tilde f_{t_-}),\rho(\tilde f_{t_+})\in\Q$.
+\end{theorem}
 
 
 \bibliographystyle{amsalpha}
