@@ -475,6 +475,7 @@ We say that a point $p\in M$ is \textbf{non-wandering} when for every neighborho
 We say that a subset $K\subset M$ is \textbf{$f$-invariant} when $f(K)=K$, and it is said to be \textbf{totally $f$-invariant} when $f(K)=K=f^{-1}(K)$. Observe that if $f\colon M\carr$ is bijective, then $K\subset M$ is totally $f$-invariant if and only if it is $f$-invariant.
 
 \begin{exercise}
+  \label{ex:inclusions-fix-per-rec-limit-sets-non-wandering}
   Let $M$ denote a compact metric space and $f\colon M\carr$ be a homeomorphism. Show that
   \begin{displaymath}
     \Fix(f)\subset\Per(f)\subset\Rec^+(f)\subset L(f)\subset\Omega(f),
@@ -795,7 +796,7 @@ Since the degree of the identity map $id_\T$ is clearly $1$, by the previous exe
 \subsection{Dynamics of circle homeomorphisms}
 \label{sec:dynam-circle-homeos}
 
-By the last remark of the previous section, we know that the group of homeomorphisms of the circle $\T$, that shall be denoted by $\Homeo(\T)$, can be decomposed as the disjoint union of two subsets
+By the last remark of the previous section, we know that the group of homeomorphisms of the circle $\T$, that shall be denoted by $\Homeo{}(\T)$, can be decomposed as the disjoint union of two subsets
 \begin{displaymath}
   \Homeo{}(\T)=\Homeo{+}(\T)\sqcup\Homeo{-}(\T),
 \end{displaymath}
@@ -806,6 +807,16 @@ The elements of $\Homeo{+}(\T)$ shall be called \textbf{orientation-preserving} 
 \begin{exercise}[Dynamics of orientation-reversing circle homeomorphisms]
    Given any $f\in\Homeo{-}(\T)$, show that $\Fix(f)$ contains exactly two points and $\Per(f)=\Fix(f^2)$, where $f^2\in\Homeo{+}(\T)$ is an orientation-preserving circle homeomorphism.
 \end{exercise}
+
+\begin{example}[Circle rotations]
+  \label{exam:circle-rotations}
+  Given any $\alpha\in\R$, we can define the translation map $\tilde{R}_\alpha\colon\R\carr$ by $\tilde{R}_\alpha(x):=x+\alpha$, for every $x\in\R$. The map $\tilde{R}_\alpha$ turns to be a lift of an orientation-preserving circle homeomorphism $R_\alpha\colon\T\carr$ that is given by $R_\alpha([x])=[x+\alpha]$, for every $[x]\in\T$ and is called the \textbf{circle rotation} by $\alpha$. The dynamics of $R_\alpha$ is very simple: if $\alpha\in\Q$, and $\alpha=p/q$ with $p\in\Z$ and $q\in\N$ coprime, $R_\alpha^q=id_{\T}$ and hence, $\Per(f)=\Fix(f)=\T$. On the other hand, if $\alpha\in\R\setminus\Q$, then $R_\alpha$ is \textbf{minimal,} \ie~the positive and negative orbit of ever point of $\T$ is dense in $\T$.
+\end{example}
+
+\begin{exercise}
+  Show that the circle rotation $R_\alpha$ is minimal, for all $\alpha\in\R\setminus\Q$.
+\end{exercise}
+
 
 So, let us start the study of orientation-preserving circle homeomorphisms. We have the following
 
@@ -977,6 +988,57 @@ As an immediate consequence of Proposition~\ref{prop:displacement-function-itera
 \end{proof}
 
 
+We shall analyze now the dynamics of orientation-preserving circle homeomorphisms with irrational rotation number. We have the following fundamental
+
+\begin{theorem}
+  \label{thm:irrational-rotation-number-minimality}
+  If $f\in\Homeo{+}(\T)$ and $\rho(\tilde f)\in\R\setminus\Q$, for some (and hence every) lift $\tilde f$ of $f$, then the following properties hold:
+  \begin{enumerate}
+    \item there exists a unique $f$-invariant \textbf{minimal set} $K\subset\T$ for $f$, \ie~$K$ is compact, non-empty, $f(K)=K$, and there is no proper subset of $K$ with these properties;
+    \item the set $K$ is either a Cantor set or the whole circle $\T$;
+    \item $f$ is a topological extension of the irrational rotation $R_{\rho(\tilde f)}\colon\T\ni x+\Z\mapsto x+\rho(\tilde f)+\Z\in\T$, for every $x\in\R$;
+    \item $\Omega(f)=K$ and $\CR(f)=\T$;
+    \item $f$ is topologically conjugate to the irrational rotation $R_{\rho(\tilde f)}$ if and only if $K=\T$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:irrational-rotation-number-minimality}]
+  By Exercise~\ref{ex:inclusions-fix-per-rec-limit-sets-non-wandering} we know that there is a minimal set $K\subset\T$ for $f$. Reasoning by contradiction, let us assume that there are another one $K'\subset\T$ with $K\neq K'$. Since $K\cap K'$ is a compact $f$-invariant set that is contained in $K$ and $K'$, we conclude that $K\cap K'=\emptyset$. So, there is $\eps>0$ such that $d(x,y)>\eps$, for every $x\in K$ and every $y\in K'$. On the other hand, let $y_0$ be an arbitrary point of $K'$ and let us write $I_0$ for the connected component of $\T\setminus K$ that contains $y_0$. Since $K$ is $f$-invariant, $f^n(I_0)$ is a connected component of $\T\setminus K$, for every $n\in\Z$; and since $f$ is periodic point free, $f^m(I_0)\cap f^n(I_0)=\emptyset$, for every $m,n\in\Z$ with $m\neq n$. If we write $\abs{f^m(I_0)}$ for the length of the interval $f^m(I_0)$, we have that $\sum_{m\in\Z} \abs{f^m(I_0)}\leq 1$, and hence, $\lim_{m\to\pm\infty} \abs{f^m(I_0)}=0$. By convergence of the series, there is $m_0\in\Z$ such that $\abs{f^{m_0}(I_0)}<\eps$ and $f^{m_0}(y_0)\in K'\cap f^{m_0}(I_0)$, contradicting the fact that $d(x,y)>\eps$, for every $x\in K$ and every $y\in K'$. So, there is a unique minimal set $K\subset\T$ for $f$.
+
+  To prove the second point, let us suppose that $K\neq\T$. Since $K$ is a minimal set, one can easily check that any isolated point of $K$ should be a periodic point for $f$, and since $f$ is periodic point free, we conclude that $K$ has no isolated points. On the other hand, if $J\subset K$ were a non-trivial connected component of $K$, since $K$ is a minimal set, we would have that there exists $n\in\N$ such that $f^n(J)=J$, and hence, $f^n$ would have a fixed point in $J$, contradicting the fact that $f$ is periodic point free. So, $K$ has no non-trivial connected components, and hence, it is a Cantor set.
+
+  In order to prove that $f$ is a topological extension of the irrational rotation $R_{\rho(\tilde f)}$, we first need the following
+
+  \begin{theorem}[Gottschalk-Hedlund theorem]
+    \label{thm:Gottschalk-Hedlund}
+    Let $(X,d)$ be a compact metric space, $f\colon X\carr$ be a minimal homeomorphism, and $\varphi\in C^0(X,\R)$. Then, there is $u\in C^0(X,\R)$ such that $\varphi=u\circ f-u$ if and only if there is $x_0\in X$ such that the sequence of Birkhoff sums satisfies
+    \begin{displaymath}
+      \sup_{n\in\N} \abs{\sum_{i=0}^{n-1} \varphi\big(f^i(x_0)\big)}<+\infty.
+    \end{displaymath}
+  \end{theorem}
+
+  \begin{exercise}
+    Prove Theorem~\ref{thm:Gottschalk-Hedlund}.
+  \end{exercise}
+
+  Now, let us consider the function $\varphi\in C^0(\T,\R)$ given by $\varphi(x):=\Delta_{\tilde f}(\tilde x)-\rho(\tilde f)$, where $\tilde x$ is any lift of $x\in\T$. Combining Corollary~\ref{cor:bounded-rotational-deviations-and-continuity-rotation-number} and Theorem~\ref{thm:Gottschalk-Hedlund}, we conclude there is $u\in C^0(K,\R)$ such that
+  \begin{displaymath}
+    \varphi(x)=u\big(f(x)\big)-u(x), \quad\forall x\in K.
+  \end{displaymath}
+
+  We use function $u$ to define a continuous functions $\tilde h\colon\tilde{K}\to\R$ and $h\colon K\to\T$ given by $\tilde h(\tilde x):=\tilde x+u(x)$ and $h(x):=x+\pi\big(u(x)\big)$, for every $\tilde x\in\tilde{K}:=\pi^{-1}(K)\subset\R$ and $x=\pi(\tilde x)$. One can easily check $h\circ f\big|_K=R_{\rho(\tilde f)}\circ h$.
+
+  In the case $K=\T$, one can already finish the proof of the theorem:
+
+  \begin{exercise}
+    Assuming $K=\T$, show that $h\colon\T\carr$ is injective and surjective, and hence, it is a topological conjugacy between $f$ and $R_{\rho(\tilde f)}$.
+  \end{exercise}
+
+  It remains to show that $h$ can be extended to the whole circle $\T$ when $K\neq\T$. In order to do that, let $I$ be an arbitrary connected component of $\T\setminus K$, let $x_0,x_1\in K$ be extreme points of $I$. We are going to show that $h(x_0)=h(x_1)$, and hence, we can extend $h$ to $I$ as the constant function on $I$ with value $h(x_0)=h(x_1)$. To do that, let us suppose that $h(x_0)\neq h(x_1)$ and write $\eps:=d\big(h(x_0),h(x_1)\big)>0$. Since $h\colon K\to\T$ is continuous and $K$ is compact, $h$ is uniformly continuous and hence there is $\delta>0$ such that $d\big(h(x),h(y)\big)<\eps/2$, for every $x,y\in K$ with $d(x,y)<\delta$. Observe that since $h\circ f\big|_K=R_{\rho(\tilde f)}\circ h$, we have that $d\big(h\big(f^n(x_0)\big),h\big(f^n(x_1)\big)\big)=d\big(R_{\rho(\tilde f)}^n\big(h(x_0)\big),R_{\rho(\tilde f)}^n\big(h(x_1)\big)\big)=d\big(h(x_0),h(x_1)\big)=\eps$, for every $n\in\Z$, where $f^n(x_0)$ and $f^n(x_1)$ are the extreme points of the connected component $f^n(I)$ of $\T\setminus K$. But, by our previous argument about the dynamics of connected components of $\T\setminus K$, we know that $\abs{f^n(I)}\to 0$, as $n\to\pm\infty$. So, there is $n\in\Z$ such that $d\big(f^n(x_0),f^n(x_1)\big)<\delta$, contradicting  the property of uniform continuity of $h$.
+\end{proof}
+
+
+
 \subsection{$C^r$-generic theory of $\Diff{}r(\T)$}
 \label{sec:Cr-generic-theory-circle}
 
@@ -1023,6 +1085,30 @@ Next, we need to show that any orientation-preserving $C^r$-diffeomorphism with 
   Let $f\in\Homeo+(\T)$ be an arbitrary orientation-preserving circle homeomorphism, and $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. For each $t\in\R$, consider the homeomorphism $f_t\in\Homeo+(\T)$ given by $\tilde f_t(x):=\tilde f(x)+t$, for every $x\in\R$. Then, the function $\R\ni t\mapsto \rho(\tilde f_t)$ is continuous and if $\rho(\tilde f)\in\R\setminus\Q$, then for every $\eps>0$ there is $t_-\in (-\eps,0)$ and $t_+\in (0,\eps)$ such that $\rho(\tilde f_{t_-})<\rho(\tilde f)<\rho(\tilde f_{t_+})$ and $\rho(\tilde f_{t_-}),\rho(\tilde f_{t_+})\in\Q$.
 \end{theorem}
 
+\begin{proof}[Proof of Theorem~\ref{thm:closing-lemma-circle}]
+  By Corollary~\ref{cor:bounded-rotational-deviations-and-continuity-rotation-number} we know the function $\R\ni t\mapsto \rho(\tilde f_t)$ is continuous. On the other hand, one can easily check by induction on $n\in\N$ that
+  \begin{equation}
+    \label{eq:monotonicity-rotation-perturbations}
+    \tilde f_{-t}^n(\tilde x)\leq \tilde f^n(\tilde x)\leq \tilde f_t^n(\tilde x), \quad\forall \tilde x\in\R,\ \forall t\geq 0.
+  \end{equation}
+  In particular, this implies the function $t\mapsto \rho(\tilde f_t)$ is non-decreasing.
+
+  Now, let us assume that $\rho(0)=\rho(\tilde f)\in\R\setminus\Q$. By Theorem~\ref{thm:irrational-rotation-number-minimality}, there is a unique minimal set $K\subset\T$ for $f$, which is either a Cantor set or the whole circle $\T$. In any case, there exists $x\in K$ such that $(\tilde x,\tilde x+\eps)\cap\tilde K\neq\emptyset$ and $(\tilde x-\eps,\tilde x)\cap\tilde K\neq\emptyset$, for every $\eps>0$, where $\tilde K:=\pi^{-1}(K)$.
+
+  Now, let us show that for every $\eps>0$ there is $t_+\in (0,\eps)$ such that $\rho(\tilde f_{t_+})>\rho(\tilde f)$. Since $K$ is a minimal set for $f$ and $x$ is accumulated by both sides in $K$, we know that there is $n\in\N$ and $p\in\Z$ such that
+  \begin{equation}
+    \label{eq:closing-point-x-lift}
+    \tilde x+p-\eps<\tilde f^n(\tilde x)<\tilde x + p.
+  \end{equation}
+
+  Combining estimates~\eqref{eq:monotonicity-rotation-perturbations} and~\eqref{eq:closing-point-x-lift}, we conclude that
+  \begin{displaymath}
+    \tilde f_\eps^n(\tilde x) \geq \tilde f^n(\tilde x) + \eps > \tilde x + p,
+  \end{displaymath}
+  So, by continuity of $\tilde f_t$ on the parameter $t$, we conclude there is $t_+\in(0,\eps)$ such that $\tilde f_{t_+}^n(\tilde x)=\tilde x+p$, and this implies $\rho(\tilde f_{t_+})>\rho(\tilde f)$. The other case showing the existence of $t_-\in (-\eps,0)$ with $\rho(\tilde f_{t_-})\in\Q$ and $\rho(\tilde f_{t_-})<\rho(\tilde f)$ is completely analogous.
+
+
+\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
