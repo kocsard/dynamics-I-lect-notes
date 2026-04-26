@@ -1106,9 +1106,35 @@ Next, we need to show that any orientation-preserving $C^r$-diffeomorphism with 
     \tilde f_\eps^n(\tilde x) \geq \tilde f^n(\tilde x) + \eps > \tilde x + p,
   \end{displaymath}
   So, by continuity of $\tilde f_t$ on the parameter $t$, we conclude there is $t_+\in(0,\eps)$ such that $\tilde f_{t_+}^n(\tilde x)=\tilde x+p$, and this implies $\rho(\tilde f_{t_+})>\rho(\tilde f)$. The other case showing the existence of $t_-\in (-\eps,0)$ with $\rho(\tilde f_{t_-})\in\Q$ and $\rho(\tilde f_{t_-})<\rho(\tilde f)$ is completely analogous.
-
-
 \end{proof}
+
+Then we need to discuss some notions of \textbf{transversality}: given a smooth manifold $M$, we say that two submanifolds $N_1,N_2\subset M$ are \textbf{transverse at the point $x\in N_1\cap N_2$} if it holds
+\begin{displaymath}
+  T_xM=T_xN_1 + T_xN_2.
+\end{displaymath}
+We say that they are just \textbf{transverse} if they are transverse at every point of $N_1\cap N_2$. Similarly, given a smooth map $f\colon M\to N$ between smooth manifolds, and a submanifold $P\subset N$, we say that $f$ is \textbf{transverse to $P$ at the point $x\in M$} when $f(x)\in P$ and
+\begin{displaymath}
+  T_{f(x)}N=T_{f(x)}P + Df_x(T_xM).
+\end{displaymath}
+We say that $f$ is \textbf{transverse to $P$} if it is transverse to $P$ at every point $x\in M$ such that $f(x)\in P$. Observe that, by definition, $f$ is transverse to $P$ whenever $f(M)\cap P=\emptyset$.
+
+Given smooth manifolds $\Lambda$, $M$ and $N$, a closed submanifold $S\subset N$, and a $C^r$ map $F\colon \Lambda\times M\to N$, if we consider the manifold $\Lambda$ as a parameter space, we can define the set $T_{\Lambda,S}$ by
+\begin{equation}
+  \label{eq:T-lambda-S-transverse-param}
+  T_{\Lambda,S}:=\left\{\lambda\in\Lambda  : F(\lambda,\cdot )\colon M\to N \text{ is transverse to } S\right\}.
+\end{equation}
+We have the following fundamental result about \emph{parametric transversality:}
+
+\begin{theorem}
+  \label{thm:transversality-parametric}
+  If $\Lambda$, $M$, $N$ and $S$ are as above and $F\colon\Lambda\times M\to N$ is a $C^r$ map with $r>\max\{0,\dim N+\dim A-\dim M\}$, and $F$ is transverse to $S$, then the set $T_{\Lambda,S}$ given by~\eqref{eq:T-lambda-S-transverse-param} is residual, and hence, dense in $\Lambda$.
+\end{theorem}
+
+\begin{proof}
+  See~\cite[Theorem 2.7]{HirschDiffTopology}.
+\end{proof}
+
+
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
