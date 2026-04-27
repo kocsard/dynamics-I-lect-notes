@@ -1049,9 +1049,10 @@ We endow $\Diff+r(\T)$ with the $C^r$-topology, which is the topology induced by
   d_{C^0}(f,g):=\max_{x\in\T} d\big(f(x),g(x)\big)+d\big(f^{-1}(x),g^{-1}(x)\big), \quad\forall f,g\in\Homeo{}(\T),
 \end{displaymath}
 where $d\colon\T\times\T\to[0,1/2]$ is distance function given by~\eqref{eq:distance-circle}. For $r\geq 1$, we endow $\Diff+r(\T)$ with the $C^r$-metric $d_{C^r}\colon\Diff+r(\T)\times\Diff+r(\T)\to[0,+\infty)$ given by
-\begin{displaymath}
+\begin{equation}
+  \label{eq:Cr-metric-circle}
   d_{C^r}(f,g):=d_{C^{r-1}}(f,g)+\max_{x\in\T} \abs{\Delta_{\tilde f}^{(r)}(x)-\Delta_{\tilde g}^{(r)}(x)}, \quad\forall f,g\in\Diff+r(\T),
-\end{displaymath}
+\end{equation}
 where $\phi^{(r)}$ denotes the $r$-th derivative of a function $\phi\in C^r(\T,\R)$, and $\tilde f,\tilde g\in\Thomeo_+(\T)$ are any lifts of $f$ and $g$, respectively. One can analogously define the $C^r$-metric on $\Diff-r(\T)$.
 
 We need the following definition that extends the previous one of periodic fixed points (Definition~\ref{def:hyperbolic-fixed-point}):
@@ -1075,7 +1076,8 @@ We can now state the main result of this section, which is the following
 We shall need several partial results in order to prove Theorem~\ref{thm:Morse-Smale-circle-diffeomorphisms}. We start with the following one, which states the existence of the so-called \textbf{continuation of simple periodic points}:
 
 \begin{exercise}
-  Let $f\in\Diff{}1(\T)$ and $p\in\T$ be a simple periodic point for $f$ with prime period $n\in\N$. Show that there is an open neighborhood $\mc{U}$ of $f$ in $\Diff{}1(\T)$, a real number $\eps>0$, and a continuous map $\mc{U}\ni g\mapsto p_g\in B_\eps(p)\subset\T$ such that $p_f=p$ and $p_g$ is the only periodic point for $g$ in the ball $B_\eps(p)$ and it has with prime period $n$, for every $g\in\mc{U}$. Moreover, if $p$ is hyperbolic, then $p_g$ is hyperbolic with the same type as $p$, for every $g\in\mc{U}$.
+  \label{ex:continuation-simple-periodic-points}
+  Let $f\colon\T\carr$ be a $C^1$-map and $p\in\T$ be a simple periodic point for $f$ with prime period $n\in\N$. Show that there is an open neighborhood $\mc{U}$ of $f$ in $C^1(\T,\T)$, a real number $\eps>0$, and a continuous map $\mc{U}\ni g\mapsto p_g\in B_\eps(p)\subset\T$ such that $p_f=p$ and $p_g$ is the only periodic point for $g$ in the ball $B_\eps(p)$ and it has with prime period $n$, for every $g\in\mc{U}$. Moreover, if $p$ is hyperbolic, then $p_g$ is hyperbolic with the same type as $p$, for every $g\in\mc{U}$.
 \end{exercise}
 
 Next, we need to show that any orientation-preserving $C^r$-diffeomorphism with irrational rotation number can be $C^r$-approximated by diffeomorphisms with rational rotation number:
@@ -1134,6 +1136,28 @@ We have the following fundamental result about \emph{parametric transversality:}
   See~\cite[Theorem 2.7]{HirschDiffTopology}.
 \end{proof}
 
+We shall also need the following
+
+\begin{exercise}
+  \label{exer:simple-periodic-points-perturbation}
+  Let $f\colon\T\carr$ be a $C^r$ map (with $r\geq 1$) $p\in\T$ a periodic point of prime period $n$ for $f$. Show that given any $\eps>0$, there is a $C^\infty$ map $g\colon\T\carr$ to with $d_{C^r}(f,g)<\eps$, where $d_{C^r}$ denotes the $C^r$-distance given by~\eqref{eq:Cr-metric-circle}, and such that $p$ is a simple periodic point for $g$ with prime period $n$.
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Morse-Smale-circle-diffeomorphisms}]
+  Let us fix $r\in\N\cup\{\infty\}$ and let us write $MS^r$ for the set of orientation-preserving Morse-Smale circle diffeomorphisms. First, let us show that $MS^r$ is $C^1$-open. Let $f\in MS^r$ and let $\Per(f)=\{p_1,p_2,\ldots,p_k\}$ be the set of periodic points for $f$. We know that all of them have prime period $q\in\N$. Since every periodic point for $f$ is hyperbolic, by Exercise~\ref{ex:continuation-simple-periodic-points}, for each $i\in\{1,\ldots,k\}$ there is an open neighborhood $\mc{U}_i$ of $f$ in $C^1(\T,\T)$, a real number $\eps_i>0$, and a continuous map $\mc{U}_i\ni g\mapsto p_{i,g}\in B_{\eps_i}(p_i)\subset\T$ such that $p_{i,f}=p_i$ and $p_{i,g}$ is the only periodic point for $g$ in the ball $B_{\eps_i}(p_i)$ and it has with prime period equal to the prime period of $p_i$, for every $g\in\mc{U}_i$. Moreover, every $p_{i,g}$ is hyperbolic.
+
+  On the other hand, there is $\delta>0$ such that
+  \begin{displaymath}
+    d\big(f^q(x),x)>\delta, \quad\forall x\in\T\setminus\bigcup_{i=1}^k B_{\eps_i}(p_i),
+  \end{displaymath}
+  where $q$ denotes the prime period of every periodic point of $f$.
+
+  Then, we define the set $\mc{U}$ as the intersection of the neighborhoods $\mc{U}_i$ with the set of maps $g\in\Diff{+}1(\T)$ such that $d(g^q(x),x)>\delta/2$, for every $x\in\T\setminus\bigcup_{i=1}^k B_{\eps_i}(p_i)$. It is easy to check that $\mc{U}$ is a $C^1$-neighborhood of $f$ that is contained in $MS^1$. In particular, $MS^r$ is open when it is endowed with the $C^1$-topology.
+
+  In order to see that $MS^r$ is $C^r$-dense in $\Diff{+}r(\T)$, let us assume $r$ is finite and fix an arbitrary $f\in\Diff{+}r(\T)$ and let $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. If $\rho(\tilde f)\in\Q$, then by Corollary~\ref{cor:rational-rotation-number-periodic-point} there is a periodic point for $f$. If $\rho(\tilde f)\in\R\setminus\Q$, then by Theorem~\ref{thm:closing-lemma-circle}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $\rho(\tilde g)\in\Q$, where $\tilde g$ is any lift of $g$.
+
+
+\end{proof}
 
 
 \bibliographystyle{amsalpha}
