@@ -1154,11 +1154,69 @@ We shall also need the following
 
   Then, we define the set $\mc{U}$ as the intersection of the neighborhoods $\mc{U}_i$ with the set of maps $g\in\Diff{+}1(\T)$ such that $d(g^q(x),x)>\delta/2$, for every $x\in\T\setminus\bigcup_{i=1}^k B_{\eps_i}(p_i)$. It is easy to check that $\mc{U}$ is a $C^1$-neighborhood of $f$ that is contained in $MS^1$. In particular, $MS^r$ is open when it is endowed with the $C^1$-topology.
 
-  In order to see that $MS^r$ is $C^r$-dense in $\Diff{+}r(\T)$, let us assume $r$ is finite, fix an arbitrary $f\in\Diff{+}r(\T)$ and let $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. If $\rho(\tilde f)\in\Q$, then by Corollary~\ref{cor:rational-rotation-number-periodic-point} there is a periodic point for $f$. If $\rho(\tilde f)\in\R\setminus\Q$, then by Theorem~\ref{thm:closing-lemma-circle}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $\rho(\tilde g)\in\Q$, where $\tilde g$ is any lift of $g$. In any case, we can assume that $f$ has a periodic point $p\in\T$ with prime period $n\in\N$. By Exercise~\ref{exer:simple-periodic-points-perturbation}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $p$ is a simple periodic point for $g$ with the very same prime period $n$. Since $p$ is simple, by Exercise~\ref{ex:continuation-simple-periodic-points} we know that the continuation of $p$ is well defined in a $C^1$-neighborhood of $g$. In particular, the rotation number is constant in a $C^1$-neighborhood of $g$.
-
-
+  In order to see that $MS^r$ is $C^r$-dense in $\Diff{+}r(\T)$, let us assume $r$ is finite, fix an arbitrary $f\in\Diff{+}r(\T)$ and let $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. If $\rho(\tilde f)\in\Q$, then by Corollary~\ref{cor:rational-rotation-number-periodic-point} there is a periodic point for $f$. If $\rho(\tilde f)\in\R\setminus\Q$, then by Theorem~\ref{thm:closing-lemma-circle}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $\rho(\tilde g)\in\Q$, where $\tilde g$ is any lift of $g$. In any case, we can assume that $f$ has a periodic point $p\in\T$ with prime period $n\in\N$. By Exercise~\ref{exer:simple-periodic-points-perturbation}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $p$ is a simple periodic point for $g$ with the very same prime period $n$. Since $p$ is simple, by Exercise~\ref{ex:continuation-simple-periodic-points} we know that the continuation of $p$ is well defined in a $C^1$-neighborhood of $g$. In particular, the rotation number is constant in a $C^1$-neighborhood of $g$. Hence, if $\tilde g\colon\R\carr$ is a lift of $g$, then there is $k\in\Z$ such that $\rho(\tilde g)=k/n$. On the other hand, for each $t\in\R$, consider the diffeomorphism $\tilde g_t:=g+t$. By induction in $n$, one can easily check that the function $G_n\colon\R\times\T\to\T\times\T$ given by
+  \begin{displaymath}
+    G_n(t,x):=\big(x,\pi\circ\tilde g_t^n(\tilde x)\big), \quad \forall (t,x)\in\R\times\T, \ \forall x\in\pi^{-1}(x),
+  \end{displaymath}
+  is transverse to the diagonal $D:=\{(y,y)\in\T\times\T : y\in\T\}$; and by our hypothesis about $\rho(\tilde g)$, we know that the image of $G_n$ intersects $D$ at the point $(0,p)$. So, by Theorem~\ref{thm:transversality-parametric}, for every $\eps>0$ there is $t\in(-\eps,\eps)$ such that $G_n(t,x)\in D$, for some $x\in\T$ and the map $G_n(t,\dot)\colon\T\carr$ is transverse to $D$ at every point. In particular,  we get that the $g_t:=R_t\circ g\in MS^r$, and the density, for $r$ finite, is proved. The case $r=\infty$ easily follows by the density of $C^\infty$ maps in $C^r$ maps, for every finite $r$.
 \end{proof}
 
+\subsection{Dynamics of circle endomorphisms with $\abs{d}\geq 2$}
+\label{sec:dynam-circle-endomorphisms}
+
+Given any $d\in\Z$ and any $r\in\N_0\cup\{\infty\}$, we shall write
+\begin{equation}
+  \label{eq:degree-d-cirle-maps}
+  C_d^r(\T):=\left\{f\colon\T\carr : f \text{ is } C^r,\ \deg f =r\right\}.
+\end{equation}
+
+For each $d\in\Z$, we consider the unique group homomorphism $E_d\colon\T\carr$ which is contained in $C_d^\infty(\T)$. This map $E_d$ is given by $E_d(x):=d x$, for every $x\in\T$.
+
+\begin{exercise}[Dynamics of $E_d$]
+  Given $d\in\Z$ with $\abs{d}\geq 2$, show the following statements about the dynamics of $E_d$:
+  \begin{enumerate}[(i)]
+    \item $\Per(E_d)$ is dense in $\T$;
+    \item given any non-empty open set $U\subset\T$, there is $n\in\N$ such that $E_d^n(U)=\T$;
+    \item given any pair of non-empty open sets $U,V\subset\T$, there is $n\in\N$ such that $E_d^n(U)\cap V\neq\emptyset$;
+    \item use the previous points to conclude that there is $x\in\T$ such that $\omega_{E_d}(x)=\T$;
+    \item for every $y\in\T$, it holds
+          \begin{displaymath}
+            \overline{\bigcup_{n\in\N} E_d^{-n}(y)}=\T.
+          \end{displaymath}
+  \end{enumerate}
+\end{exercise}
+
+We have the following fundamental result about the dynamics of circle endomorphisms with degree $\abs{d}\geq 2$:
+
+\begin{theorem}[$E_d$ as topological factor]
+  \label{thm:Ed-topological-factor}
+  If $d\in\Z$ with $\abs{d}\geq 2$, then every $f\in C_d^0(\T)$ is a topological extension of $E_d\colon\T\carr$, \ie~there is a continuous surjective map $h\colon\T\carr$ such that $h\circ f=E_d\circ h$.
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Ed-topological-factor}]
+  Let $f\in C_d^0(\T)$ be arbitrary and $\tilde f\colon\R\carr$ be any lift of $f$. We know that $\tilde f(x)=dx+\Delta(x)$, where $\Delta\in C^0(\T,\R)$. Looking for a map $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$, lifting all the three maps to the universal cover, we get that $\tilde h\circ\tilde f(\tilde x)=d\tilde h(\tilde x)$, for every $\tilde x\in\R$. Since $h\in C^0_1(\T)$, its lift $\tilde h$ can be written as $\tilde h(\tilde x)=\tilde x+u(x)$, for every $\tilde x\in\R$, where $u\in C^0(\T,\R)$ is the unknown function that we need to find. Replacing this expression in the previous equation, we get that
+  \begin{displaymath}
+    d\tilde x + u\big(f(x)\big) + \Delta(x) = d\tilde x + du(x), \quad\forall \tilde x\in\R,
+  \end{displaymath}
+  and $x=\pi(\tilde x)$, so we get
+  \begin{displaymath}
+    u(x)= \frac{1}{d} u\big(f(x)\big) + \frac{1}{d} \Delta(x), \quad\forall x\in\T.
+  \end{displaymath}
+\end{proof}
+
+The map $E_d$, with $\abs{d}\geq 2$ is an example of an \textbf{expanding map:}
+
+\begin{definition}[Expanding circle maps]
+  \label{def:expanding-circle-maps}
+  A map $f\in C_d^1(\T)$ is said to be \textbf{expanding} when there is $C>0$ and $\lambda>1$ such that
+  \begin{displaymath}
+    \abs{Df^n(x)}\geq C\lambda^n, \quad\forall x\in\T,\ \forall n\in\N.
+  \end{displaymath}
+\end{definition}
+
+\begin{exercise}[Degree of expanding maps]
+  Let $f\in C_d^1(\T)$ be an expanding map. Show that $\abs{d}\geq 2$.
+\end{exercise}
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
