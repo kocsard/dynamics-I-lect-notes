@@ -1194,14 +1194,26 @@ We have the following fundamental result about the dynamics of circle endomorphi
 \end{theorem}
 
 \begin{proof}[Proof of Theorem~\ref{thm:Ed-topological-factor}]
-  Let $f\in C_d^0(\T)$ be arbitrary and $\tilde f\colon\R\carr$ be any lift of $f$. We know that $\tilde f(x)=dx+\Delta(x)$, where $\Delta\in C^0(\T,\R)$. Looking for a map $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$, lifting all the three maps to the universal cover, we get that $\tilde h\circ\tilde f(\tilde x)=d\tilde h(\tilde x)$, for every $\tilde x\in\R$. Since $h\in C^0_1(\T)$, its lift $\tilde h$ can be written as $\tilde h(\tilde x)=\tilde x+u(x)$, for every $\tilde x\in\R$, where $u\in C^0(\T,\R)$ is the unknown function that we need to find. Replacing this expression in the previous equation, we get that
+  Let $f\in C_d^0(\T)$ be arbitrary. We shall construct a map $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$. To do this, let $\tilde f\colon\R\carr$ be a lift of $f$ and notice that $\tilde f(\tilde x)=d\tilde x+\Delta(\tilde x)$, for all $\tilde x\in\R$ and where $\Delta\in C^0(\T,\R)$. Let $\tilde E_d(x):=dx$, for all $x\in\R$, be our chosen lift of $E_d$. Then, we shall look for a lift $\tilde h\colon\R\carr$ with $\tilde h=id+u$ and $u\in C^0(\T,\R)$ satisfying $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$ and noticing the following functional equation must hold:
   \begin{displaymath}
     d\tilde x + u\big(f(x)\big) + \Delta(x) = d\tilde x + du(x), \quad\forall \tilde x\in\R,
   \end{displaymath}
   and $x=\pi(\tilde x)$, so we get
-  \begin{displaymath}
+  \begin{equation}
+    \label{eq:functional-equation-u-semi-conjugacy-Ed}
     u(x)= \frac{1}{d} u\big(f(x)\big) + \frac{1}{d} \Delta(x), \quad\forall x\in\T.
+  \end{equation}
+
+  Motivated by equation~\eqref{eq:functional-equation-u-semi-conjugacy-Ed}, we define the operator $\mc{L}\colon C^0(\T,\R)\to C^0(\T,\R)$ given by
+  \begin{displaymath}
+    \mc{L}(u)(x):= \frac{1}{d} u\big(f(x)\big) + \frac{1}{d} \Delta(x), \quad\forall u\in C^0(\T,\R),\ \forall x\in\T.
   \end{displaymath}
+  If we endow the space $C^0(\T,\R)$ with the uniform norm $\norm{\phi}:=\max_{x\in\T} \abs{\phi(x)}$, for every $\phi\in C^0(\T,\R)$, then one can easily check that $\mc{L}$ is a contraction, since for every $u,v\in C^0(\T,\R)$ we have
+  \begin{displaymath}
+    \norm{\mc{L}(u)-\mc{L}(v)} = \norm{\frac{1}{d} u\circ f - \frac{1}{d} v\circ f} \leq \frac{1}{\abs{d}} \norm{u-v}.
+  \end{displaymath}
+
+  Hence, by the Banach fixed point theorem, there is a unique $u\in C^0(\T,\R)$ such that $\mc{L}(u)=u$, and this implies that the lift $\tilde h\colon\R\carr$ given by $\tilde h(\tilde x):=\tilde x + u(x)$, for every $\tilde x\in\R$ and $x=\pi(\tilde x)$, satisfies $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$.
 \end{proof}
 
 The map $E_d$, with $\abs{d}\geq 2$ is an example of an \textbf{expanding map:}
@@ -1217,6 +1229,16 @@ The map $E_d$, with $\abs{d}\geq 2$ is an example of an \textbf{expanding map:}
 \begin{exercise}[Degree of expanding maps]
   Let $f\in C_d^1(\T)$ be an expanding map. Show that $\abs{d}\geq 2$.
 \end{exercise}
+
+We have the following fundamental result about the dynamics of expanding circle maps:
+\begin{theorem}[Topological conjugacy of expanding circle maps]
+  If $f_1,f_2\in C^1_d(\T)$ are expanding maps, then there is a homeomorphism $h\in\Homeo+(\T)$ such that $h\circ f_1=f_2\circ h$.
+\end{theorem}
+
+\begin{proof}
+  Let $\tilde f_1,\tilde f_2\colon\R\carr$ be two lifts of $f_1$ and $f_2$, respectively, with $\tilde f_i=id=\Delta_u$ and $\Delta_i\in C^0(\T,\R)$.  We shall prove that there are unique $u\in C^0(\T,\R)$ such that if we write $\tilde h=id+u$, it holds $\tilde h\circ\tilde f_1=\tilde f_2\circ\tilde h$. To do this, we first notice that since $f_1$ and $f_2$ are expanding, there exist $C>0$ and $\lambda>1$ such that $\abs{D\tilde f^n_i(x)}\geq C\lambda^n$, for every $x\in\R$, $n\in\N$ and $i\in\{1,2\}$. Let $n_0\in\N$ such that $C\lambda^{n_0}<1$. Then, notice that the equation $\tilde h\circ\tilde f_1^{n_0}=\tilde f_2^{n_0}\circ\tilde h$ induces the following functional equation for $u$:
+
+\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
