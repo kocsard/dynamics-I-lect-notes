@@ -1237,12 +1237,23 @@ We have the following fundamental result about the dynamics of expanding circle 
 
 \begin{proof}
   In Theorem~\ref{thm:Ed-topological-factor} we have shown that there is $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$. We are going to show that $h$ is injective, and hence, it is a homeomorphism. To do that, let us assume that there are $x_1,x_2\in\T$ with $x_1\neq x_2$ and $h(x_1)=h(x_2)$. In fact, in the proof of Theorem~\ref{thm:Ed-topological-factor} we have shown that given a lift $\tilde f\colon\R\carr$, there is a lift $\tilde h\colon\R\carr$ of $h$ such that $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$.
-  Let us choose points $\tilde x_i\in\pi^{-1}(x_i)\cap [0,1]$, for $i\in\{1,2\}$. Since $h(x_1)=h(x_2)$, we have $m:=\tilde h(\tilde x_2)-\tilde h(x_1)\in\Z$. Let us show that $m\neq 0$. If $m=0$, then $\tilde h(\tilde x_1)=\tilde h(\tilde x_2)$ and hence, we have
+  Let us choose points $\tilde x_i\in\pi^{-1}(x_i)\cap [0,1]$, for $i\in\{1,2\}$. Since $h(x_1)=h(x_2)$, we have $m:=\tilde h(\tilde x_2)-\tilde h(\tilde x_1)\in\Z$. Then, $\tilde x_1+m\neq\tilde x_2$ and $\tilde h(\tilde x_1+m)=\tilde h(x_1)+m=\tilde h(\tilde x_2)$. So, we have
   \begin{displaymath}
-    \tilde h\big(\tilde f^n(\tilde x_1)\big) = \tilde E_d^n\big(\tilde h(\tilde x_1)\big) = \tilde E_d^n\big(\tilde h(\tilde x_2)\big) = \tilde h\big(\tilde f^n(\tilde x_2)\big), \quad\forall n\in\N.
+    \tilde h\big(\tilde f^n(\tilde x_1+m)\big) = \tilde E_d^n\big(\tilde h(\tilde x_1+m)\big) = \tilde E_d^n\big(\tilde h(\tilde x_2)\big) = \tilde h\big(\tilde f^n(\tilde x_2)\big), \quad\forall n\in\N.
   \end{displaymath}
 
-  Since $f$ is an expanding map, there is $C>0$ and $\lambda>1$ such that $\abs{Df^n(x)}=\abs{D\tilde f^n(x)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$.
+  Since $f$ is an expanding map, there is $C>0$ and $\lambda>1$ such that $\abs{Df^n(x)}=\abs{D\tilde f^n\big(\pi(x)\big)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. This implies,
+  \begin{displaymath}
+    \abs{\tilde f^n(\tilde x_1+m)-\tilde f^n(\tilde x_2)}\geq C\lambda^n \abs{\tilde x_1+m-\tilde x_2}\to+\infty, \quad\forall n\in\N,
+  \end{displaymath}
+  and as $n\to+\infty$. On the other hand, since $\tilde h$ is a lift of a degree one map of the circle, there is $L>1$ such that $\abs{\tilde h(\tilde x)-\tilde h(\tilde y)}\geq L^{-1}\abs{\tilde x-\tilde y}-L$, for every $\tilde x,\tilde y\in\R$. Hence, we get
+  \begin{displaymath}
+    \begin{split}
+      0=\abs{\tilde h\big(\tilde f^n(\tilde x_1+m)\big)-\tilde h\big(\tilde f^n(\tilde x_2)\big)} &\geq L^{-1}\abs{\tilde f^n(\tilde x_1+m)-\tilde f^n(\tilde x_2)} - L\\
+      &\geq L^{-1}C\lambda^n \abs{\tilde x_1+m-\tilde x_2} - L \to +\infty, \quad\text{as } n\to+\infty,
+    \end{split}
+  \end{displaymath}
+  which is clearly a contradiction. Hence, $h$ is injective and this concludes the proof.
 \end{proof}
 
 \bibliographystyle{amsalpha}
