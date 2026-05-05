@@ -1230,8 +1230,17 @@ The map $E_d$, with $\abs{d}\geq 2$ is an example of an \textbf{expanding map:}
   Let $f\in C_d^1(\T)$ be an expanding map. Show that $\abs{d}\geq 2$.
 \end{exercise}
 
+\begin{exercise}
+  \label{exer:expanding-maps-equiv-definition}
+  Let $f\in C_d^1(\T)$ be an arbitrary map with $\abs{d}\geq 2$. Show that $f$ is an expanding map if and only if there is $n\in\N$ such that
+  \begin{displaymath}
+    \abs{Df^n(x)}>1, \quad\forall x\in\T.
+  \end{displaymath}
+\end{exercise}
+
 We have the following fundamental result about the dynamics of expanding circle maps:
 \begin{theorem}[Topological conjugacy of expanding circle maps]
+  \label{thm:expanding-maps-topological-conjugacy}
   If $f\in C^1_d(\T)$ is an expanding map, then there is a homeomorphism $h\in\Homeo+(\T)$ such that $h\circ f=E_d\circ h$.
 \end{theorem}
 
@@ -1255,6 +1264,32 @@ We have the following fundamental result about the dynamics of expanding circle 
   \end{displaymath}
   which is clearly a contradiction. Hence, $h$ is injective and this concludes the proof.
 \end{proof}
+
+If we endow the space $C^r_d(\T)$ with the uniform $C^r$-topology (see, for instance, \cite[Chapter 2]{HirschDiffTopology} for details), as a straightforward consequence of Theorem~\ref{thm:expanding-maps-topological-conjugacy} we get the following
+
+\begin{corollary}[Structural stability of circle expanding maps]
+  For every $d\in\Z$ with $\abs{d}\geq 2$, the set
+  \begin{displaymath}
+    \mc{E}_d:=\left\{f\in C^1_d(\T) : f \text{ is an expanding map}\right\}
+  \end{displaymath}
+  is $C^1$-open in $C_d^1(\T)$. Thus, every expanding map is $C^1$-structurally stable, \ie~for every $f\in\mc{E}_d$, there is a $C^1$-neighborhood $\mc{U}$ of $f$ in $C_d^1(\T)$ such that every $g\in\mc{U}$ is topologically conjugate to $f$.
+\end{corollary}
+
+\begin{proof}
+  Let $f\in\mc{E}_d$ be an arbitrary expanding map. So, there is $C>0$ and $\lambda>1$ such that $\abs{Df^n(x)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. In particular, there is $n_0\in\N$ such that $\abs{Df^{n_0}(x)}>1$, for every $x\in\T$. By continuity of the derivative, there is a $C^1$-neighborhood $\mc{U}$ of $f$ in $C_d^1(\T)$ such that $\abs{Dg^{n_0}(x)}>1$, for every $g\in\mc{U}$ and every $x\in\T$. Hence, by Exercise~\ref{exer:expanding-maps-equiv-definition}, we conclude that every $g\in\mc{U}$ is an expanding map, and this concludes the proof.
+\end{proof}
+
+
+\subsubsection{Shadowing lemma for expanding endomorphisms}
+\label{sec:shadowing-lemma-expandindg-circle}
+
+Let $(X,d)$ be a compact metric space and $f\colon X\carr$ be a continuous map. Given real numbers $\alpha,\beta>0$ and a $\beta$-pseudo-orbit $(x_n)_{n\geq 0}$ for $f$, we say that the point $x\in X$ \textbf{$\alpha$-shadows} the pseudo-orbit $(x_n)_{n\geq 0}$ when it holds
+\begin{displaymath}
+  d\big(f^n(x),x_n\big)<\alpha, \quad\forall n\geq 0.
+\end{displaymath}
+
+The so-called \emph{shadowing property} plays a fundamental role in the theory of dynamical systems, specially in the proof of structural stability of hyperbolic systems, as well in the numerical study of them:
+
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
