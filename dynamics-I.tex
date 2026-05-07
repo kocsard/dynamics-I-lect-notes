@@ -1290,6 +1290,45 @@ Let $(X,d)$ be a compact metric space and $f\colon X\carr$ be a continuous map. 
 
 The so-called \emph{shadowing property} plays a fundamental role in the theory of dynamical systems, specially in the proof of structural stability of hyperbolic systems, as well in the numerical study of them:
 
+\begin{theorem}[Shadowing lemma for circle expanding maps]
+  \label{thm:shadowing-lemma-circ-expanding}
+  Let $f\in C_d^1(\T)$ be an expanding map. Then, there is a real number $\alpha_0>0$ such that for every $\alpha\in (0,\alpha_0)$, there is $\beta>0$ such that every $\beta$-pseudo-orbit $(x_n)_{n\geq 0}\subset\T$ for $f$, there is a unique point $x\in\T$ that $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$.
+\end{theorem}
+
+\begin{proof}
+  Given $f$, let $C>0$ and $\lambda>1$ be such that $\abs{Df^n(x)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. Since $f$ is a $C^1$ map and it has no critical points and $\T$ is compact, there is $\alpha_0>0$ such that for every $x,y\in\T$, with $f(x)=y$, there is a local inverse $f_{x,y}^{-1}\colon B_\delta(y)\to\T$ of $f$, \ie~$f\circ f_{x,y}^{-1}(z)=z$, for every $z\in B_\delta(y)$. Then, we choose any $\alpha_0>0$ such that $\alpha_0<\min\{C(1-\lambda^{-1})\delta,\delta\}$. Given any $\alpha\in (0,\alpha_0)$, we shall determine $\beta>0$ afterwards as a function of $\alpha$. For the time being, let us just suppose $\beta<\alpha$. Then, given $\beta$-pseudo-orbit $(x_n)_{n\geq 0}$ for $f$, for each $m\in\N$ and each $n\in\{1,\ldots,m\}$ we consider the point
+  \begin{displaymath}
+    y_m^n:= f_{x_{m-n},x_{m-n+1}}^{-1}\circ\cdots\circ f_{x_{m-2},x_{m-1}}^{-1} \circ f_{x_{m-1},x_m}^{-1}(x_m), \quad\forall n\geq 1,
+  \end{displaymath}
+  and similarly we define $y_m^0:=x_m$, for all $m\in\N_0$.
+  We claim that all these points are indeed all well defined. To see that, observe that for each $m\in\N$ it holds
+  \begin{displaymath}
+    \begin{split}
+      d\big(y_m^1,y_m^0\big)&=d\big(f_{x_m,x_{m-1}}^{-1}(x_m), f_{x_m,x_{m-1}}^{-1}\circ f(x_{m-1})\big)\\
+                              &\leq C^{-1}\lambda^{-1}d\big(x_m,f(x_{m-1})\big)<C^{-1}\lambda^{-1}\beta,
+    \end{split}
+  \end{displaymath}
+  and by induction in $n\in\N$ we get
+  \begin{equation}
+    \label{eq:y-m-n-y-m-1-n-1-estimate}
+    \begin{split}
+      d\big(y_m^n,y_{m+1}^{n+1}\big) &= d\big(f_{x_{m-n},x_{m-n+1}}^{-1}(y_m^{n-1}), f_{x_{m-n},x_{m-n+1}}^{-1}(y_{m+1}^{n})\big)\\
+                                     &\leq C^{-1}\lambda^{-n} d(y_m^0,y_m^1) < C^{-1}\lambda^{-n}\beta,
+    \end{split}
+  \end{equation}
+  and hence
+  \begin{equation}
+    \label{eq:y-m-n-x-m-n-estimate}
+    \begin{split}
+      d(y_m^n,x_{m-n})  &\leq \sum_{j=1}^{n} d\big(y_{m-j+1}^{n-j+1},y_{m-j}^{n-j}\big)\\
+                        &\leq  C^{-1}\alpha\sum_{j=1}^{n}\lambda^{-j} < \frac{C^{-1}\beta}{1-\lambda^{-1}}. \\
+    \end{split}
+  \end{equation}
+
+  On the other hand, invoking estimate~\eqref{eq:y-m-n-y-m-1-n-1-estimate} we easily get that the sequence $(y_m^m)_{m\geq 0}$ is indeed a Cauchy sequence, and hence, it converges to some point $x\in\T$. Finally, by~\eqref{eq:y-m-n-x-m-n-estimate} we get that the point $x$ $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ when $\beta<\alpha(1-\lambda^{-1})C$. The uniqueness of the point $x$ that $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ easily follows by the fact that $f$ is an expanding map.
+
+
+\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
