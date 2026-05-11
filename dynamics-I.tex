@@ -1326,9 +1326,164 @@ The so-called \emph{shadowing property} plays a fundamental role in the theory o
   \end{equation}
 
   On the other hand, invoking estimate~\eqref{eq:y-m-n-y-m-1-n-1-estimate} we easily get that the sequence $(y_m^m)_{m\geq 0}$ is indeed a Cauchy sequence, and hence, it converges to some point $x\in\T$. Finally, by~\eqref{eq:y-m-n-x-m-n-estimate} we get that the point $x$ $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ when $\beta<\alpha(1-\lambda^{-1})C$. The uniqueness of the point $x$ that $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ easily follows by the fact that $f$ is an expanding map.
-
-
 \end{proof}
+
+\section{Dynamics in higher dimensions: local theory}
+\label{sec:higher-dim-dynamics-local-theory}
+
+
+In order to extend the theory of one-dimensional dynamics we developed in \S\ref{sec:real-line} and \S\ref{sec:dynamics-circle-maps} to higher dimensions, we first need to understand the dynamics of linear maps on finite dimensional vector spaces. More generally, it will be also useful to study the dynamics of bounded linear operators on Banach spaces.
+
+\subsection{Linear operators on Banach spaces}\label{sec:line-oper-banach-spaces}
+
+Let $(E,\norm{\cdot})$ be a Banach space over either $\C$ or $\R$. A linear operator $A\colon E\carr$ is said to be \textbf{bounded} when it is continuous and in such a case it holds
+\begin{equation}\label{eq:norm-operator-def}
+  \norm{A}:=\sup\{\norm{Ax} : x\in E,\ \norm{x}=1\}<\infty.
+\end{equation}
+We shall write $\mc{L}(E)$ for the vector space of bounded operators on $E$, which turns into a Banach algebra when it is endowed with norm given by~\eqref{eq:norm-operator-def}.
+
+When $E$ is a Banach space over the complex field $\C$, we define the \textbf{spectrum} of the operator $A\in\mc{L}(E)$ as the set
+\begin{displaymath}
+  \sigma(A):=\left\{\lambda\in\C : A-\lambda I\ \text{is not bijective}\right\},
+\end{displaymath}
+where $I\in\mc{L}(E)$ denotes the identity operator.
+
+When $E$ is a Banach space over the real field $\R$, one can define its \textbf{complexification} as the Banach space over $\C$ $(E_{\C},\norm{\cdot}_{\C})$ given by $E_{\C}:=E\times E$, $\norm{(x_{1},x_{2})}:=\max_{i}\norm{x_{i}}$, for every $(x_{1},x_{2})\in E_{\C}$ and the multiplication by a complex number is defined by
+\begin{displaymath}
+  (a+bi) (x_{1},x_{2}):=(ax_{1}-bx_{2},ax_{2}+bx_{1}), \quad\forall (x_{1},x_{2})\in E_{\C},\ \forall a+bi\in\C.
+\end{displaymath}
+We can define $E_{r}:=E\times\{0\}$ and $E_{i}:=\{0\}\times E$ as closed linear subspaces of $E_{\C}$, which are isomorphic to $E$ and such that $E_{\C}=E_{r}\oplus E_{i}$. Every operator $A\in\mc{L}(E)$ induces a new operator $A_{\C}\in\mc{L}(E_{\C})$ given by $A_{\C}(x_{1},x_{2}):=(Ax_{1},Ax_{2})$. On the other hand, an operator $B\in\mc{L}(E_{\C})$ is said to be a \textbf{real operator} when $B(E_{r})\subset E_{r}$ and $B(E_{i})\subset E_{i}$. One can show that every operator on $E_{\C}$ which is induced by another one on $E$ is indeed a real operator and reciprocally, every real operator on $E_{\C}$ is induced by one defined on $E$.
+
+The \textbf{spectrum} of an operator $A\in\mc{L}(E)$ on the real Banach space $E$ is defined as the spectrum of the induced operator on the complexification of $E$, \ie~by $\sigma(A):=\sigma(A_{\C})$.
+
+\begin{theorem}[Spectrum and spectral radius]\label{thm:spectrum-spectral-radius}
+  If $E$ is a Banach space over either $\R$ or $\C$ and $A\in\mc{L}(E)\setminus\{0\}$, then it spectrum $\sigma(A)$ is a compact non-empty subset of $\C$. So, if we define the \textbf{spectral radius} of $A$ by
+  \begin{displaymath}
+    r(A):=\max\{\abs{\lambda} : \lambda\in\sigma(A)\},
+  \end{displaymath}
+  then it holds
+  \begin{equation}\label{eq:formula-spectral-radius}
+    r(A):=\lim_{n\to+\infty}\norm{A^{n}}^{1/n} = \inf_{n\geq 1}\norm{A^{n}}^{1/n}.
+  \end{equation}
+
+  On the other hand, if $A\in\GL(E)$, then it holds
+  \begin{equation}\label{eq:spectrum-inverse}
+    \sigma(A^{-1})=\left\{z^{-1}\in\C : z\in\sigma(A)\right\}.
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  See for instance~\cite[\S1.2]{MurphyCAlgebrasOpTheory}.
+\end{proof}
+
+We shall write $\GL(E)$ for the group of invertible bounded linear maps on $E$, \ie~$\GL(E):=\{A\in\mc{L}(E) : 0\not\in\sigma(A)\}$.
+
+\begin{definition}[Hyperbolic linear automorphisms]
+  Given a Banach space $E$, n invertible linear automorphism $A\in\GL(E)$ is said to be \textbf{hyperbolic} when it holds
+  \begin{displaymath}
+    \sigma(A)\cap\{\lambda\in\C : \abs{\lambda}=1\}=\emptyset.
+  \end{displaymath}
+
+  Since the spectrum $\sigma(A)$ is compact, when $A$ is hyperbolic there is constant $\lambda\in (0,1)$ such that
+  \begin{equation}\label{eq:hyp-constant-def}
+    \sigma(A)\cap\left\{z\in\C : \lambda\leq\abs{z}\leq\lambda^{-1}\right\}=\emptyset.
+  \end{equation}
+  Any number $\lambda\in(0,1)$ satisfying condition~\eqref{eq:hyp-constant-def} is called a \textbf{hyperbolicity constant} for $A$.
+\end{definition}
+
+
+We will need the following result about spectral decompositions:
+\begin{theorem}\label{thm:spectral-decomposition}
+  Let $E$ be a Banach space and $A\in\mc{L}(E)$ be a bounded operator. Let $K_{1},K_{2}\subset\C$ be two non-empty compact sets such that $\sigma(A)=K_{1}\sqcup K_{2}$. Then there exists two closed proper subspaces $E_{1},E_{2}\subset E$ such that $E=E_{1}\oplus E_{2}$, $A(E_{i})\subset E_{i}$ and $\sigma\big(A\big|_{E_{i}}\big)=K_{i}$, for $i\in\{1,2\}$.
+\end{theorem}
+
+\begin{proof}
+  See for instance~\cite[Chapter VII]{DunfordSchwartzLinOp}.
+\end{proof}
+
+As a consequence of Theorem~\ref{thm:spectrum-spectral-radius} we get the following result that characterizes the dynamics of hyperbolic linear maps:
+
+\begin{theorem}[Hyperbolic linear maps]\label{thm:hyperbolic-linear-maps}
+  Let $E$ be a Banach space and $A\in\mc{H}(E)$ be a hyperbolic linear automorphism. Let $E=E^{s}_{A}\oplus E^{u}_{A}$ be the linear splitting induced by the sets $K^{s}:=\sigma(A)\cap\{z\in\C : \abs{z}<1\}$ and $K^{u}:=\sigma(A)\cap\{z\in C : \abs{z}>1\}$ in Theorem~\ref{thm:spectral-decomposition}.
+
+  Then, given any hyperbolicity constant $\lambda\in\big(0,1\big)$ for $A$ (\ie~condition~\eqref{eq:hyp-constant-def} holds), there exist a real constant $C>0$ such that
+  \begin{displaymath}
+    \norm{A^{n}v^{s}}\leq C\lambda^{n}\norm{v^{s}}\quad\text{and}\quad \norm{A^{-n}v^{u}}\leq C\lambda^{n}\norm{v^{u}},
+  \end{displaymath}
+  for all $n\in\N$ and every $v^{s}\in E^{s}_{A}$ and $v^{u}\in E^{u}_{A}$.
+
+  Moreover, for every $\mu\in \big(A_{h},1\big)$, there exists a norm $\abs{\cdot}$ on $E$, which is equivalent to $\norm{\cdot}$, and such that
+  \begin{equation}\label{eq:adapted-norm-property}
+    \abs{Av^{s}}\leq\mu\abs{v^{s}},\quad\text{and}\quad\abs{A^{-1}v^{u}}\leq\mu\abs{v^{u}},
+  \end{equation}
+  for every $v^{s}\in E^{s}_{A}$ and every $v^{u}\in E^{u}_{A}$.
+
+  Any norm satisfying condition~\eqref{eq:adapted-norm-property} is an called an \textbf{adapted norm} for $A$.
+\end{theorem}
+
+\begin{corollary}[Dynamics of hyperbolic linear maps]\label{cor:dynamics-hyperbolic-linear-maps}
+  If $E$ is a Banach space and $A\in\mc{H}(E)$, and $E=E^{s}_{A}\oplus E^{u}_{A}$ is the linear splitting given by Theorem~\ref{thm:hyperbolic-linear-maps}, then it holds
+  \begin{align*}
+    E^{s}_{A}&=\left\{x\in E : A^{n}x\to 0,\ \text{as } n\to+\infty\right\},\\
+    E^{u}_{A}&=\left\{x\in E : A^{-n}x\to 0,\ \text{as } n\to+\infty\right\},
+  \end{align*}
+  and $A^{n}x\to\infty$, as $n\to\pm\infty$, for every $x\in E\setminus\big(E_{A}^{s}\cup E_{A}^{u})$.
+\end{corollary}
+
+\begin{proof}[Proof of Corollary~\ref{cor:dynamics-hyperbolic-linear-maps}]
+  It is a straightforward consequence of Theorem~\ref{thm:hyperbolic-linear-maps}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:hyperbolic-linear-maps}]
+ Since $E^{s}_{A}$ and $E^{u}_{A}$ are closed subspaces, they are Banach spaces themselves. So, let us write $A_{i}:=A\big|_{E^{i}_{A}}\colon E^{i}_{A}\carr$, for $i\in\{s,u\}$. Let us fix a real number $\lambda\in \big(A_{h},1)$. By equation~\eqref{eq:formula-spectral-radius}, we know that there is $N\in\N$ such that $\norm{A^{n}_{s}}<\lambda^{n}$, and, by~\eqref{eq:spectrum-inverse}, $\norm{A_{u}^{-n}}<\lambda^{n}$, for every $n\geq N$.
+
+ Let us write
+ \begin{displaymath}
+   C:=\lambda^{-N}\max_{1\leq n\leq N-1}\left\{\norm{A_{s}^{n}}, \norm{A_{u}^{-n}}\right\}.
+ \end{displaymath}
+
+ Then, given any $n\in\N$ there exist unique non-negative integers $r,q$, such that  $n=qN+r$ and $0\leq r<N$, and hence,
+ \begin{displaymath}
+   \norm{A_{s}^{n}}\leq \norm{A_{s}^{r}} \norm{A_{s}^{N}}^{q} \leq C\lambda^{N}\lambda^{Nq}< C\lambda^{Nq+r}=C\lambda^{n}.
+ \end{displaymath}
+ Similarly one gets
+ \begin{displaymath}
+   \norm{A_{u}^{-n}}\leq \norm{A_{s}^{-r}} \norm{A_{s}^{-N}}^{q} \leq C\lambda^{N}\lambda^{Nq}< C\lambda^{Nq+r}=C\lambda^{n}.
+ \end{displaymath}
+
+ In order to construct an adapted norm, let us fix a real number $\mu\in \big(A_{h},1)$ and let $\lambda$ be an arbitrary number in the open interval $\big(A_{H},\mu\big)$. By the above argument, there is a constant $C>0$ such that $\norm{A_{s}^{n}}\leq C\lambda^{n}$ and $\norm{A_{u}^{-n}}\leq C\lambda^{n}$, for every $n\in\N$. Then we define the new norm $\abs{\cdot}_{i}$ on the closed subspace $E_{A}^{i}$, for $i\in\{s,u\}$ by
+ \begin{displaymath}
+   \abs{x_{s}}_{s}:=\sum_{j=0}^{+\infty} \frac{1}{\mu^{j}}\norm{A^{j}x_{s}}, \quad\forall x_{s}\in E_{A}^{s},
+ \end{displaymath}
+ and
+ \begin{displaymath}
+   \abs{x_{u}}_{u}:=\sum_{j=0}^{+\infty} \frac{1}{\mu^{j}}\norm{A^{-j}x_{u}}, \quad\forall x_{u}\in E_{A}^{u}.
+ \end{displaymath}
+
+ Then, given an arbitrary vector $x\in E$, it can be uniquely written as $x=x_{s}+x_{u}$, with $x_{i}\in E_{A}^{i}$, an so we can define
+ \begin{displaymath}
+   \abs{x}:=\max\{\abs{x_{s}}_{s},\abs{x_{u}}_{u}\}.
+ \end{displaymath}
+
+ \begin{exercise}
+   Show that $\abs{\cdot}_{s}$, $\abs{\cdot}_{u}$ and $\abs{\cdot}$ are indeed well define norms, and that $\abs{\cdot}$ and $\norm{\cdot}$ are equivalent, \ie~there exists a constant $K>1$ such that
+   \begin{displaymath}
+     K^{-1}\norm{x}\leq \abs{x}\leq K\norm{x}, \quad\forall x\in E.
+   \end{displaymath}
+ \end{exercise}
+
+ Finally observe that
+ \begin{displaymath}
+   \abs{Ax_{s}} =\abs{Ax_{s}}_{s}=\sum_{j\geq 0} \frac{\norm{A^{j+1}x_{s}}}{\mu^{j}} = \mu (\abs{x_{s}}_{s}-\norm{x_{s}})\leq \mu\abs{x_{s}},
+ \end{displaymath}
+ for every $x_{s}\in E_{A}^{s}$ and
+  \begin{displaymath}
+   \abs{A^{-1}x_{u}} =\abs{A^{-1}x_{u}}_{u}=\sum_{j\geq 0} \frac{\norm{A^{-(j+1)}x_{s}}}{\mu^{j}} = \mu (\abs{x_{u}}_{u}-\norm{x_{u}})\leq \mu\abs{x_{u}},
+ \end{displaymath}
+ for every $x_{u}\in E^{u}_{A}$.
+\end{proof}
+
+
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
