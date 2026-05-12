@@ -1352,7 +1352,7 @@ When $E$ is a Banach space over the real field $\R$, one can define its \textbf{
 \begin{displaymath}
   (a+bi) (x_{1},x_{2}):=(ax_{1}-bx_{2},ax_{2}+bx_{1}), \quad\forall (x_{1},x_{2})\in E_{\C},\ \forall a+bi\in\C.
 \end{displaymath}
-We can define $E_{r}:=E\times\{0\}$ and $E_{i}:=\{0\}\times E$ as closed linear subspaces of $E_{\C}$, which are isomorphic to $E$ and such that $E_{\C}=E_{r}\oplus E_{i}$. Every operator $A\in\mc{L}(E)$ induces a new operator $A_{\C}\in\mc{L}(E_{\C})$ given by $A_{\C}(x_{1},x_{2}):=(Ax_{1},Ax_{2})$. On the other hand, an operator $B\in\mc{L}(E_{\C})$ is said to be a \textbf{real operator} when $B(E_{r})\subset E_{r}$ and $B(E_{i})\subset E_{i}$. One can show that every operator on $E_{\C}$ which is induced by another one on $E$ is indeed a real operator and reciprocally, every real operator on $E_{\C}$ is induced by one defined on $E$.
+We can define $E_{r}:=E\times\{0\}$ and $E_{i}:=\{0\}\times E$ as closed linear subspaces of $E_{\C}$ over $\R$, which are isomorphic to $E$ and such that $E_{\C}=E_{r}\oplus E_{i}$. Every operator $A\in\mc{L}(E)$ induces a new operator $A_{\C}\in\mc{L}(E_{\C})$ given by $A_{\C}(x_{1},x_{2}):=(Ax_{1},Ax_{2})$. On the other hand, an operator $B\in\mc{L}(E_{\C})$ is said to be a \textbf{real operator} when $B(E_{r})\subset E_{r}$ and $B(E_{i})\subset E_{i}$. One can show that every operator on $E_{\C}$ which is induced by another one on $E$ is indeed a real operator and reciprocally, every real operator on $E_{\C}$ is induced by one defined on $E$.
 
 The \textbf{spectrum} of an operator $A\in\mc{L}(E)$ on the real Banach space $E$ is defined as the spectrum of the induced operator on the complexification of $E$, \ie~by $\sigma(A):=\sigma(A_{\C})$.
 
@@ -1366,7 +1366,7 @@ The \textbf{spectrum} of an operator $A\in\mc{L}(E)$ on the real Banach space $E
     r(A):=\lim_{n\to+\infty}\norm{A^{n}}^{1/n} = \inf_{n\geq 1}\norm{A^{n}}^{1/n}.
   \end{equation}
 
-  On the other hand, if $A\in\GL(E)$, then it holds
+  On the other hand, if $A$ is an isomorphism, then it holds
   \begin{equation}\label{eq:spectrum-inverse}
     \sigma(A^{-1})=\left\{z^{-1}\in\C : z\in\sigma(A)\right\}.
   \end{equation}
@@ -1379,7 +1379,8 @@ The \textbf{spectrum} of an operator $A\in\mc{L}(E)$ on the real Banach space $E
 We shall write $\GL(E)$ for the group of invertible bounded linear maps on $E$, \ie~$\GL(E):=\{A\in\mc{L}(E) : 0\not\in\sigma(A)\}$.
 
 \begin{definition}[Hyperbolic linear automorphisms]
-  Given a Banach space $E$, n invertible linear automorphism $A\in\GL(E)$ is said to be \textbf{hyperbolic} when it holds
+  \label{def:hyperbolic-linear-automorphisms}
+  Given a Banach space $E$, an invertible linear automorphism $A\in\GL(E)$ is said to be \textbf{hyperbolic} when it holds
   \begin{displaymath}
     \sigma(A)\cap\{\lambda\in\C : \abs{\lambda}=1\}=\emptyset.
   \end{displaymath}
@@ -1388,9 +1389,10 @@ We shall write $\GL(E)$ for the group of invertible bounded linear maps on $E$, 
   \begin{equation}\label{eq:hyp-constant-def}
     \sigma(A)\cap\left\{z\in\C : \lambda\leq\abs{z}\leq\lambda^{-1}\right\}=\emptyset.
   \end{equation}
-  Any number $\lambda\in(0,1)$ satisfying condition~\eqref{eq:hyp-constant-def} is called a \textbf{hyperbolicity constant} for $A$.
+  Any number $\lambda\in(0,1)$ satisfying condition~\eqref{eq:hyp-constant-def} is called a \textbf{hyperbolicity constant} for $A$. The infimum of hyperbolicity constants shall be denoted by $A_h$
 \end{definition}
 
+The set of hyperbolic isomorphisms of $E$ will be denoted by $\mc{H}(E)$.
 
 We will need the following result about spectral decompositions:
 \begin{theorem}\label{thm:spectral-decomposition}
@@ -1412,7 +1414,7 @@ As a consequence of Theorem~\ref{thm:spectrum-spectral-radius} we get the follow
   \end{displaymath}
   for all $n\in\N$ and every $v^{s}\in E^{s}_{A}$ and $v^{u}\in E^{u}_{A}$.
 
-  Moreover, for every $\mu\in \big(A_{h},1\big)$, there exists a norm $\abs{\cdot}$ on $E$, which is equivalent to $\norm{\cdot}$, and such that
+  Moreover, for every $\mu\in \big(A_h,1\big)$, where $A_h$ denotes the constant given by Definition~\ref{def:hyperbolic-linear-automorphisms}, there exists a norm $\abs{\cdot}$ on $E$, which is equivalent to $\norm{\cdot}$, and such that
   \begin{equation}\label{eq:adapted-norm-property}
     \abs{Av^{s}}\leq\mu\abs{v^{s}},\quad\text{and}\quad\abs{A^{-1}v^{u}}\leq\mu\abs{v^{u}},
   \end{equation}
