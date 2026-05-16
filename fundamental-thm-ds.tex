@@ -1,0 +1,146 @@
+\section{The Fundamental Theorem of Dynamical Systems}\label{sec:fundamental-thm-dyn-sys}
+
+Motivated by Example~\ref{exam:gradient-flows}, we would like to find functions decreasing along the orbits of arbitrary topological dynamical systems.
+
+\begin{definition}[Lyapunov function]
+  Given a continuous dynamical systems $f\colon M\carr$ on a metric space $M$, a \emph{Lyapunov function} for $f$ is a continuous function $L\colon M\to\R$ such that
+  \begin{displaymath}
+    L\big(f(x)\big)\leq L(x), \quad\forall x\in M.
+  \end{displaymath}
+\end{definition}
+
+Of course, according to this definition every constant function is a Lyapunov one for every topological dynamical system, which does not seem to be very interesting. So, we are going to look for the ``best possible'' Lyapunov function.
+
+\subsection{Different forms of recurrence}\label{sec:forms-of-recurrence}
+
+It would be desirable to find a Lyapunov function such that $L\big(f(x)\big)<L(x)$ for every $x\in M$. However this is clearly impossible when $f$ has, for instance, a \textbf{fixed point,} \ie~a point $p\in M$ such that $f(p)=p$. The set of fixed points of $f$ will be denoted by $\Fix(f)$.
+
+More generally, we write $p\in\Per(f)$ and say that $p$ is a \textbf{periodic point} when there is $n\geq 1$ such that $f^{n}(p)=p$. We define $\Per(f):=\bigcup_{n\geq 1}\Fix(f^{n})$.
+
+Another form of recurrence that represents an obstruction for the existence of a Lyapunov functions satisfying the strict inequality for every $p\in M$ is the following: we say that a point $p\in M$ is \textbf{positively recurrent} for $f$ when there exists strictly increasing sequence of natural numbers $n_{j}\uparrow+\infty$ such that $f^{n_{j}}(p)\to p$, as $n_{j}\to+\infty$. The set of positively recurrent points of $f$ shall be denoted by $\Rec^+(f)$. When $f\colon M\carr$ is bijective, one says that $p\in M$ is \textbf{negatively recurrent} for $f$ when it is positively recurrent for $f^{-1}$. The set of negatively recurrent points will be denoted by $\Rec^-(f)$.
+
+Given a point $p\in M$, we define its \textbf{$\omega$-limit set} by
+\begin{displaymath}
+  \omega_{f}(p):=\left\{x\in M : \exists n_{j}\uparrow\infty,\ f^{n_{j}}(p)\to x,\ \text{as } n_{j}\to+\infty\right\},
+\end{displaymath}
+and the \textbf{positive limit set} of $f$ by
+\begin{displaymath}
+  L^+(f):=\bigcup_{p\in M} \omega_{f}(p).
+\end{displaymath}
+
+When $f$ is invertible, we also define the \textbf{$\alpha$-limit set} of $p\in M$ by $\alpha_{f}(p):=\omega_{f^{-1}}(p)$, and the so called \textbf{limit set} of $f$ by
+\begin{displaymath}
+  L(f):=\bigcup_{p\in M} \alpha_{f}(p)\cup \omega_{f}(p).
+\end{displaymath}
+
+We say that a point $p\in M$ is \textbf{non-wandering} when for every neighborhood $U$ of $p$, there exists $n\geq 1$ such that $U\cap f^{-n}(U)\neq\emptyset$. The set of non-wandering points for $f$ is usually denoted by $\Omega(f)$.
+
+We say that a subset $K\subset M$ is \textbf{$f$-invariant} when $f(K)=K$, and it is said to be \textbf{totally $f$-invariant} when $f(K)=K=f^{-1}(K)$. Observe that if $f\colon M\carr$ is bijective, then $K\subset M$ is totally $f$-invariant if and only if it is $f$-invariant.
+
+\begin{exercise}
+  \label{ex:inclusions-fix-per-rec-limit-sets-non-wandering}
+  Let $M$ denote a compact metric space and $f\colon M\carr$ be a homeomorphism. Show that
+  \begin{displaymath}
+    \Fix(f)\subset\Per(f)\subset\Rec^+(f)\subset L(f)\subset\Omega(f),
+  \end{displaymath}
+  and all these sets are $f$-invariant.
+
+  \begin{enumerate}
+    \item Show that $\Fix(f)$ and $\Omega(f)$ are compact.
+    \item Show that $\Rec^+(f)\cap\Rec^-(f)\neq\emptyset$. (Hint: show that there exists a non-empty compact subset $K\subset M$ which is \textbf{minimal} for $f$, \ie~$K$ is $f$-invariant and it does not contain any proper compact $f$-invariant subset).
+    \item Show that if $L\colon M\to\R$ is a Lyapunov function for $f$ and $p\in\Omega(f)$, then it holds $L\big(f(p)\big)=L(p)$.
+  \end{enumerate}
+\end{exercise}
+
+Finally we introduce the notion of \emph{chain recurrence.} Given a homeomorphism $f\colon M\carr$ on the compact metric space $(M,d)$ and an arbitrary $\eps>0$, a sequence ${(x_{n})}_{n\in\Z}$ of points of $M$ is said to be an \textbf{$\eps$-chain} or \textbf{$\eps$-pseudo-orbit} when
+\begin{displaymath}
+  d\big(f(x_{i}),x_{i+1}\big)<\eps,\quad\forall n\in\Z.
+\end{displaymath}
+
+A point $p\in M$ is said to be \textbf{chain recurrent} when for every $\eps>0$ there exists a periodic $\eps$-chain ${(x_{n})}_{n\in\Z}$ with $p=x_{0}$. The set of chain recurrent points is denoted by $\CR(f)$.
+
+
+\begin{exercise}
+  Show that $\CR(f)$ is a compact $f$-invariant set and $\Omega(f)=\Omega(f^{-1})\subset\CR(f)=\CR(f^{-1})$.
+\end{exercise}
+
+Given any $p\in M$ and any $\eps>0$, we define the \textbf{$\eps$-chainable set from $p$} as the set
+\begin{displaymath}
+  \CR_{f}(p,\eps):=\left\{x\in M : \exists {(x_{n})}_{n\in\Z}\ \eps\text{-chain, } \exists k\in\N, x_{0}=p,\ x_{k}=x\right\},
+\end{displaymath}
+and the \textbf{chainable set from $p$} by
+\begin{displaymath}
+  \CR_{f}(p):=\bigcap_{\eps>0}\CR_{f}(p,\eps).
+\end{displaymath}
+So, we have $p\in\CR(f)$ if and only if $p\in\CR_{f}(p)$.
+
+There is a fundamental and elementary notion that will play a crucial role in the understanding of the orbit structure of a given dynamical system, which is the concept of \emph{trapping region.} We say that a subset $U\subset M$ is a \textbf{trapping region} for $f$ when it is open and $f\big(\overline{U}\big)\subset U$.
+
+Observe that if $U\subset M$ is a trapping region for $f$, then the set $M\setminus\overline{U}$ is a trapping region for $f^{-1}$; and reciprocally, if $M\setminus\overline{U}$ is a trapping for $f^{-1}$, then $\mathrm{int}(\overline{U})$ is a trapping region for $f$.
+
+Given a trapping region $U$ for $f$, we can define the \textbf{dual pair of attractor/repellor} associated to $U$ as the pair of compact $f$-invariant sets
+\begin{displaymath}
+  A_{U}^+:=\bigcap_{n\geq 0} f^{n}\big(\overline{U}\big), \quad\text{and}\quad A_{U}^-:=\bigcap_{n\geq 0} f^{-n}\big(M\setminus U\big).
+\end{displaymath}
+
+\begin{exercise}
+  Show that $A_U^+$ and $A_U^-$ are compact, $f$-invariant and contained in $U$ and $M\setminus\overline{U}$, respectively. Moreover, they are non-empty if and only if $U$ and $M\setminus\overline{U}$ are non-empty.
+\end{exercise}
+
+We have the following fundamental result relating chain recurrence and trapping regions:
+\begin{proposition}
+  \label{prop:chain-recurrence-trapping-regions}
+  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$. Then, given any point $p\in M$ and any $\eps>0$, the $\eps$-chainable set from $p$ is a trapping region for $f$.
+\end{proposition}
+
+\begin{proof}
+  Let us start showing that $\CR_f(p,\eps)$ is open. To do that, let us inductively defined
+  \begin{displaymath}
+    U_1:=B_\eps(p)=\{y\in M : d(x,y)<\eps\},
+  \end{displaymath}
+  and
+  \begin{displaymath}
+    U_n:=\bigcup_{x\in U_{n-1}} B_\eps\big(f(x)\big), \quad\forall n\geq 2.
+  \end{displaymath}
+
+  One can easily check that $U_n$ is open for every $n\geq 1$ and $\CR_f(p,\eps)=\bigcup_{n\geq 1} U_n$. So, $\CR_f(p,\eps)$ is open.
+
+  By the very same definition, it is clear that $f\big(\CR_f(p,\eps))\subset \CR_f(p,\eps)$. Now, let $y$ be an arbitrary point of $\overline{\CR_f(p,\eps)}$. Since $M$ is compact and $f$ is continuous, there is $\delta>0$ such that $d\big(f(x_1),f(x_2)\big)<\eps$, whenever $d(x_1,x_2)<\delta$. Then, there is $x\in\CR_f(p,\eps)\cap B_\delta(y)$. So there is a finite segment of $\eps$-pseudo orbit $x_0=p, x_1,\ldots,x_n=x$. Since $x\in B_\delta(y)$, we conclude $x_0=p, x_1,\ldots,x_n=x, x_{n+1}:=f(y)$ is a finite segment of $\eps$-pseudo orbit, too. Hence, $f(y)\in\CR_f(p,\eps)$, and we conclude that $f\big(\overline{\CR_f(p,\eps)}\big)\subset \CR_f(p,\eps)$.
+\end{proof}
+
+\begin{exercise}
+  Let $f\colon M\carr$ be a homeomorphism on the compact metric space $(M,d)$ and $U\subset M$ be a trapping region for $f$. Show that
+  \begin{displaymath}
+    \CR(f)\subset A_U^+\sqcup A_U^-,
+  \end{displaymath}
+  where $\sqcup$ denotes the disjoint union and $A_U^+,A_U^-$ is the dual pair of attractor/repellor associated to $U$.
+\end{exercise}
+
+Now we can define the notion of \textbf{chain recurrence classes.} If $f\colon M\carr$ is a homeomorphism on the compact metric space $(M,d)$ and $x,y\in\CR(f)$, we say that they are \textbf{chain equivalent} when $y\in\CR_{f}(x)$ and $x\in\CR_{f}(y)$, \ie~$x,y\in\CR_f(x,\eps)\cap\CR_f(y,\eps)$, for every $\eps>0$.
+
+Then we have the following
+
+\begin{exercise}[Chain-recurrence classes]
+  If $f$ and $M$ are as above, let us show that \emph{chain equivalence} determines an equivalence relation on $\CR(f)$. Their equivalence classes are called \textbf{chain-recurrence classes.} Show that every chain-recurrent class is compact and $f$-invariant.
+
+  Moreover, two points $x,y\in\CR(f)$ are chain equivalent if and only if either $x,y\in A_U^+$, or $x,y\in A_U^-$, for every trapping region $U$ for $f$.
+\end{exercise}
+
+\begin{exercise}
+  If $f$ and $M$ are as above, show that the following set is at mots countable:
+  \begin{displaymath}
+    \left\{(A_U^+,A_U^-) : U\subset M \text{ is a trapping region for  } f\right\}.
+  \end{displaymath}
+\end{exercise}
+
+Using all previous exercises and results, one can easily prove the so-called ``Fundamental Theorem of Dynamical Systems'' due to Conley~\cite{ConleyIsolInvSets}:
+
+\begin{theorem}[Existence of complete Lyapunov functions]\label{thm:fund-thm-dyn-sys}
+  Given a homeomorphism $f\colon M\carr$ on the compact metric space $(M,d)$, there exists a \emph{complete Lyapunov function} for $f$, \ie~a continuous function $L\colon M\to\R$ such that the following conditions hold:
+  \begin{enumerate}
+    \item $L\big(f(x)\big)\leq L(x)$, for every $x\in M$,
+    \item $L\big(f(x)\big)=L(x)$ if and only if $x\in\CR(f)$,
+    \item $L(x)=L(y)$, with $x,y\in\CR(f)$ if and only if $x$ and $y$ are chain equivalent, and,
+    \item $L\big(\CR(f)\big)$ is a compact totally disconnected set, \ie~it does not contain any open interval.
+  \end{enumerate}
+\end{theorem}

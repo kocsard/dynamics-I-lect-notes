@@ -1,0 +1,584 @@
+\section{Dynamics of circle maps}
+\label{sec:dynamics-circle-maps}
+
+Our preferred model for the circle is the quotient space $\T:=\R/\Z$. The natural quotient map $\pi\colon\R\to\T$ given by $\pi(x):=[x]=x+\Z$, for every $x\in\R$, can be used to endow $\T$ with the quotient topology, which is, by the definition, the finest topology on $\T$ such that $\pi$ is continuous. This topology is metrizable and compatible with the metric $d\colon\T\times\T\to[0,1/2]$ given by
+\begin{equation}
+  \label{eq:distance-circle}
+  d([x],[y]):=\min\{\abs{\tilde{x}-\tilde{y}} : \tilde x\in[x],\ \tilde y\in[y]\}\quad\forall x,y\in\R.
+\end{equation}
+
+One can easily check that $\pi\colon\R\to\T$ is a covering map, \ie~for every $[x]\in\T$ there is an open neighborhood $U$ of $[x]$ such that $\pi^{-1}(U)$ is a disjoint union of open intervals of $\R$, each of them homeomorphic to $U$ via $\pi$, and since $\R$ is simply connected, this covering map is the universal covering of $\T$. So, we have the following
+
+\begin{proposition}
+  \label{prop:lifting-property-circle}
+  Given any continuous map $f\colon\T\carr$, any $x_0\in\T$, any $\tilde x_0\in\R$ with $\pi(\tilde x_0)=x_0$, and any $\tilde y_0\in\R$ such that $\pi(\tilde y_0)=f(x_0)$, there exists a unique continuous map $\tilde f\colon\R\carr$ such that $\pi\circ \tilde f=f\circ\pi$ and $\tilde f(\tilde x_0)=\tilde y_0$. Moreover, if $f$ is a homeomorphism, then $\tilde f$ is a homeomorphism, too.
+\end{proposition}
+
+As an easy consequence of the lifting property, we have that if $\tilde f_1,\tilde f_2\colon\R\carr$ are two lifts of the same continuous map $f\colon\T\carr$, then there is $n\in\Z$ such that $\tilde f_1(x)=\tilde f_2(x)+n$, for every $x\in\R$.
+
+On the other hand, we have the following
+
+\begin{proposition}
+  \label{prop:degree-circle-maps}
+  If $f\colon\T\carr$ is a continuous, then there is an integer $d\in\Z$, called the \textbf{degree of $f$}, such that given any lift $\tilde f\colon\R\carr$ of $f$, it holds $\tilde f(x+1)=\tilde f(x)+d$, for every $x\in\R$. Moreover, the map
+  \begin{displaymath}
+    \Delta_{\tilde f}(\tilde x):=\tilde f(\tilde x)-d\tilde x, \quad\forall \tilde x\in\R,
+  \end{displaymath}
+  is continuous and $\Z$-periodic, \ie~$\Delta_{\tilde f}(\tilde x+n)=\Delta_{\tilde f}(\tilde x)$, for every $\tilde x\in\R$ and every $n\in\Z$.
+\end{proposition}
+
+\begin{proof}
+  Given any $\tilde x\in\R$, since $\pi\big(\tilde f(\tilde x+1)\big)=f\big(\pi(\tilde x+1)\big)=f\big(\pi(\tilde x)\big)=\pi\big(\tilde f(\tilde x)\big)$, we conclude that there is $d\in\Z$ such that $\tilde f(\tilde x+1)=\tilde f(\tilde x)+d$. Since $\tilde f$ is a continuous map, we conclude that the integer $d$ does not depend on the choice of $\tilde x\in\R$. Moreover, by our remark above about different lifts of the same map, we conclude that $d$ does not depend on the choice of the lift $\tilde f$ either, and the first part of the proposition is proved.
+
+  On the other hand, to prove that the map $\Delta_{\tilde f}$ is $\Z$-periodic, it is enough to check that
+  \begin{displaymath}
+    \Delta_{\tilde f}(\tilde x+1)=\tilde f(\tilde x+1)-d(\tilde x+1)=\tilde f(\tilde x)+d-d\tilde x-d=\Delta_{\tilde f}(\tilde x),
+  \end{displaymath}
+  for every $\tilde x\in\R$.
+\end{proof}
+
+\begin{exercise}
+  Given two continuous maps $f,g\colon\T\carr$, we write $d_f$ and $d_g$ for the degrees of $f$ and $g$, respectively, and $d_{f\circ g}$ for the degree of $f\circ g$. Show that
+  \begin{displaymath}
+    d_{f\circ g}=d_f\cdot d_g.
+  \end{displaymath}
+\end{exercise}
+
+Since the degree of the identity map $id_\T$ is clearly $1$, by the previous exercise we conclude that if $f\colon\T\carr$ is a homeomorphism, then its degree is either $1$ or $-1$.
+
+
+
+\subsection{Dynamics of circle homeomorphisms}
+\label{sec:dynam-circle-homeos}
+
+By the last remark of the previous section, we know that the group of homeomorphisms of the circle $\T$, that shall be denoted by $\Homeo{}(\T)$, can be decomposed as the disjoint union of two subsets
+\begin{displaymath}
+  \Homeo{}(\T)=\Homeo{+}(\T)\sqcup\Homeo{-}(\T),
+\end{displaymath}
+where we are writing $\Homeo{+}(\T):=\{f\in\Homeo{}(\T) : \text{the degree of } f \text{ is } 1\}$ and $\Homeo{-}(\T):=\{f\in\Homeo{}(\T) : \text{the degree of } f \text{ is } -1\}$.
+
+The elements of $\Homeo{+}(\T)$ shall be called \textbf{orientation-preserving} homeomorphisms, while the elements of $\Homeo{-}(\T)$ shall be called \textbf{orientation-reversing} homeomorphisms. One can easily check that any lift of an element of $\Homeo{+}(\T)$ is a strictly increasing homeomorphism of $\R$, while any lift of an element of $\Homeo{-}(\T)$ is a strictly decreasing homeomorphism of $\R$.
+
+\begin{exercise}[Dynamics of orientation-reversing circle homeomorphisms]
+   Given any $f\in\Homeo{-}(\T)$, show that $\Fix(f)$ contains exactly two points and $\Per(f)=\Fix(f^2)$, where $f^2\in\Homeo{+}(\T)$ is an orientation-preserving circle homeomorphism.
+\end{exercise}
+
+\begin{example}[Circle rotations]
+  \label{exam:circle-rotations}
+  Given any $\alpha\in\R$, we can define the translation map $\tilde{R}_\alpha\colon\R\carr$ by $\tilde{R}_\alpha(x):=x+\alpha$, for every $x\in\R$. The map $\tilde{R}_\alpha$ turns to be a lift of an orientation-preserving circle homeomorphism $R_\alpha\colon\T\carr$ that is given by $R_\alpha([x])=[x+\alpha]$, for every $[x]\in\T$ and is called the \textbf{circle rotation} by $\alpha$. The dynamics of $R_\alpha$ is very simple: if $\alpha\in\Q$, and $\alpha=p/q$ with $p\in\Z$ and $q\in\N$ coprime, $R_\alpha^q=id_{\T}$ and hence, $\Per(f)=\Fix(f)=\T$. On the other hand, if $\alpha\in\R\setminus\Q$, then $R_\alpha$ is \textbf{minimal,} \ie~the positive and negative orbit of ever point of $\T$ is dense in $\T$.
+\end{example}
+
+\begin{exercise}
+  Show that the circle rotation $R_\alpha$ is minimal, for all $\alpha\in\R\setminus\Q$.
+\end{exercise}
+
+
+So, let us start the study of orientation-preserving circle homeomorphisms. We have the following
+
+\begin{exercise}
+  A homeomorphism $\tilde f\in\Homeo{}(\R)$ is a lift of an element of $\Homeo{+}(\T)$ if and only if $\tilde f$ is continuous, strictly increasing and $\tilde f(x+1)=\tilde f(x)+1$, for every $x\in\R$. In such a case, $\tilde f$ commutes with every integer translation, \ie~$\tilde f\circ T_m=T_m\circ\tilde f$, for every $m\in\Z$, where $T_m:\R\ni x\mapsto x+m\in\R$, and the function
+  \begin{displaymath}
+    \Delta_{\tilde f}(x):=\tilde f(x)-x, \quad\forall x\in\R,
+  \end{displaymath}
+  is continuous and $\Z$-periodic, \ie~$\Delta_{\tilde f}(x+n)=\Delta_{\tilde f}(x)$, for every $x\in\R$ and every $n\in\Z$. In such a case, we can consider the function $\Delta_{\tilde f}$ can be considered as an element of $C^0(\T,\R)$, and is usually called the \textbf{displacement function} of $\tilde f$.
+\end{exercise}
+
+From now on, we shall write
+\begin{displaymath}
+  \Thomeo_+(\T):=\left\{\tilde f\in\Homeo{}(\R) : \tilde f \text{ is a lift of an } f\in\Homeo{+}(\T) \right\}.
+\end{displaymath}
+
+\begin{exercise}
+  \label{ex:displacement-function-compositio}
+  Show that $\Thomeo_+(\T)$ is a subgroup of $\Homeo{}(\R)$. On the other hand, show that given $\tilde f,\tilde g\in\Thomeo_+(\T)$, it holds
+  \begin{displaymath}
+    \Delta_{\tilde f\circ\tilde g}=\Delta_{\tilde f}\circ g + \Delta_{\tilde g}.
+  \end{displaymath}
+  Use this fact to show that
+  \begin{displaymath}
+    \Delta_{\tilde f^n}=\sum_{i=0}^{n-1} \Delta_{\tilde f}\circ f^i, \quad\forall n\in\N.
+  \end{displaymath}
+\end{exercise}
+
+We have the following elementary but fundamental result about the \textbf{displacement function} of a lift of an orientation-preserving circle homeomorphism:
+
+\begin{proposition}
+  \label{prop:displacement-function-iterates}
+  It holds
+  \begin{displaymath}
+    \osc\Delta_{\tilde f}\leq 1, \quad\forall \tilde f\in\Thomeo_+(\T),
+  \end{displaymath}
+  where the \textbf{oscillation of a function}  $\varphi\in C^0(\T,\R)$ is given by $\osc\varphi:=\max_{x\in\T} \varphi(x)-\min_{y\in\T}\varphi(y)$.
+\end{proposition}
+
+\begin{proof}
+  Let us suppose that there is $\tilde f\in\Thomeo_+(\T)$ such that $\osc\Delta_{\tilde f}>1$. Then, sine $\Delta_{\tilde f}$ is $\Z$-periodic, there are $x_m,x_M\in\R$ with $0<x_M-x_m<1$ and such that $\Delta_{\tilde f}(x_m)=\min_\T\Delta_{\tilde f}$ and $\Delta_{\tilde f}(x_M)=\max_\T\Delta_{\tilde f}$. Then, we have  that
+  \begin{displaymath}
+    \tilde f(x_M)-\tilde f(x_m) = \Delta_{\tilde f}(x_M) - \Delta_{\tilde f}(x_m) + x_M - x_m > 1,
+  \end{displaymath}
+  and hence, by continuity of $\tilde f$, there are two points $x_1,x_2\in(x_m,x_M)$ such that $\tilde f(x_1)=\tilde f(x_2)+1$, and this implies that $f\big(\pi(x_1)\big)=\pi\big(\tilde f(x_1)\big)=\pi\big(\tilde f(x_2)+1\big)=\pi\big(\tilde f(x_2)\big)=f\big(\pi(x_2)\big)$. On the other hand, since $\abs{x_2-x_1}<x_M-x_m<1$, we have $\pi(x_1)\neq\pi(x_2)$, which contradicts the fact that $f$ is injective.
+\end{proof}
+
+Proposition~\ref{prop:displacement-function-iterates} lets us define the most important dynamical invariant of orientation-preserving circle homeomorphisms:
+
+\begin{theorem}
+  \label{thm:rotation-number-def}
+  Given any $\tilde f\in\Thomeo_+(\T)$, there is a number $\rho(\tilde f)\in\R$ such that
+  \begin{equation}
+    \label{eq:rotation-number-def}
+    \rho(\tilde f)=\lim_{n\to+\infty}\frac{\tilde f^n(x)-x}{n}=\lim_{n\to+\infty} \frac{\Delta_{\tilde f^n}(x)}{n}, \quad\forall x\in\R,
+  \end{equation}
+  where the limit is uniform in $x\in\R$. On the other hand, for every $m,n\in\Z$, it holds
+  \begin{displaymath}
+    \rho(\tilde f^n\circ T_m)=\rho(\tilde f^n)+m=n\rho(\tilde f)+m,
+  \end{displaymath}
+  where $T_m\in\Thomeo_+(\T)$ denotes the translation given by $T_m(x)=x+m$, for every $x\in\R$.
+\end{theorem}
+
+In order to prove Theorem~\ref{thm:rotation-number-def}, we need the so called \textbf{subadditive lemma}:
+
+\begin{lemma}\label{lem:quasi-morphisms}
+  Let ${(a_{n})}_{n\in\N}$ be a sequence of real numbers such that there is a real constant $C>0$ satisfying
+  \begin{displaymath}
+    \abs{a_{m+n}-a_{m}-a_{n}}\leq C, \quad\forall m,n\in\N.
+  \end{displaymath}
+  Then, the following limit exists
+  \begin{displaymath}
+    \rho:=\lim_{n\to+\infty}\frac{a_{n}}{n},
+  \end{displaymath}
+  and it holds $\abs{a_{n}-n\rho}\leq C$, for every $n\in\N$.
+\end{lemma}
+
+\begin{exercise}
+  Prove Lemma~\ref{lem:quasi-morphisms}.
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{thm:rotation-number-def}]
+  Let us start proving that the limit~\eqref{eq:rotation-number-def} exists for $x=0$. In fact, this is an easy consequence of Proposition~\ref{prop:displacement-function-iterates} and Lemma~\ref{lem:quasi-morphisms}. Indeed, by Proposition~\ref{prop:displacement-function-iterates}, we have that
+  \begin{displaymath}
+    \begin{split}
+      \abs{\Delta_{\tilde f^{m+n}}(0)-\Delta_{\tilde f^m}(0)-\Delta_{\tilde f^n}(0)}&= \abs{\tilde f^{m+n}(0)-\tilde f^m(0)-\tilde f^n(0)} \\
+      &= \abs{\Delta_{\tilde f^n}\big(\tilde f^m(0)\big) - \Delta_{\tilde f^n}(0)}\leq\osc\Delta_{\tilde f^n} \leq 1, \\
+      \end{split}
+    \end{displaymath}
+    for every $m,n\in\N$. So, by Lemma~\ref{lem:quasi-morphisms}, there is $\rho(\tilde f)\in\R$ such that $\lim_{n\to+\infty} \frac{\Delta_{\tilde f^n}(0)}{n}=\rho(\tilde f)$.
+
+    Invoking again Proposition~\ref{prop:displacement-function-iterates}, we have that
+    \begin{displaymath}
+      \abs{\frac{\Delta_{\tilde f^n}(x)}{n}-\frac{\Delta_{\tilde f^n}(0)}{n}}\leq\frac{\osc\Delta_{\tilde f^n}}{n}\leq\frac{1}{n},
+    \end{displaymath}
+    and hence, the limit is uniform in $x\in\R$.
+
+    Finally, given any $m,n\in\Z$, by Exercise~\ref{ex:displacement-function-compositio}, we have that
+    \begin{displaymath}
+      \begin{split}
+        \rho(\tilde f^n\circ T_m) &= \lim_{k\to+\infty} \frac{(\tilde f^n\circ T_m)^k(x) -x}{k} = \lim_{k\to+\infty}
+                                    \frac{\tilde f^{nk}(x)-x + mk}{k} \\
+                                  &= m+ \lim_{k\to+\infty} n\frac{\tilde f^{nk}(x)-x}{nk} = n\rho(\tilde f) + m.
+      \end{split}
+    \end{displaymath}
+\end{proof}
+
+We will need the following elementary but fundamental property of the rotation number:
+
+\begin{proposition}
+  \label{prop:existence-point-exact-displacement-rotation-number}
+  If $\tilde f\in\Thomeo_+(\T)$ and $\rho(\tilde f)$ denotes the rotation number of $\tilde f$, then for each $n\in\N$ there exists $x_n\in\R$ such that
+  \begin{displaymath}
+    \tilde f^n(x_n)=x_n+n\rho(\tilde f).
+  \end{displaymath}
+\end{proposition}
+
+\begin{proof}
+  Let us fix $n\in\N$. Suppose there is no $x\in\R$ such that $\tilde f^n(x)=x+n\rho(\tilde f)$. Then, let us assume that $\tilde f^n(x)>x+n\rho(\tilde f)$. Since $\Delta_{\tilde f^n}=\tilde f^n-id_{\R}$ is $\Z$-periodic, there exists $\eps>0$ such that $\tilde f^n(x)\geq x+n\rho(\tilde f)+\eps$, for every $x\in\R$. So, by Proposition~\ref{prop:displacement-function-iterates} we have that
+  \begin{displaymath}
+    \begin{split}
+      \rho(\tilde f)&=\lim_{k\to+\infty} \frac{\tilde f^{nk}(x)-x}{nk} =\lim_{k\to+\infty} \frac{\sum_{i=0}^{k-1} \Delta_{\tilde f^n}\big(\tilde f^{ni}(x)\big)}{nk} \\
+                    &\geq \lim_{k\to+\infty} \frac{nk\rho(\tilde f)+k\eps}{nk}=\rho(\tilde f)+\frac{\eps}{n},
+    \end{split}
+  \end{displaymath}
+  which is a contradiction.
+\end{proof}
+
+We have two important consequences Theorem~\ref{thm:rotation-number-def} and Proposition~\ref{prop:existence-point-exact-displacement-rotation-number}:
+
+\begin{corollary}[Existence of periodic points]
+  \label{cor:rational-rotation-number-periodic-point}
+  If $f\in\Homeo{+}(\T)$ and $\Per(f)\neq\emptyset$, then $\rho(\tilde f)\in\Q$, for every lift $\tilde f$ of $f$. Conversely, if $\rho(\tilde f)=p/q\in\Q$, with $p\in\Z$ and $q\in\N$ coprime, then there is $\tilde x\in\R$ such that $\tilde f^q(\tilde x)=\tilde x+p$, and every periodic point for $f$ has prime period $q$.
+\end{corollary}
+
+\begin{proof}
+  If $x\in\T$ is a periodic point for $f$ with prime period $q\in\N$, then for every $\tilde x\in\pi^{-1}(x)$, there is $p\in\Z$ such that $\tilde f^q(\tilde x)=\tilde x+p$. By Proposition~\ref{prop:displacement-function-iterates} we know that $\tilde f$ commutes with every integer translation, and hence, the number $p$ does not depend on the choice of $\tilde x\in\pi^{-1}(x)$. So, if we compute the rotation number of $\tilde f$ using the point $\tilde x$, we get that $\rho(\tilde f)=\lim_{n\to+\infty} \frac{\tilde f^{nq}(\tilde x)-\tilde x}{nq}=\lim_{n\to+\infty} \frac{np}{nq}=p/q$.
+
+  Conversely, if $\rho(\tilde f)=p/q\in\Q$, with $p\in\Z$ and $q\in\N$ coprime, then by Proposition~\ref{prop:existence-point-exact-displacement-rotation-number} there is $\tilde x\in\R$ such that $\tilde f^q(\tilde x)=\tilde x+p$. So, the point $x:=\pi(\tilde x)$ is a periodic point for $f$, where $q$ is a multiple of the prime period of $x$. By the previous argument, if the prime period of $x$ were strictly smaller than $q$, the rotation number of $\tilde f$ would be a rational number with denominator strictly smaller than $q$, which contradicts the fact that $p/q$ is written in irreducible form.
+\end{proof}
+
+As an immediate consequence of Proposition~\ref{prop:displacement-function-iterates}, Theorem~\ref{thm:rotation-number-def} and Proposition~\ref{prop:existence-point-exact-displacement-rotation-number}, we have the following fundamental result
+
+\begin{corollary}
+  \label{cor:bounded-rotational-deviations-and-continuity-rotation-number}
+  Given any $\tilde f\in\Thomeo_+(\T)$, it holds
+  \begin{displaymath}
+    \abs{\tilde f^n(x)-x-n\rho(\tilde f)}\leq 1, \quad\forall x\in\R,\ \forall n\in\Z.
+  \end{displaymath}
+
+  As a consequence of this estimates, we get that the rotation number function $\rho\colon\Thomeo_+(\T)\to\R$ is continuous, when $\Thomeo_+(\T)$ is endowed with the uniform convergence topology.
+\end{corollary}
+
+\begin{proof}
+  First observe that for every $n\in\N$, there exists $x_n\in\R$ such that $\Delta_{\tilde f^n}(x_n)=n\rho(\tilde f)$. On the other hand, by Proposition~\ref{prop:displacement-function-iterates}, we have that $\osc\Delta_{\tilde f^n}\leq 1$, for every $n$. So, we conclude $\abs{\tilde f^n(x)-x-n\rho(\tilde f)}=\abs{\Delta_{\tilde f^n}(x)-\Delta_{\tilde f^n}(x_n)}\leq\osc\Delta_{\tilde f^n}\leq 1$, for every $n\in\N$. The case, $n<0$ easily follows by applying the previous estimates to the homeomorphism $\tilde f^{-1}$.
+
+  In order to prove that the rotation number function is continuous, let us fix $\tilde f\in\Thomeo_+(\T)$ and $\eps>0$. Let $n$ be a positive integer such that $3/n<\eps$. Then, let us choose a real number $\delta>0$ such that
+  \begin{displaymath}
+    \abs{\tilde f^j(x)-\tilde g^j(x)}<1, \quad\forall x\in\R,\ \forall j\in\{1,2,\ldots,n\},
+  \end{displaymath}
+  for every $\tilde g\in\Thomeo_+(\T)$ such that $\abs{\tilde g(x)-\tilde f(x)}<\delta$, for every $x\in\R$. For such a $\tilde g$, we have that
+  \begin{displaymath}
+    \begin{split}
+      \abs{\rho(\tilde f)-\rho(\tilde g)}&\leq \abs{\rho(\tilde f)-\frac{\tilde f^n(x)-x}{n}} + \abs{\frac{\tilde f^n(x)-x}{n}-\frac{\tilde g^n(x)-x}{n}} + \abs{\frac{\tilde g^n(x)-x}{n}-\rho(\tilde g)} \\
+                                         &\leq \frac{1}{n} + \frac{1}{n}\abs{\tilde f^n(x)-\tilde g^n(x)} + \frac{1}{n} < \frac{3}{n} < \eps,
+    \end{split}
+  \end{displaymath}
+  and the continuity of the rotation number function is proved.
+\end{proof}
+
+
+We shall analyze now the dynamics of orientation-preserving circle homeomorphisms with irrational rotation number. We have the following fundamental
+
+\begin{theorem}
+  \label{thm:irrational-rotation-number-minimality}
+  If $f\in\Homeo{+}(\T)$ and $\rho(\tilde f)\in\R\setminus\Q$, for some (and hence every) lift $\tilde f$ of $f$, then the following properties hold:
+  \begin{enumerate}
+    \item there exists a unique $f$-invariant \textbf{minimal set} $K\subset\T$ for $f$, \ie~$K$ is compact, non-empty, $f(K)=K$, and there is no proper subset of $K$ with these properties;
+    \item the set $K$ is either a Cantor set or the whole circle $\T$;
+    \item $f$ is a topological extension of the irrational rotation $R_{\rho(\tilde f)}\colon\T\ni x+\Z\mapsto x+\rho(\tilde f)+\Z\in\T$, for every $x\in\R$;
+    \item $\Omega(f)=K$ and $\CR(f)=\T$;
+    \item $f$ is topologically conjugate to the irrational rotation $R_{\rho(\tilde f)}$ if and only if $K=\T$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:irrational-rotation-number-minimality}]
+  By Exercise~\ref{ex:inclusions-fix-per-rec-limit-sets-non-wandering} we know that there is a minimal set $K\subset\T$ for $f$. Reasoning by contradiction, let us assume that there are another one $K'\subset\T$ with $K\neq K'$. Since $K\cap K'$ is a compact $f$-invariant set that is contained in $K$ and $K'$, we conclude that $K\cap K'=\emptyset$. So, there is $\eps>0$ such that $d(x,y)>\eps$, for every $x\in K$ and every $y\in K'$. On the other hand, let $y_0$ be an arbitrary point of $K'$ and let us write $I_0$ for the connected component of $\T\setminus K$ that contains $y_0$. Since $K$ is $f$-invariant, $f^n(I_0)$ is a connected component of $\T\setminus K$, for every $n\in\Z$; and since $f$ is periodic point free, $f^m(I_0)\cap f^n(I_0)=\emptyset$, for every $m,n\in\Z$ with $m\neq n$. If we write $\abs{f^m(I_0)}$ for the length of the interval $f^m(I_0)$, we have that $\sum_{m\in\Z} \abs{f^m(I_0)}\leq 1$, and hence, $\lim_{m\to\pm\infty} \abs{f^m(I_0)}=0$. By convergence of the series, there is $m_0\in\Z$ such that $\abs{f^{m_0}(I_0)}<\eps$ and $f^{m_0}(y_0)\in K'\cap f^{m_0}(I_0)$, contradicting the fact that $d(x,y)>\eps$, for every $x\in K$ and every $y\in K'$. So, there is a unique minimal set $K\subset\T$ for $f$.
+
+  To prove the second point, let us suppose that $K\neq\T$. Since $K$ is a minimal set, one can easily check that any isolated point of $K$ should be a periodic point for $f$, and since $f$ is periodic point free, we conclude that $K$ has no isolated points. On the other hand, if $J\subset K$ were a non-trivial connected component of $K$, since $K$ is a minimal set, we would have that there exists $n\in\N$ such that $f^n(J)=J$, and hence, $f^n$ would have a fixed point in $J$, contradicting the fact that $f$ is periodic point free. So, $K$ has no non-trivial connected components, and hence, it is a Cantor set.
+
+  In order to prove that $f$ is a topological extension of the irrational rotation $R_{\rho(\tilde f)}$, we first need the following
+
+  \begin{theorem}[Gottschalk-Hedlund theorem]
+    \label{thm:Gottschalk-Hedlund}
+    Let $(X,d)$ be a compact metric space, $f\colon X\carr$ be a minimal homeomorphism, and $\varphi\in C^0(X,\R)$. Then, there is $u\in C^0(X,\R)$ such that $\varphi=u\circ f-u$ if and only if there is $x_0\in X$ such that the sequence of Birkhoff sums satisfies
+    \begin{displaymath}
+      \sup_{n\in\N} \abs{\sum_{i=0}^{n-1} \varphi\big(f^i(x_0)\big)}<+\infty.
+    \end{displaymath}
+  \end{theorem}
+
+  \begin{exercise}
+    Prove Theorem~\ref{thm:Gottschalk-Hedlund}.
+  \end{exercise}
+
+  Now, let us consider the function $\varphi\in C^0(\T,\R)$ given by $\varphi(x):=\Delta_{\tilde f}(\tilde x)-\rho(\tilde f)$, where $\tilde x$ is any lift of $x\in\T$. Combining Corollary~\ref{cor:bounded-rotational-deviations-and-continuity-rotation-number} and Theorem~\ref{thm:Gottschalk-Hedlund}, we conclude there is $u\in C^0(K,\R)$ such that
+  \begin{displaymath}
+    \varphi(x)=u\big(f(x)\big)-u(x), \quad\forall x\in K.
+  \end{displaymath}
+
+  We use function $u$ to define a continuous functions $\tilde h\colon\tilde{K}\to\R$ and $h\colon K\to\T$ given by $\tilde h(\tilde x):=\tilde x+u(x)$ and $h(x):=x+\pi\big(u(x)\big)$, for every $\tilde x\in\tilde{K}:=\pi^{-1}(K)\subset\R$ and $x=\pi(\tilde x)$. One can easily check $h\circ f\big|_K=R_{\rho(\tilde f)}\circ h$.
+
+  In the case $K=\T$, one can already finish the proof of the theorem:
+
+  \begin{exercise}
+    Assuming $K=\T$, show that $h\colon\T\carr$ is injective and surjective, and hence, it is a topological conjugacy between $f$ and $R_{\rho(\tilde f)}$.
+  \end{exercise}
+
+  It remains to show that $h$ can be extended to the whole circle $\T$ when $K\neq\T$. In order to do that, let $I$ be an arbitrary connected component of $\T\setminus K$, let $x_0,x_1\in K$ be extreme points of $I$. We are going to show that $h(x_0)=h(x_1)$, and hence, we can extend $h$ to $I$ as the constant function on $I$ with value $h(x_0)=h(x_1)$. To do that, let us suppose that $h(x_0)\neq h(x_1)$ and write $\eps:=d\big(h(x_0),h(x_1)\big)>0$. Since $h\colon K\to\T$ is continuous and $K$ is compact, $h$ is uniformly continuous and hence there is $\delta>0$ such that $d\big(h(x),h(y)\big)<\eps/2$, for every $x,y\in K$ with $d(x,y)<\delta$. Observe that since $h\circ f\big|_K=R_{\rho(\tilde f)}\circ h$, we have that $d\big(h\big(f^n(x_0)\big),h\big(f^n(x_1)\big)\big)=d\big(R_{\rho(\tilde f)}^n\big(h(x_0)\big),R_{\rho(\tilde f)}^n\big(h(x_1)\big)\big)=d\big(h(x_0),h(x_1)\big)=\eps$, for every $n\in\Z$, where $f^n(x_0)$ and $f^n(x_1)$ are the extreme points of the connected component $f^n(I)$ of $\T\setminus K$. But, by our previous argument about the dynamics of connected components of $\T\setminus K$, we know that $\abs{f^n(I)}\to 0$, as $n\to\pm\infty$. So, there is $n\in\Z$ such that $d\big(f^n(x_0),f^n(x_1)\big)<\delta$, contradicting  the property of uniform continuity of $h$.
+\end{proof}
+
+
+
+\subsection{$C^r$-generic theory of $\Diff{}r(\T)$}
+\label{sec:Cr-generic-theory-circle}
+
+In this section we start the study of the so-called $C^r$-generic theory of circle diffeomorphisms, where $r\in\N_0\cup\{\infty\}$ denotes a fixed regularity. We will denote by $\Diff{}r(\T)$ the group of $C^r$-diffeomorphisms of the circle $\T$, and $\Diff+r(\T)$ and $\Diff-r(\T)$ for the connected components of orientation-preserving and orientation-reversing circle diffeomorphisms, respectively.
+
+We endow $\Diff+r(\T)$ with the $C^r$-topology, which is the topology induced by the $C^r$-metric that is inductively defined as follows: for $r=0$, we consider the distance $d_{C^0}\colon\Homeo{}(\T)\times\Homeo{}(\T)\to[0,1/2]$ given by
+\begin{displaymath}
+  d_{C^0}(f,g):=\max_{x\in\T} d\big(f(x),g(x)\big)+d\big(f^{-1}(x),g^{-1}(x)\big), \quad\forall f,g\in\Homeo{}(\T),
+\end{displaymath}
+where $d\colon\T\times\T\to[0,1/2]$ is distance function given by~\eqref{eq:distance-circle}. For $r\geq 1$, we endow $\Diff+r(\T)$ with the $C^r$-metric $d_{C^r}\colon\Diff+r(\T)\times\Diff+r(\T)\to[0,+\infty)$ given by
+\begin{equation}
+  \label{eq:Cr-metric-circle}
+  d_{C^r}(f,g):=d_{C^{r-1}}(f,g)+\max_{x\in\T} \abs{\Delta_{\tilde f}^{(r)}(x)-\Delta_{\tilde g}^{(r)}(x)}, \quad\forall f,g\in\Diff+r(\T),
+\end{equation}
+where $\phi^{(r)}$ denotes the $r$-th derivative of a function $\phi\in C^r(\T,\R)$, and $\tilde f,\tilde g\in\Thomeo_+(\T)$ are any lifts of $f$ and $g$, respectively. One can analogously define the $C^r$-metric on $\Diff-r(\T)$.
+
+We need the following definition that extends the previous one of periodic fixed points (Definition~\ref{def:hyperbolic-fixed-point}):
+\begin{definition}
+  Let $f\in\Diff{}1(\T)$ and $p\in\T$ be a periodic point for $f$ with prime period $n\in\N$. We say that $p$ is a \textbf{simple periodic point} for $f$ if $Df^n(p)\neq 1$. Moreover, we say that $p$ is \textbf{hyperbolic} if $\abs{Df^n(p)}\neq 1$. A hyperbolic periodic point is said to be \textbf{attracting} if $\abs{Df^n(p)}<1$, and \textbf{repelling} if $\abs{Df^n(p)}>1$.
+\end{definition}
+
+We can now define a fundamental family of circle diffeomorphisms:
+\begin{definition}[Morse-Smale circle diffeomorphisms]
+  A diffeomorphism $f\in\Diff{}1(\T)$ is said to be a \textbf{Morse-Smale} when $\Per(f)\neq\emptyset$ and every periodic point for $f$ is hyperbolic.
+\end{definition}
+
+We can now state the main result of this section, which is the following
+
+\begin{theorem}[Morse-Smale circle diffeomorphisms]
+  \label{thm:Morse-Smale-circle-diffeomorphisms}
+  Given any $r\in\N\cup\{\infty\}$, if we write $MS^r$ for the set of orientation-preserving Morse-Smale circle diffeomorphisms, then $MS^r$ is $C^1$-open (\ie~it is an open set when $\Diff{+}r(\T)$ is endowed with the $C^1$-distance) and $C^r$-dense in $\Diff{+}r(\T)$.
+  The set of Morse-Smale circle diffeomorphisms is open and dense in $\Diff{}1(\T)$.
+\end{theorem}
+
+We shall need several partial results in order to prove Theorem~\ref{thm:Morse-Smale-circle-diffeomorphisms}. We start with the following one, which states the existence of the so-called \textbf{continuation of simple periodic points}:
+
+\begin{exercise}
+  \label{ex:continuation-simple-periodic-points}
+  Let $f\colon\T\carr$ be a $C^1$-map and $p\in\T$ be a simple periodic point for $f$ with prime period $n\in\N$. Show that there is an open neighborhood $\mc{U}$ of $f$ in $C^1(\T,\T)$, a real number $\eps>0$, and a continuous map $\mc{U}\ni g\mapsto p_g\in B_\eps(p)\subset\T$ such that $p_f=p$ and $p_g$ is the only periodic point for $g$ in the ball $B_\eps(p)$ and it has with prime period $n$, for every $g\in\mc{U}$. Moreover, if $p$ is hyperbolic, then $p_g$ is hyperbolic with the same type as $p$, for every $g\in\mc{U}$.
+\end{exercise}
+
+Next, we need to show that any orientation-preserving $C^r$-diffeomorphism with irrational rotation number can be $C^r$-approximated by diffeomorphisms with rational rotation number:
+
+\begin{theorem}[$C^\infty$-closing lemma on the circle]
+  \label{thm:closing-lemma-circle}
+  Let $f\in\Homeo+(\T)$ be an arbitrary orientation-preserving circle homeomorphism, and $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. For each $t\in\R$, consider the homeomorphism $f_t\in\Homeo+(\T)$ given by $\tilde f_t(x):=\tilde f(x)+t$, for every $x\in\R$. Then, the function $\R\ni t\mapsto \rho(\tilde f_t)$ is continuous and if $\rho(\tilde f)\in\R\setminus\Q$, then for every $\eps>0$ there is $t_-\in (-\eps,0)$ and $t_+\in (0,\eps)$ such that $\rho(\tilde f_{t_-})<\rho(\tilde f)<\rho(\tilde f_{t_+})$ and $\rho(\tilde f_{t_-}),\rho(\tilde f_{t_+})\in\Q$.
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:closing-lemma-circle}]
+  By Corollary~\ref{cor:bounded-rotational-deviations-and-continuity-rotation-number} we know the function $\R\ni t\mapsto \rho(\tilde f_t)$ is continuous. On the other hand, one can easily check by induction on $n\in\N$ that
+  \begin{equation}
+    \label{eq:monotonicity-rotation-perturbations}
+    \tilde f_{-t}^n(\tilde x)\leq \tilde f^n(\tilde x)\leq \tilde f_t^n(\tilde x), \quad\forall \tilde x\in\R,\ \forall t\geq 0.
+  \end{equation}
+  In particular, this implies the function $t\mapsto \rho(\tilde f_t)$ is non-decreasing.
+
+  Now, let us assume that $\rho(0)=\rho(\tilde f)\in\R\setminus\Q$. By Theorem~\ref{thm:irrational-rotation-number-minimality}, there is a unique minimal set $K\subset\T$ for $f$, which is either a Cantor set or the whole circle $\T$. In any case, there exists $x\in K$ such that $(\tilde x,\tilde x+\eps)\cap\tilde K\neq\emptyset$ and $(\tilde x-\eps,\tilde x)\cap\tilde K\neq\emptyset$, for every $\eps>0$, where $\tilde K:=\pi^{-1}(K)$.
+
+  Now, let us show that for every $\eps>0$ there is $t_+\in (0,\eps)$ such that $\rho(\tilde f_{t_+})>\rho(\tilde f)$. Since $K$ is a minimal set for $f$ and $x$ is accumulated by both sides in $K$, we know that there is $n\in\N$ and $p\in\Z$ such that
+  \begin{equation}
+    \label{eq:closing-point-x-lift}
+    \tilde x+p-\eps<\tilde f^n(\tilde x)<\tilde x + p.
+  \end{equation}
+
+  Combining estimates~\eqref{eq:monotonicity-rotation-perturbations} and~\eqref{eq:closing-point-x-lift}, we conclude that
+  \begin{displaymath}
+    \tilde f_\eps^n(\tilde x) \geq \tilde f^n(\tilde x) + \eps > \tilde x + p,
+  \end{displaymath}
+  So, by continuity of $\tilde f_t$ on the parameter $t$, we conclude there is $t_+\in(0,\eps)$ such that $\tilde f_{t_+}^n(\tilde x)=\tilde x+p$, and this implies $\rho(\tilde f_{t_+})>\rho(\tilde f)$. The other case showing the existence of $t_-\in (-\eps,0)$ with $\rho(\tilde f_{t_-})\in\Q$ and $\rho(\tilde f_{t_-})<\rho(\tilde f)$ is completely analogous.
+\end{proof}
+
+Then we need to discuss some notions of \textbf{transversality}: given a smooth manifold $M$, we say that two submanifolds $N_1,N_2\subset M$ are \textbf{transverse at the point $x\in N_1\cap N_2$} if it holds
+\begin{displaymath}
+  T_xM=T_xN_1 + T_xN_2.
+\end{displaymath}
+We say that they are just \textbf{transverse} if they are transverse at every point of $N_1\cap N_2$. Similarly, given a smooth map $f\colon M\to N$ between smooth manifolds, and a submanifold $P\subset N$, we say that $f$ is \textbf{transverse to $P$ at the point $x\in M$} when $f(x)\in P$ and
+\begin{displaymath}
+  T_{f(x)}N=T_{f(x)}P + Df_x(T_xM).
+\end{displaymath}
+We say that $f$ is \textbf{transverse to $P$} if it is transverse to $P$ at every point $x\in M$ such that $f(x)\in P$. Observe that, by definition, $f$ is transverse to $P$ whenever $f(M)\cap P=\emptyset$.
+
+Given smooth manifolds $\Lambda$, $M$ and $N$, a closed submanifold $S\subset N$, and a $C^r$ map $F\colon \Lambda\times M\to N$, if we consider the manifold $\Lambda$ as a parameter space, we can define the set $T_{\Lambda,S}$ by
+\begin{equation}
+  \label{eq:T-lambda-S-transverse-param}
+  T_{\Lambda,S}:=\left\{\lambda\in\Lambda  : F(\lambda,\cdot )\colon M\to N \text{ is transverse to } S\right\}.
+\end{equation}
+We have the following fundamental result about \emph{parametric transversality:}
+
+\begin{theorem}
+  \label{thm:transversality-parametric}
+  If $\Lambda$, $M$, $N$ and $S$ are as above and $F\colon\Lambda\times M\to N$ is a $C^r$ map with $r>\max\{0,\dim N+\dim A-\dim M\}$, and $F$ is transverse to $S$, then the set $T_{\Lambda,S}$ given by~\eqref{eq:T-lambda-S-transverse-param} is residual, and hence, dense in $\Lambda$.
+\end{theorem}
+
+\begin{proof}
+  See~\cite[Theorem 2.7]{HirschDiffTopology}.
+\end{proof}
+
+We shall also need the following
+
+\begin{exercise}
+  \label{exer:simple-periodic-points-perturbation}
+  Let $f\colon\T\carr$ be a $C^r$ map (with $r\geq 1$) $p\in\T$ a periodic point of prime period $n$ for $f$. Show that given any $\eps>0$, there is a $C^\infty$ map $g\colon\T\carr$ to with $d_{C^r}(f,g)<\eps$, where $d_{C^r}$ denotes the $C^r$-distance given by~\eqref{eq:Cr-metric-circle}, and such that $p$ is a simple periodic point for $g$ with prime period $n$.
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Morse-Smale-circle-diffeomorphisms}]
+  Let us fix $r\in\N\cup\{\infty\}$ and let us write $MS^r$ for the set of orientation-preserving Morse-Smale circle diffeomorphisms. First, let us show that $MS^r$ is $C^1$-open. Let $f\in MS^r$ and let $\Per(f)=\{p_1,p_2,\ldots,p_k\}$ be the set of periodic points for $f$. We know that all of them have prime period $q\in\N$. Since every periodic point for $f$ is hyperbolic, by Exercise~\ref{ex:continuation-simple-periodic-points}, for each $i\in\{1,\ldots,k\}$ there is an open neighborhood $\mc{U}_i$ of $f$ in $C^1(\T,\T)$, a real number $\eps_i>0$, and a continuous map $\mc{U}_i\ni g\mapsto p_{i,g}\in B_{\eps_i}(p_i)\subset\T$ such that $p_{i,f}=p_i$ and $p_{i,g}$ is the only periodic point for $g$ in the ball $B_{\eps_i}(p_i)$ and it has with prime period equal to the prime period of $p_i$, for every $g\in\mc{U}_i$. Moreover, every $p_{i,g}$ is hyperbolic.
+
+  On the other hand, there is $\delta>0$ such that
+  \begin{displaymath}
+    d\big(f^q(x),x)>\delta, \quad\forall x\in\T\setminus\bigcup_{i=1}^k B_{\eps_i}(p_i),
+  \end{displaymath}
+  where $q$ denotes the prime period of every periodic point of $f$.
+
+  Then, we define the set $\mc{U}$ as the intersection of the neighborhoods $\mc{U}_i$ with the set of maps $g\in\Diff{+}1(\T)$ such that $d(g^q(x),x)>\delta/2$, for every $x\in\T\setminus\bigcup_{i=1}^k B_{\eps_i}(p_i)$. It is easy to check that $\mc{U}$ is a $C^1$-neighborhood of $f$ that is contained in $MS^1$. In particular, $MS^r$ is open when it is endowed with the $C^1$-topology.
+
+  In order to see that $MS^r$ is $C^r$-dense in $\Diff{+}r(\T)$, let us assume $r$ is finite, fix an arbitrary $f\in\Diff{+}r(\T)$ and let $\tilde f\in\Thomeo_+(\T)$ be any lift of $f$. If $\rho(\tilde f)\in\Q$, then by Corollary~\ref{cor:rational-rotation-number-periodic-point} there is a periodic point for $f$. If $\rho(\tilde f)\in\R\setminus\Q$, then by Theorem~\ref{thm:closing-lemma-circle}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $\rho(\tilde g)\in\Q$, where $\tilde g$ is any lift of $g$. In any case, we can assume that $f$ has a periodic point $p\in\T$ with prime period $n\in\N$. By Exercise~\ref{exer:simple-periodic-points-perturbation}, for every $\eps>0$ there is $g\in\Diff{+}r(\T)$ with $d_{C^r}(f,g)<\eps$ and such that $p$ is a simple periodic point for $g$ with the very same prime period $n$. Since $p$ is simple, by Exercise~\ref{ex:continuation-simple-periodic-points} we know that the continuation of $p$ is well defined in a $C^1$-neighborhood of $g$. In particular, the rotation number is constant in a $C^1$-neighborhood of $g$. Hence, if $\tilde g\colon\R\carr$ is a lift of $g$, then there is $k\in\Z$ such that $\rho(\tilde g)=k/n$. On the other hand, for each $t\in\R$, consider the diffeomorphism $\tilde g_t:=g+t$. By induction in $n$, one can easily check that the function $G_n\colon\R\times\T\to\T\times\T$ given by
+  \begin{displaymath}
+    G_n(t,x):=\big(x,\pi\circ\tilde g_t^n(\tilde x)\big), \quad \forall (t,x)\in\R\times\T, \ \forall x\in\pi^{-1}(x),
+  \end{displaymath}
+  is transverse to the diagonal $D:=\{(y,y)\in\T\times\T : y\in\T\}$; and by our hypothesis about $\rho(\tilde g)$, we know that the image of $G_n$ intersects $D$ at the point $(0,p)$. So, by Theorem~\ref{thm:transversality-parametric}, for every $\eps>0$ there is $t\in(-\eps,\eps)$ such that $G_n(t,x)\in D$, for some $x\in\T$ and the map $G_n(t,\dot)\colon\T\carr$ is transverse to $D$ at every point. In particular,  we get that the $g_t:=R_t\circ g\in MS^r$, and the density, for $r$ finite, is proved. The case $r=\infty$ easily follows by the density of $C^\infty$ maps in $C^r$ maps, for every finite $r$.
+\end{proof}
+
+\subsection{Dynamics of circle endomorphisms with $\abs{d}\geq 2$}
+\label{sec:dynam-circle-endomorphisms}
+
+Given any $d\in\Z$ and any $r\in\N_0\cup\{\infty\}$, we shall write
+\begin{equation}
+  \label{eq:degree-d-cirle-maps}
+  C_d^r(\T):=\left\{f\colon\T\carr : f \text{ is } C^r,\ \deg f =r\right\}.
+\end{equation}
+
+For each $d\in\Z$, we consider the unique group homomorphism $E_d\colon\T\carr$ which is contained in $C_d^\infty(\T)$. This map $E_d$ is given by $E_d(x):=d x$, for every $x\in\T$.
+
+\begin{exercise}[Dynamics of $E_d$]
+  Given $d\in\Z$ with $\abs{d}\geq 2$, show the following statements about the dynamics of $E_d$:
+  \begin{enumerate}[(i)]
+    \item $\Per(E_d)$ is dense in $\T$;
+    \item given any non-empty open set $U\subset\T$, there is $n\in\N$ such that $E_d^n(U)=\T$;
+    \item given any pair of non-empty open sets $U,V\subset\T$, there is $n\in\N$ such that $E_d^n(U)\cap V\neq\emptyset$;
+    \item use the previous points to conclude that there is $x\in\T$ such that $\omega_{E_d}(x)=\T$;
+    \item for every $y\in\T$, it holds
+          \begin{displaymath}
+            \overline{\bigcup_{n\in\N} E_d^{-n}(y)}=\T.
+          \end{displaymath}
+  \end{enumerate}
+\end{exercise}
+
+We have the following fundamental result about the dynamics of circle endomorphisms with degree $\abs{d}\geq 2$:
+
+\begin{theorem}[$E_d$ as topological factor]
+  \label{thm:Ed-topological-factor}
+  If $d\in\Z$ with $\abs{d}\geq 2$, then every $f\in C_d^0(\T)$ is a topological extension of $E_d\colon\T\carr$, \ie~there is a continuous surjective map $h\colon\T\carr$ such that $h\circ f=E_d\circ h$.
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Ed-topological-factor}]
+  Let $f\in C_d^0(\T)$ be arbitrary. We shall construct a map $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$. To do this, let $\tilde f\colon\R\carr$ be a lift of $f$ and notice that $\tilde f(\tilde x)=d\tilde x+\Delta(\tilde x)$, for all $\tilde x\in\R$ and where $\Delta\in C^0(\T,\R)$. Let $\tilde E_d(x):=dx$, for all $x\in\R$, be our chosen lift of $E_d$. Then, we shall look for a lift $\tilde h\colon\R\carr$ with $\tilde h=id+u$ and $u\in C^0(\T,\R)$ satisfying $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$ and noticing the following functional equation must hold:
+  \begin{displaymath}
+    d\tilde x + u\big(f(x)\big) + \Delta(x) = d\tilde x + du(x), \quad\forall \tilde x\in\R,
+  \end{displaymath}
+  and $x=\pi(\tilde x)$, so we get
+  \begin{equation}
+    \label{eq:functional-equation-u-semi-conjugacy-Ed}
+    u(x)= \frac{1}{d} u\big(f(x)\big) + \frac{1}{d} \Delta(x), \quad\forall x\in\T.
+  \end{equation}
+
+  Motivated by equation~\eqref{eq:functional-equation-u-semi-conjugacy-Ed}, we define the operator $\mc{L}\colon C^0(\T,\R)\to C^0(\T,\R)$ given by
+  \begin{displaymath}
+    \mc{L}(u)(x):= \frac{1}{d} u\big(f(x)\big) + \frac{1}{d} \Delta(x), \quad\forall u\in C^0(\T,\R),\ \forall x\in\T.
+  \end{displaymath}
+  If we endow the space $C^0(\T,\R)$ with the uniform norm $\norm{\phi}:=\max_{x\in\T} \abs{\phi(x)}$, for every $\phi\in C^0(\T,\R)$, then one can easily check that $\mc{L}$ is a contraction, since for every $u,v\in C^0(\T,\R)$ we have
+  \begin{displaymath}
+    \norm{\mc{L}(u)-\mc{L}(v)} = \norm{\frac{1}{d} u\circ f - \frac{1}{d} v\circ f} \leq \frac{1}{\abs{d}} \norm{u-v}.
+  \end{displaymath}
+
+  Hence, by the Banach fixed point theorem, there is a unique $u\in C^0(\T,\R)$ such that $\mc{L}(u)=u$, and this implies that the lift $\tilde h\colon\R\carr$ given by $\tilde h(\tilde x):=\tilde x + u(x)$, for every $\tilde x\in\R$ and $x=\pi(\tilde x)$, satisfies $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$.
+\end{proof}
+
+The map $E_d$, with $\abs{d}\geq 2$ is an example of an \textbf{expanding map:}
+
+\begin{definition}[Expanding circle maps]
+  \label{def:expanding-circle-maps}
+  A map $f\in C_d^1(\T)$ is said to be \textbf{expanding} when there is $C>0$ and $\lambda>1$ such that
+  \begin{displaymath}
+    \abs{Df^n(x)}\geq C\lambda^n, \quad\forall x\in\T,\ \forall n\in\N.
+  \end{displaymath}
+\end{definition}
+
+\begin{exercise}[Degree of expanding maps]
+  Let $f\in C_d^1(\T)$ be an expanding map. Show that $\abs{d}\geq 2$.
+\end{exercise}
+
+\begin{exercise}
+  \label{exer:expanding-maps-equiv-definition}
+  Let $f\in C_d^1(\T)$ be an arbitrary map with $\abs{d}\geq 2$. Show that $f$ is an expanding map if and only if there is $n\in\N$ such that
+  \begin{displaymath}
+    \abs{Df^n(x)}>1, \quad\forall x\in\T.
+  \end{displaymath}
+\end{exercise}
+
+We have the following fundamental result about the dynamics of expanding circle maps:
+\begin{theorem}[Topological conjugacy of expanding circle maps]
+  \label{thm:expanding-maps-topological-conjugacy}
+  If $f\in C^1_d(\T)$ is an expanding map, then there is a homeomorphism $h\in\Homeo+(\T)$ such that $h\circ f=E_d\circ h$.
+\end{theorem}
+
+\begin{proof}
+  In Theorem~\ref{thm:Ed-topological-factor} we have shown that there is $h\in C^0_1(\T)$ such that $h\circ f=E_d\circ h$. We are going to show that $h$ is injective, and hence, it is a homeomorphism. To do that, let us assume that there are $x_1,x_2\in\T$ with $x_1\neq x_2$ and $h(x_1)=h(x_2)$. In fact, in the proof of Theorem~\ref{thm:Ed-topological-factor} we have shown that given a lift $\tilde f\colon\R\carr$, there is a lift $\tilde h\colon\R\carr$ of $h$ such that $\tilde h\circ\tilde f=\tilde E_d\circ\tilde h$.
+  Let us choose points $\tilde x_i\in\pi^{-1}(x_i)\cap [0,1]$, for $i\in\{1,2\}$. Since $h(x_1)=h(x_2)$, we have $m:=\tilde h(\tilde x_2)-\tilde h(\tilde x_1)\in\Z$. Then, $\tilde x_1+m\neq\tilde x_2$ and $\tilde h(\tilde x_1+m)=\tilde h(x_1)+m=\tilde h(\tilde x_2)$. So, we have
+  \begin{displaymath}
+    \tilde h\big(\tilde f^n(\tilde x_1+m)\big) = \tilde E_d^n\big(\tilde h(\tilde x_1+m)\big) = \tilde E_d^n\big(\tilde h(\tilde x_2)\big) = \tilde h\big(\tilde f^n(\tilde x_2)\big), \quad\forall n\in\N.
+  \end{displaymath}
+
+  Since $f$ is an expanding map, there is $C>0$ and $\lambda>1$ such that $\abs{Df^n(x)}=\abs{D\tilde f^n\big(\pi(x)\big)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. This implies,
+  \begin{displaymath}
+    \abs{\tilde f^n(\tilde x_1+m)-\tilde f^n(\tilde x_2)}\geq C\lambda^n \abs{\tilde x_1+m-\tilde x_2}\to+\infty, \quad\forall n\in\N,
+  \end{displaymath}
+  and as $n\to+\infty$. On the other hand, since $\tilde h$ is a lift of a degree one map of the circle, there is $L>1$ such that $\abs{\tilde h(\tilde x)-\tilde h(\tilde y)}\geq L^{-1}\abs{\tilde x-\tilde y}-L$, for every $\tilde x,\tilde y\in\R$. Hence, we get
+  \begin{displaymath}
+    \begin{split}
+      0=\abs{\tilde h\big(\tilde f^n(\tilde x_1+m)\big)-\tilde h\big(\tilde f^n(\tilde x_2)\big)} &\geq L^{-1}\abs{\tilde f^n(\tilde x_1+m)-\tilde f^n(\tilde x_2)} - L\\
+      &\geq L^{-1}C\lambda^n \abs{\tilde x_1+m-\tilde x_2} - L \to +\infty, \quad\text{as } n\to+\infty,
+    \end{split}
+  \end{displaymath}
+  which is clearly a contradiction. Hence, $h$ is injective and this concludes the proof.
+\end{proof}
+
+If we endow the space $C^r_d(\T)$ with the uniform $C^r$-topology (see, for instance, \cite[Chapter 2]{HirschDiffTopology} for details), as a straightforward consequence of Theorem~\ref{thm:expanding-maps-topological-conjugacy} we get the following
+
+\begin{corollary}[Structural stability of circle expanding maps]
+  For every $d\in\Z$ with $\abs{d}\geq 2$, the set
+  \begin{displaymath}
+    \mc{E}_d:=\left\{f\in C^1_d(\T) : f \text{ is an expanding map}\right\}
+  \end{displaymath}
+  is $C^1$-open in $C_d^1(\T)$. Thus, every expanding map is $C^1$-structurally stable, \ie~for every $f\in\mc{E}_d$, there is a $C^1$-neighborhood $\mc{U}$ of $f$ in $C_d^1(\T)$ such that every $g\in\mc{U}$ is topologically conjugate to $f$.
+\end{corollary}
+
+\begin{proof}
+  Let $f\in\mc{E}_d$ be an arbitrary expanding map. So, there is $C>0$ and $\lambda>1$ such that $\abs{Df^n(x)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. In particular, there is $n_0\in\N$ such that $\abs{Df^{n_0}(x)}>1$, for every $x\in\T$. By continuity of the derivative, there is a $C^1$-neighborhood $\mc{U}$ of $f$ in $C_d^1(\T)$ such that $\abs{Dg^{n_0}(x)}>1$, for every $g\in\mc{U}$ and every $x\in\T$. Hence, by Exercise~\ref{exer:expanding-maps-equiv-definition}, we conclude that every $g\in\mc{U}$ is an expanding map, and this concludes the proof.
+\end{proof}
+
+
+\subsubsection{Shadowing lemma for expanding endomorphisms}
+\label{sec:shadowing-lemma-expandindg-circle}
+
+Let $(X,d)$ be a compact metric space and $f\colon X\carr$ be a continuous map. Given real numbers $\alpha,\beta>0$ and a $\beta$-pseudo-orbit $(x_n)_{n\geq 0}$ for $f$, we say that the point $x\in X$ \textbf{$\alpha$-shadows} the pseudo-orbit $(x_n)_{n\geq 0}$ when it holds
+\begin{displaymath}
+  d\big(f^n(x),x_n\big)<\alpha, \quad\forall n\geq 0.
+\end{displaymath}
+
+The so-called \emph{shadowing property} plays a fundamental role in the theory of dynamical systems, specially in the proof of structural stability of hyperbolic systems, as well in the numerical study of them:
+
+\begin{theorem}[Shadowing lemma for circle expanding maps]
+  \label{thm:shadowing-lemma-circ-expanding}
+  Let $f\in C_d^1(\T)$ be an expanding map. Then, there is a real number $\alpha_0>0$ such that for every $\alpha\in (0,\alpha_0)$, there is $\beta>0$ such that every $\beta$-pseudo-orbit $(x_n)_{n\geq 0}\subset\T$ for $f$, there is a unique point $x\in\T$ that $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$.
+\end{theorem}
+
+\begin{proof}
+  Given $f$, let $C>0$ and $\lambda>1$ be such that $\abs{Df^n(x)}\geq C\lambda^n$, for every $x\in\T$ and $n\in\N$. Since $f$ is a $C^1$ map and it has no critical points and $\T$ is compact, there is $\alpha_0>0$ such that for every $x,y\in\T$, with $f(x)=y$, there is a local inverse $f_{x,y}^{-1}\colon B_\delta(y)\to\T$ of $f$, \ie~$f\circ f_{x,y}^{-1}(z)=z$, for every $z\in B_\delta(y)$. Then, we choose any $\alpha_0>0$ such that $\alpha_0<\min\{C(1-\lambda^{-1})\delta,\delta\}$. Given any $\alpha\in (0,\alpha_0)$, we shall determine $\beta>0$ afterwards as a function of $\alpha$. For the time being, let us just suppose $\beta<\alpha$. Then, given $\beta$-pseudo-orbit $(x_n)_{n\geq 0}$ for $f$, for each $m\in\N$ and each $n\in\{1,\ldots,m\}$ we consider the point
+  \begin{displaymath}
+    y_m^n:= f_{x_{m-n},x_{m-n+1}}^{-1}\circ\cdots\circ f_{x_{m-2},x_{m-1}}^{-1} \circ f_{x_{m-1},x_m}^{-1}(x_m), \quad\forall n\geq 1,
+  \end{displaymath}
+  and similarly we define $y_m^0:=x_m$, for all $m\in\N_0$.
+  We claim that all these points are indeed all well defined. To see that, observe that for each $m\in\N$ it holds
+  \begin{displaymath}
+    \begin{split}
+      d\big(y_m^1,y_m^0\big)&=d\big(f_{x_m,x_{m-1}}^{-1}(x_m), f_{x_m,x_{m-1}}^{-1}\circ f(x_{m-1})\big)\\
+                              &\leq C^{-1}\lambda^{-1}d\big(x_m,f(x_{m-1})\big)<C^{-1}\lambda^{-1}\beta,
+    \end{split}
+  \end{displaymath}
+  and by induction in $n\in\N$ we get
+  \begin{equation}
+    \label{eq:y-m-n-y-m-1-n-1-estimate}
+    \begin{split}
+      d\big(y_m^n,y_{m+1}^{n+1}\big) &= d\big(f_{x_{m-n},x_{m-n+1}}^{-1}(y_m^{n-1}), f_{x_{m-n},x_{m-n+1}}^{-1}(y_{m+1}^{n})\big)\\
+                                     &\leq C^{-1}\lambda^{-n} d(y_m^0,y_m^1) < C^{-1}\lambda^{-n}\beta,
+    \end{split}
+  \end{equation}
+  and hence
+  \begin{equation}
+    \label{eq:y-m-n-x-m-n-estimate}
+    \begin{split}
+      d(y_m^n,x_{m-n})  &\leq \sum_{j=1}^{n} d\big(y_{m-j+1}^{n-j+1},y_{m-j}^{n-j}\big)\\
+                        &\leq  C^{-1}\alpha\sum_{j=1}^{n}\lambda^{-j} < \frac{C^{-1}\beta}{1-\lambda^{-1}}. \\
+    \end{split}
+  \end{equation}
+
+  On the other hand, invoking estimate~\eqref{eq:y-m-n-y-m-1-n-1-estimate} we easily get that the sequence $(y_m^m)_{m\geq 0}$ is indeed a Cauchy sequence, and hence, it converges to some point $x\in\T$. Finally, by~\eqref{eq:y-m-n-x-m-n-estimate} we get that the point $x$ $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ when $\beta<\alpha(1-\lambda^{-1})C$. The uniqueness of the point $x$ that $\alpha$-shadows the pseudo-orbit $(x_n)_{n\geq 0}$ easily follows by the fact that $f$ is an expanding map.
+\end{proof}
