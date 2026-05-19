@@ -426,8 +426,18 @@ As a consequence of Theorem~\ref{thm:spectrum-spectral-radius} we get the follow
 \subsection{Non-linear hyperbolic local theory}
 \label{sec:non-linear-local-theory}
 
-There are three results that are fundamental in the local hyperbolic theory of non-linear dynamics, which are the following: the continuation of hyperbolic periodic points
+There are three results that are fundamental in the local hyperbolic theory of non-linear dynamics, which are the following: the continuation of hyperbolic periodic points, Hartman-Grobman theorem and the stability of hyperbolic periodic orbits, and the stable/unstable manifold theorem.
 
+We start showing the existence of continuation of hyperbolic points, which is a higher dimensional version of Exercise~\ref{ex:continuation-simple-periodic-points}:
+
+\begin{theorem}
+  \label{thm:cont-hyperbolic-fixed-point}
+  Let $U\subset\R^d$ be an open subset, $f\colon U\to\R^d$ be a $C^1$ diffeomorphism onto its image and suppose that there is $p\in U$ such that $f(p)=p$ is a \textbf{simple fixed point,} \ie~$1$ does not belong to the spectrum of $Df_p$. Then, there exist $\eps>0$ and $r>0$ such that for every $C^1$ map $g\colon U\to\R^d$ which is $\eps$-$C^1$-close to $f$ (\ie $\abs{f(x)-g(x)}<\eps$ and $\norm{Df_x-Dg_x}<\eps$, for every $x\in\ U$), $\Fix(g)\cap B_\eps(p)$ is a singleton containing a unique point $p_g$, and $p_g$ depends continuously on $g$.
+\end{theorem}
+
+\begin{exercise}
+  Prove Theorem~\ref{thm:cont-hyperbolic-fixed-point} using (the proof of) the implicit function theorem.
+\end{exercise}
 
 \bibliographystyle{amsalpha}
 \bibliography{references}
